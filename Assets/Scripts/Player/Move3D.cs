@@ -38,6 +38,12 @@ public class Move3D : MonoBehaviour
         maxSpeedChange = acceleration * Time.deltaTime;
         velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
 
+        velocity.z = 0f;
+
         body.linearVelocity = velocity;
+
+        Vector3 position = body.position;
+        position.z = 0f;
+        body.position = position;
     }
 }
