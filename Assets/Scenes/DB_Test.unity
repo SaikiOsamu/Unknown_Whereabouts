@@ -478,7 +478,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.000002, y: 0.01}
+  m_Size: {x: 10.000002, y: 0.3}
   m_EdgeRadius: 0
 --- !u!114 &331624063
 MonoBehaviour:
@@ -1230,7 +1230,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 10.000002, y: 0.01}
+  m_Size: {x: 10.000002, y: 0.3}
   m_EdgeRadius: 0
 --- !u!114 &982543271
 MonoBehaviour:
@@ -1848,6 +1848,7 @@ GameObject:
   - component: {fileID: 1589183542}
   - component: {fileID: 1589183550}
   - component: {fileID: 1589183551}
+  - component: {fileID: 1589183552}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -2191,6 +2192,22 @@ MonoBehaviour:
   maxAirJumps: 0
   downwardMovementMultiplier: 3
   upwardMovementMultiplier: 1.7
+--- !u!114 &1589183552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589183541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03bbd4beeb3b59442824b9d78369f860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeAmount: 0.1
+  shakeSpeed: 20
+  shakeDuration: 0.3
+  targetSceneName: DB_Test
 --- !u!1 &1792590815
 GameObject:
   m_ObjectHideFlags: 0
@@ -2313,7 +2330,7 @@ Transform:
   m_GameObject: {fileID: 1844368931}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4, y: 0, z: 0}
+  m_LocalPosition: {x: 4, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2544,7 +2561,7 @@ Transform:
   m_GameObject: {fileID: 2119584097}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
