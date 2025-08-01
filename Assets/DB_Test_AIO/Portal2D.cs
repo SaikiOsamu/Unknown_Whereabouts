@@ -2,26 +2,30 @@ using UnityEngine;
 
 public class Portal2D : MonoBehaviour
 {
+    [Header("Portal Settings")]
     public Transform receiverPortal;
     public float triggerDepth = 0.6f;
+    public float teleportCooldown = 0.5f;
+
+    [Tooltip("Exact destination point after teleport (set to empty GameObject)")]
+    public Transform exitPoint;
 
     private bool playerIsInside = false;
     private Transform player;
 
     private Vector3 entryLocalPosition;
     private bool hasTeleported = false;
+    private float lastTeleportTime = -Mathf.Infinity;
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
-        {
-            playerIsInside = true;
-            player = other.transform;
+        if (!other.CompareTag("Player")) return;
+        if (Time.time - lastTeleportTime < teleportCooldown) return;
 
-            // 将玩家位置转换为局部坐标，用于比较
-            entryLocalPosition = transform.InverseTransformPoint(player.position);
-            hasTeleported = false;
-        }
+        playerIsInside = true;
+        player = other.transform;
+        entryLocalPosition = transform.InverseTransformPoint(player.position);
+        hasTeleported = false;
     }
 
     void OnTriggerExit2D(Collider2D other)
@@ -38,10 +42,13 @@ public class Portal2D : MonoBehaviour
         if (!playerIsInside || player == null || hasTeleported)
             return;
 
-        Vector3 localPos = transform.InverseTransformPoint(player.position);
+        Vector3 currentLocalPos = transform.InverseTransformPoint(player.position);
+        float penetrationDistance = Vector2.Distance(
+            new Vector2(currentLocalPos.x, currentLocalPos.y),
+            new Vector2(entryLocalPosition.x, entryLocalPosition.y)
+        );
 
-        // 2D 中通常使用 Y 轴作为“前后”方向
-        if (localPos.y > entryLocalPosition.y + triggerDepth)
+        if (penetrationDistance >= triggerDepth)
         {
             TeleportPlayer();
         }
@@ -49,12 +56,31 @@ public class Portal2D : MonoBehaviour
 
     void TeleportPlayer()
     {
-        if (receiverPortal == null) return;
+        if (receiverPortal == null || player == null) return;
 
-        // 让玩家出现在接收门的位置，略偏前方
-        Vector3 offset = receiverPortal.up * -0.5f;
-        player.position = receiverPortal.position + offset;
+        lastTeleportTime = Time.time;
+
+        Portal2D receiver = receiverPortal.GetComponent<Portal2D>();
+        if (receiver != null && receiver.exitPoint != null)
+        {
+            player.position = receiver.exitPoint.position;
+        }
+        else
+        {
+            player.position = receiverPortal.position; // fallback
+        }
+
+        // 通知目标门进入冷却
+        if (receiver != null)
+        {
+            receiver.ForceCooldown();
+        }
 
         hasTeleported = true;
+    }
+
+    public void ForceCooldown()
+    {
+        lastTeleportTime = Time.time;
     }
 }
