@@ -15,9 +15,13 @@ public class Shaker : MonoBehaviour
     private bool shakeEnabled = false;      // 是否允许抖动（场景&时间判断）
     private bool isShaking = false;         // 当前是否正在抖动
     private Vector3 originalPosition;
+    private Ground3D ground3D;              // 引用Ground3D组件
 
     void Start()
     {
+        // 获取Ground3D组件的引用
+        ground3D = GetComponent<Ground3D>();
+
         // 场景判断，1秒后启用抖动
         if (SceneManager.GetActiveScene().name == targetSceneName)
         {
@@ -35,10 +39,14 @@ public class Shaker : MonoBehaviour
     {
         if (!shakeEnabled || isShaking) return;
 
-        // 仅当按下 W 或 S 时触发抖动
-        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+        // 确保物体在地面上
+        if (ground3D != null && ground3D.GetOnGround())
         {
-            StartCoroutine(ShakeOnce());
+            // 仅当按下 W 或 S 时触发抖动
+            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.S))
+            {
+                StartCoroutine(ShakeOnce());
+            }
         }
     }
 
@@ -46,7 +54,7 @@ public class Shaker : MonoBehaviour
     {
         isShaking = true;
 
-        //在抖动开始时记录当前位置（支持角色移动）
+        // 在抖动开始时记录当前位置（支持角色移动）
         originalPosition = transform.localPosition;
 
         float elapsed = 0f;
