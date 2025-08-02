@@ -87,11 +87,19 @@ public class UIManager : Singleton<UIManager>
     public void OnSettingButtonClick()
     {
         ShowSettingMenu();
-        GameManager.Instance.ChangeState(GameManager.GameState.Setting);
+        Time.timeScale = 0f;
     }
     public void OnSettingButtonClick_Closed()
     {
+        if (GameManager.Instance.CurrentState == GameManager.GameState.Level1 ||
+            GameManager.Instance.CurrentState == GameManager.GameState.Level2 ||
+            GameManager.Instance.CurrentState == GameManager.GameState.Level3 ||
+            GameManager.Instance.CurrentState == GameManager.GameState.Menu)
+        {
+            Time.timeScale = 1f;
+        }
         SettingMenu.SetActive(false);
+
     }
     private void OnBGMVolumeChanged(float value)
     {
