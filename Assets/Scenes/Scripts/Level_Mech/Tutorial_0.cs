@@ -12,6 +12,7 @@ public class Tutorial_0 : MonoBehaviour
         {
             Debug.Log("Loading scene: " + targetSceneName);
             SceneManager.LoadScene(targetSceneName);
+            GameManager.Instance.ChangeState(GameManager.GameState.Level1);
         }
     }
 
