@@ -8,6 +8,7 @@ public class ObjectRotationController : MonoBehaviour
 
     private bool canRotateX = true;  // 判断是否可以进行X轴旋转
     private bool canRotateY = true;  // 判断是否可以进行Y轴旋转
+    private bool isRotating = false;  // 判断是否正在旋转
 
     void Start()
     {
@@ -20,11 +21,11 @@ public class ObjectRotationController : MonoBehaviour
 
     void Update()
     {
-        if (rotationCenter == null) return;  // 如果没有旋转中心则跳出
+        if (rotationCenter == null || isRotating) return;  // 如果没有旋转中心或正在旋转则跳出
 
         // 获取输入的方向键（使用 GetAxisRaw 来确保按键按下后即触发）
-        float horizontal = Input.GetAxisRaw("Horizontal");  // 左右箭头键
-        float vertical = Input.GetAxisRaw("Vertical");  // 上下箭头键
+        float horizontal = Input.GetAxisRaw("Horizontal_Object_X");  // 左右箭头键
+        float vertical = Input.GetAxisRaw("Vertical_Object_Y");  // 上下箭头键
 
         // 处理上下方向的旋转（X轴旋转）
         if (vertical > 0 && canRotateX)  // 按上键
@@ -64,6 +65,7 @@ public class ObjectRotationController : MonoBehaviour
 
     IEnumerator RotateSmoothly(Vector3 axis, float angle)
     {
+        isRotating = true;  // 标记为正在旋转
         float elapsedTime = 0f;
         float targetAngle = angle;
 
@@ -77,5 +79,10 @@ public class ObjectRotationController : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        // 确保旋转完成后完全到达目标位置
+        transform.RotateAround(rotationCenter.position, axis, rotationSpeed * Time.deltaTime);
+
+        isRotating = false;  // 旋转完成，重置标志
     }
 }
