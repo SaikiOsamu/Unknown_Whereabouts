@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    public enum GameState { Tutorial,Level1, Level2, Level3, Setting, GameOver }
+    public enum GameState { Tutorial,Level1, Level2, Level3}
 
     public GameState CurrentState { get; private set; }
 
@@ -27,11 +27,6 @@ public class GameManager : Singleton<GameManager>
                 UIManager.Instance.HideAll();
                 if (newState == GameState.Tutorial)
                     UIManager.Instance.ShowTutorialMenu();
-                break;
-
-            case GameState.Setting:
-            case GameState.GameOver:
-                Time.timeScale = 0f;
                 break;
         }
     }

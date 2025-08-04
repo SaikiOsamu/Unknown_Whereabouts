@@ -9,15 +9,23 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject SettingMenu;
     [SerializeField] private GameObject Menu;
 
+    private bool isSettingOpen = false;
+
     [SerializeField] private Slider bgmSlider;
     [SerializeField] private Slider sfxSlider;
 
     protected override void Awake()
     {
-        base.Awake(); 
-
+        base.Awake();
         DontDestroyOnLoad(Menu.transform.root.gameObject);
-    
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ToggleSettingMenu();
+        }
     }
 
     private void Start()
@@ -39,17 +47,28 @@ public class UIManager : Singleton<UIManager>
             sfxSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
         }
     }
+    public void ToggleSettingMenu()
+    {
+        isSettingOpen = !isSettingOpen;
+        SettingMenu.SetActive(isSettingOpen);
+
+        if (isSettingOpen)
+        {
+            Time.timeScale = 0f;
+            GameOverMenu.SetActive(false);
+            TutorialMenu.SetActive(false);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+    }
+
     public void ShowTutorialMenu()
     {
         TutorialMenu.SetActive(true);
         SettingMenu.SetActive(false);
         GameOverMenu.SetActive(false);
-    }
-    public void ShowSettingMenu()
-    {
-        SettingMenu.SetActive(true);
-        GameOverMenu.SetActive(false);
-        TutorialMenu.SetActive(false);
     }
 
     public void ShowGameOver()
