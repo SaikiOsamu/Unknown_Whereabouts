@@ -9,6 +9,7 @@ TagManager:
   - Background
   - NoMask
   - Ground
+  - Facade
   layers:
   - Default
   - TransparentFX
