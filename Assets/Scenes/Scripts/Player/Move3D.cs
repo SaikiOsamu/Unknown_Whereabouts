@@ -21,29 +21,25 @@ public class Move3D : MonoBehaviour
     {
         body = GetComponent<Rigidbody>();
         ground = GetComponent<Ground3D>();
+
+        body.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
     void Update()
     {
-        direction.x = input.RetrieveMoveInput();  // Assuming left/right only
+        direction.x = input.RetrieveMoveInput();
         desiredVelocity = new Vector3(direction.x, 0f, 0f) * Mathf.Max(maxSpeed - ground.GetFriction(), 0f);
     }
 
     private void FixedUpdate()
     {
         onGround = ground.GetOnGround();
-        velocity = body.linearVelocity;
+        velocity = body.velocity;
 
         acceleration = onGround ? maxAcceleration : maxAirAcceleration;
         maxSpeedChange = acceleration * Time.deltaTime;
         velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
 
-        velocity.z = 0f;
-
-        body.linearVelocity = velocity;
-
-        Vector3 position = body.position;
-        position.z = 0f;
-        body.position = position;
+        body.velocity = velocity;
     }
 }
