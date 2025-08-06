@@ -688,7 +688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a180e142cecca45b9e0e754950364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 120
+  rotationSpeed: 150
   rotationCenter: {fileID: 1655153169}
 --- !u!4 &1458925085
 Transform:
@@ -964,7 +964,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532245608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
