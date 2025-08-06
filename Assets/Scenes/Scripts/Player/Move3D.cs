@@ -34,12 +34,12 @@ public class Move3D : MonoBehaviour
     private void FixedUpdate()
     {
         onGround = ground.GetOnGround();
-        velocity = body.velocity;
+        velocity = body.linearVelocity;
 
         acceleration = onGround ? maxAcceleration : maxAirAcceleration;
         maxSpeedChange = acceleration * Time.deltaTime;
         velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
 
-        body.velocity = velocity;
+        body.linearVelocity = velocity;
     }
 }
