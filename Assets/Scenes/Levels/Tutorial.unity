@@ -1028,7 +1028,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: df7542d82523a3645a0dc7abeb718919, type: 2}
-  jumpHeight: 8
+  jumpHeight: 10
   maxAirJumps: 0
   downwardMovementMultiplier: 3
   upwardMovementMultiplier: 1.7
@@ -1046,8 +1046,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   input: {fileID: 11400000, guid: df7542d82523a3645a0dc7abeb718919, type: 2}
   maxSpeed: 6
-  maxAcceleration: 100
-  maxAirAcceleration: 42.3
+  maxAcceleration: 50
+  maxAirAcceleration: 42
 --- !u!114 &291535516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1084,7 +1084,7 @@ TrailRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 291535511}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

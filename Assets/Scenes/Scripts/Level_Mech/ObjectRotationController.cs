@@ -1,14 +1,18 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ObjectRotationController : MonoBehaviour
 {
-    public float rotationSpeed = 100f;  // 控制旋转速度
-    public Transform rotationCenter;  // 旋转中心物体
+    public float rotationSpeed = 100f;
+    public Transform rotationCenter;
 
-    private bool canRotateX = true;  // 判断是否可以进行X轴旋转
-    private bool canRotateY = true;  // 判断是否可以进行Y轴旋转
-    private bool isRotating = false;  // 判断是否正在旋转
+    public List<Transform> objectsToRotateWithRoom;  // 需要跟随旋转的对象（如角色）
+    public List<MonoBehaviour> inputControllersToDisable;  // 角色控制脚本（如 PlayerController）
+
+    private bool canRotateX = true;
+    private bool canRotateY = true;
+    private bool isRotating = false;
 
     void Start()
     {
@@ -21,68 +25,79 @@ public class ObjectRotationController : MonoBehaviour
 
     void Update()
     {
-        if (rotationCenter == null || isRotating) return;  // 如果没有旋转中心或正在旋转则跳出
+        if (rotationCenter == null || isRotating) return;
 
-        // 获取输入的方向键（使用 GetAxisRaw 来确保按键按下后即触发）
-        float horizontal = Input.GetAxisRaw("Horizontal_Object_X");  // 左右箭头键
-        float vertical = Input.GetAxisRaw("Vertical_Object_Y");  // 上下箭头键
+        float horizontal = Input.GetAxisRaw("Horizontal_Object_X");
+        float vertical = Input.GetAxisRaw("Vertical_Object_Y");
 
-        // 处理上下方向的旋转（X轴旋转）
-        if (vertical > 0 && canRotateX)  // 按上键
+        if (vertical > 0 && canRotateX)
         {
-            StartCoroutine(RotateSmoothly(Vector3.right, 90f));  // X轴顺时针旋转
-            canRotateX = false;  // 禁止继续旋转直到输入变化
+            StartCoroutine(RotateSmoothly(Vector3.right, 90f));
+            canRotateX = false;
         }
-        else if (vertical < 0 && canRotateX)  // 按下键
+        else if (vertical < 0 && canRotateX)
         {
-            StartCoroutine(RotateSmoothly(Vector3.left, 90f));  // X轴逆时针旋转
-            canRotateX = false;  // 禁止继续旋转直到输入变化
+            StartCoroutine(RotateSmoothly(Vector3.left, 90f));
+            canRotateX = false;
         }
 
-        // 处理左右方向的旋转（Y轴旋转）
-        if (horizontal > 0 && canRotateY)  // 按右键
+        if (horizontal > 0 && canRotateY)
         {
-            StartCoroutine(RotateSmoothly(Vector3.up, 90f));  // Y轴顺时针旋转
-            canRotateY = false;  // 禁止继续旋转直到输入变化
+            StartCoroutine(RotateSmoothly(Vector3.up, 90f));
+            canRotateY = false;
         }
-        else if (horizontal < 0 && canRotateY)  // 按左键
+        else if (horizontal < 0 && canRotateY)
         {
-            StartCoroutine(RotateSmoothly(Vector3.down, 90f));  // Y轴逆时针旋转
-            canRotateY = false;  // 禁止继续旋转直到输入变化
-        }
-
-        // 重置旋转状态，以便下次按键时可以旋转
-        if (vertical == 0)
-        {
-            canRotateX = true;
+            StartCoroutine(RotateSmoothly(Vector3.down, 90f));
+            canRotateY = false;
         }
 
-        if (horizontal == 0)
-        {
-            canRotateY = true;
-        }
+        if (vertical == 0) canRotateX = true;
+        if (horizontal == 0) canRotateY = true;
     }
 
     IEnumerator RotateSmoothly(Vector3 axis, float angle)
     {
-        isRotating = true;  // 标记为正在旋转
-        float elapsedTime = 0f;
-        float targetAngle = angle;
+        isRotating = true;
 
-        // 旋转过程中逐渐增加旋转量
-        Quaternion initialRotation = transform.rotation;
-        Quaternion targetRotation = Quaternion.Euler(axis * targetAngle) * rotationCenter.rotation;
-
-        while (elapsedTime < targetAngle / rotationSpeed)
+        // 禁用玩家输入
+        foreach (var controller in inputControllersToDisable)
         {
-            transform.RotateAround(rotationCenter.position, axis, rotationSpeed * Time.deltaTime);
+            if (controller != null) controller.enabled = false;
+        }
+
+        float elapsedTime = 0f;
+        float duration = angle / rotationSpeed;
+
+        while (elapsedTime < duration)
+        {
+            float deltaAngle = rotationSpeed * Time.deltaTime;
+
+            transform.RotateAround(rotationCenter.position, axis, deltaAngle);
+
+            foreach (Transform obj in objectsToRotateWithRoom)
+            {
+                obj.RotateAround(rotationCenter.position, axis, deltaAngle);
+            }
+
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // 确保旋转完成后完全到达目标位置
-        transform.RotateAround(rotationCenter.position, axis, rotationSpeed * Time.deltaTime);
+        // 最后一帧补偿
+        float remainingAngle = angle - rotationSpeed * elapsedTime;
+        transform.RotateAround(rotationCenter.position, axis, remainingAngle);
+        foreach (Transform obj in objectsToRotateWithRoom)
+        {
+            obj.RotateAround(rotationCenter.position, axis, remainingAngle);
+        }
 
-        isRotating = false;  // 旋转完成，重置标志
+        // 恢复输入
+        foreach (var controller in inputControllersToDisable)
+        {
+            if (controller != null) controller.enabled = true;
+        }
+
+        isRotating = false;
     }
 }

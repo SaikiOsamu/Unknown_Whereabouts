@@ -3,7 +3,7 @@ using UnityEngine;
 public class Jump3D : MonoBehaviour
 {
     [SerializeField] private InputController input = null;
-    [SerializeField, Range(0f, 10f)] private float jumpHeight = 3f;
+    [SerializeField, Range(0f, 20f)] private float jumpHeight = 3f;
     [SerializeField, Range(0, 5)] private int maxAirJumps = 0;
     [SerializeField, Range(0f, 5f)] private float downwardMovementMultiplier = 3f;
     [SerializeField, Range(0f, 5f)] private float upwardMovementMultiplier = 1.7f;
@@ -13,7 +13,6 @@ public class Jump3D : MonoBehaviour
     private Vector3 velocity;
 
     private int jumpPhase;
-    //private float defaultGravityScale = 1f;
 
     private bool desiredJump;
     private bool onGround;
@@ -45,13 +44,13 @@ public class Jump3D : MonoBehaviour
             JumpAction();
         }
 
-        if (body.linearVelocity.y > 0)
+        if (velocity.y > 0)
         {
-            body.linearVelocity += Vector3.up * Physics.gravity.y * (upwardMovementMultiplier - 1f) * Time.fixedDeltaTime;
+            velocity += Vector3.up * Physics.gravity.y * (upwardMovementMultiplier - 1f) * Time.fixedDeltaTime;
         }
-        else if (body.linearVelocity.y < 0)
+        else if (velocity.y < 0)
         {
-            body.linearVelocity += Vector3.up * Physics.gravity.y * (downwardMovementMultiplier - 1f) * Time.fixedDeltaTime;
+            velocity += Vector3.up * Physics.gravity.y * (downwardMovementMultiplier - 1f) * Time.fixedDeltaTime;
         }
 
         body.linearVelocity = velocity;

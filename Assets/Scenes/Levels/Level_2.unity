@@ -690,6 +690,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 150
   rotationCenter: {fileID: 1655153169}
+  objectsToRotateWithRoom:
+  - {fileID: 1532245618}
+  inputControllersToDisable: []
 --- !u!4 &1458925085
 Transform:
   m_ObjectHideFlags: 0
@@ -910,7 +913,7 @@ MonoBehaviour:
   input: {fileID: 11400000, guid: df7542d82523a3645a0dc7abeb718919, type: 2}
   jumpHeight: 8
   maxAirJumps: 0
-  downwardMovementMultiplier: 4
+  downwardMovementMultiplier: 2
   upwardMovementMultiplier: 1.5
 --- !u!114 &1532245612
 MonoBehaviour:
