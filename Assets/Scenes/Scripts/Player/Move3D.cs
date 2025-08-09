@@ -18,7 +18,8 @@ public class Move3D : MonoBehaviour
     void Awake()
     {
         body = GetComponent<Rigidbody>();
-        body.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        //body.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
+        body.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     void Update()
