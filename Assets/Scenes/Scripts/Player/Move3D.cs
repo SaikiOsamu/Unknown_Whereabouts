@@ -3,43 +3,44 @@ using UnityEngine;
 public class Move3D : MonoBehaviour
 {
     [SerializeField] private InputController input = null;
-    [SerializeField, Range(0f, 100f)] private float maxSpeed = 4f;
-    [SerializeField, Range(0f, 100f)] private float maxAcceleration = 35f;
-    [SerializeField, Range(0f, 100f)] private float maxAirAcceleration = 20f;
 
-    private Vector3 direction;
-    private Vector3 desiredVelocity;
-    private Vector3 velocity;
+    [Header("Speed")]
+    [SerializeField, Range(0f, 50f)] private float maxSpeed = 6f;        // 最大移动速度
+
+    [Header("Smoothing")]
+    [SerializeField, Range(0f, 200f)] private float startStep = 60f;     // 起步/加速时每秒速度变化量
+    [SerializeField, Range(0f, 200f)] private float stopStep = 80f;      // 停止/松手时每秒速度衰减量
+    [SerializeField, Range(0f, 0.2f)] private float sleepThreshold = 0.01f; // 速度很小时直接归零，防抖
+
     private Rigidbody body;
-    private Ground3D ground;
-
-    private float maxSpeedChange;
-    private float acceleration;
-    private bool onGround;
+    private float inputX;
 
     void Awake()
     {
         body = GetComponent<Rigidbody>();
-        ground = GetComponent<Ground3D>();
-
         body.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
     }
 
     void Update()
     {
-        direction.x = input.RetrieveMoveInput();
-        desiredVelocity = new Vector3(direction.x, 0f, 0f) * Mathf.Max(maxSpeed - ground.GetFriction(), 0f);
+        inputX = input != null ? input.RetrieveMoveInput() : 0f;
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-        onGround = ground.GetOnGround();
-        velocity = body.linearVelocity;
+        Vector3 v = body.linearVelocity;
+        if (Mathf.Abs(inputX) > 0.001f)
+        {
+            float targetX = inputX * maxSpeed;
+            v.x = Mathf.MoveTowards(v.x, targetX, startStep * Time.fixedDeltaTime);
+        }
+        else
+        {
+            v.x = Mathf.MoveTowards(v.x, 0f, stopStep * Time.fixedDeltaTime);
 
-        acceleration = onGround ? maxAcceleration : maxAirAcceleration;
-        maxSpeedChange = acceleration * Time.deltaTime;
-        velocity.x = Mathf.MoveTowards(velocity.x, desiredVelocity.x, maxSpeedChange);
+            if (Mathf.Abs(v.x) < sleepThreshold) v.x = 0f;
+        }
 
-        body.linearVelocity = velocity;
+        body.linearVelocity = v;
     }
 }
