@@ -131,6 +131,7 @@ GameObject:
   - component: {fileID: 471516839}
   - component: {fileID: 471516841}
   - component: {fileID: 471516842}
+  - component: {fileID: 471516843}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -216,7 +217,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 471516838}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f3409a7649e4d8e468056d9d7e138e1f, type: 3}
   m_Name: 
@@ -241,8 +242,25 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.99999994, y: 0.99999994, z: 9.76}
-  m_Center: {x: 0, y: 0, z: 0.24}
+  m_Size: {x: 0.99999994, y: 0.99999994, z: 1.23}
+  m_Center: {x: 0, y: 0, z: 0.46}
+--- !u!114 &471516843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 471516838}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetSceneName: Level_3
+  nextGameState: 3
+  requiredDepth: 1
+  requiredHoldTime: 0.3
+  playerTag: Player
 --- !u!1 &486128805
 GameObject:
   m_ObjectHideFlags: 0
