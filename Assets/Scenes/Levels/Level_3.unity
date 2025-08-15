@@ -203,8 +203,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.000002, y: 2.2204466e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10.000002, y: 1, z: 10}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &177479025
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -602,7 +602,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 10, y: 1, z: 10}
-  m_Center: {x: 0, y: 0.51, z: 0}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &739012093
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -900,8 +900,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &937209630
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1008,8 +1008,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 2.220446e-16, z: 10}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 10, y: 1, z: 10}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &1127621645
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1116,8 +1116,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10.000002, y: 2.2204466e-16, z: 10}
-  m_Center: {x: 0, y: 0.0000009536743, z: 0}
+  m_Size: {x: 10.000002, y: 1, z: 10}
+  m_Center: {x: 0, y: -0.5, z: 0}
 --- !u!23 &1169742753
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1310,7 +1310,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 120
   rotationCenter: {fileID: 166570859}
-  objectsToRotateWithRoom: []
+  objectsToRotateWithRoom:
+  - {fileID: 1327827046}
   inputControllersToDisable: []
 --- !u!4 &1198855188
 Transform:

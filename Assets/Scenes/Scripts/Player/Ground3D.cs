@@ -2,40 +2,39 @@ using UnityEngine;
 
 public class Ground3D : MonoBehaviour
 {
+    [Range(0f, 89f)]
+    public float maxGroundAngle = 50f;
+    private float minGroundDot;
+    private bool groundedThisFrame;
     private bool onGround;
 
-    private void OnCollisionEnter(Collision collision)
+    void Awake()
     {
-        EvaluateCollision(collision);
+        minGroundDot = Mathf.Cos(maxGroundAngle * Mathf.Deg2Rad);
     }
 
-    private void OnCollisionStay(Collision collision)
+    void FixedUpdate()
     {
-        EvaluateCollision(collision);
+        onGround = groundedThisFrame;
+        groundedThisFrame = false;
     }
 
-    private void OnCollisionExit(Collision collision)
-    {
-        onGround = false;
-    }
+    void OnCollisionEnter(Collision c) { EvaluateCollision(c); }
+    void OnCollisionStay(Collision c) { EvaluateCollision(c); }
+    void OnCollisionExit(Collision c) { }
 
-    private void EvaluateCollision(Collision collision)
+    void EvaluateCollision(Collision c)
     {
-        for (int i = 0; i < collision.contactCount; i++)
+        for (int i = 0; i < c.contactCount; i++)
         {
-            Vector3 normal = collision.GetContact(i).normal;
-
-            if (normal.y >= 0.9f)
+            Vector3 n = c.GetContact(i).normal;
+            if (n.y >= minGroundDot)
             {
-                onGround = true;
-                return;
+                groundedThisFrame = true;
+                break;
             }
         }
-        onGround = false;
     }
 
-    public bool GetOnGround()
-    {
-        return onGround;
-    }
+    public bool GetOnGround() => onGround;
 }

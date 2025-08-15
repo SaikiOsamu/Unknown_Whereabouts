@@ -12,16 +12,18 @@ public class Level_Pass : MonoBehaviour
     public float requiredHoldTime = 0.15f;
     public string playerTag = "Player";
 
-    private bool hasPassed = false;
-    private Collider triggerCol;
-    private float depthHoldTimer = 0f;
+    public float fadeDuration = 0.6f;
 
-    private void Awake()
+    bool hasPassed = false;
+    Collider triggerCol;
+    float depthHoldTimer = 0f;
+
+    void Awake()
     {
         triggerCol = GetComponent<Collider>();
     }
 
-    private void OnTriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (hasPassed) return;
         if (!other.CompareTag(playerTag)) return;
@@ -50,16 +52,28 @@ public class Level_Pass : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
         if (!other.CompareTag(playerTag)) return;
         depthHoldTimer = 0f;
     }
 
-    private System.Collections.IEnumerator PassRoutine()
+    System.Collections.IEnumerator PassRoutine()
     {
         if (hasPassed) yield break;
         hasPassed = true;
+
+#if UNITY_EDITOR
+        UnityEditor.Selection.activeObject = null;
+#endif
+
+        bool fadeDone = false;
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.SetFadeColor(Color.black);
+            FadeManager.Instance.FadeOut(fadeDuration, true, () => fadeDone = true);
+            while (!fadeDone) yield return null;
+        }
 
         AsyncOperation op = SceneManager.LoadSceneAsync(targetSceneName, LoadSceneMode.Single);
         while (!op.isDone) yield return null;
@@ -68,13 +82,19 @@ public class Level_Pass : MonoBehaviour
         {
             GameManager.Instance.ChangeState(nextGameState);
         }
+
+        if (FadeManager.Instance != null)
+        {
+            FadeManager.Instance.FadeIn(fadeDuration, true);
+        }
     }
 
 #if UNITY_EDITOR
-    private void OnValidate()
+    void OnValidate()
     {
         requiredDepth = Mathf.Max(0.001f, requiredDepth);
         requiredHoldTime = Mathf.Max(0.0f, requiredHoldTime);
+        fadeDuration = Mathf.Max(0.0f, fadeDuration);
     }
 #endif
 }
