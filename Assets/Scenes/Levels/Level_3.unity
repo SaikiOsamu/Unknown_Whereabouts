@@ -1455,6 +1455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c436ef479ea801147968f1ad9816cc06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxGroundAngle: 50
 --- !u!114 &1327827042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2120,6 +2121,7 @@ MonoBehaviour:
   requiredDepth: 1
   requiredHoldTime: 0.5
   playerTag: Player
+  fadeDuration: 0.6
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
