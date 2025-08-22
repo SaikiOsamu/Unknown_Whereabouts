@@ -7,12 +7,25 @@ public class ObjectRotationController : MonoBehaviour
     public float rotationSpeed = 100f;
     public Transform rotationCenter;
 
-    public List<Transform> objectsToRotateWithRoom;  // 需要跟随旋转的对象（如角色）
-    public List<MonoBehaviour> inputControllersToDisable;  // 角色控制脚本（如 PlayerController）
+    public List<Transform> objectsToRotateWithRoom;
+    public List<MonoBehaviour> inputControllersToDisable;
 
     private bool canRotateX = true;
     private bool canRotateY = true;
     private bool isRotating = false;
+
+    private struct RigidbodyState
+    {
+        public bool isKinematic;
+        public bool useGravity;
+        public RigidbodyConstraints constraints;
+        public Vector3 velocity;
+        public Vector3 angularVelocity;
+        public CollisionDetectionMode detectionMode;
+        public RigidbodyInterpolation interpolation;
+    }
+
+    private readonly Dictionary<Rigidbody, RigidbodyState> _cachedRbStates = new Dictionary<Rigidbody, RigidbodyState>();
 
     void Start()
     {
@@ -60,11 +73,12 @@ public class ObjectRotationController : MonoBehaviour
     {
         isRotating = true;
 
-        // 禁用玩家输入
         foreach (var controller in inputControllersToDisable)
         {
             if (controller != null) controller.enabled = false;
         }
+
+        FreezeRigidbodies();
 
         float elapsedTime = 0f;
         float duration = angle / rotationSpeed;
@@ -77,27 +91,85 @@ public class ObjectRotationController : MonoBehaviour
 
             foreach (Transform obj in objectsToRotateWithRoom)
             {
-                obj.RotateAround(rotationCenter.position, axis, deltaAngle);
+                if (obj != null)
+                    obj.RotateAround(rotationCenter.position, axis, deltaAngle);
             }
 
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // 最后一帧补偿
         float remainingAngle = angle - rotationSpeed * elapsedTime;
         transform.RotateAround(rotationCenter.position, axis, remainingAngle);
         foreach (Transform obj in objectsToRotateWithRoom)
         {
-            obj.RotateAround(rotationCenter.position, axis, remainingAngle);
+            if (obj != null)
+                obj.RotateAround(rotationCenter.position, axis, remainingAngle);
         }
 
-        // 恢复输入
+        RestoreRigidbodies();
+
         foreach (var controller in inputControllersToDisable)
         {
             if (controller != null) controller.enabled = true;
         }
 
         isRotating = false;
+    }
+
+    private void FreezeRigidbodies()
+    {
+        _cachedRbStates.Clear();
+
+        if (objectsToRotateWithRoom == null) return;
+
+        foreach (var t in objectsToRotateWithRoom)
+        {
+            if (t == null) continue;
+
+            var rb = t.GetComponent<Rigidbody>();
+            if (rb == null) continue;
+
+            if (_cachedRbStates.ContainsKey(rb)) continue;
+
+            var state = new RigidbodyState
+            {
+                isKinematic = rb.isKinematic,
+                useGravity = rb.useGravity,
+                constraints = rb.constraints,
+                velocity = rb.linearVelocity,
+                angularVelocity = rb.angularVelocity,
+                detectionMode = rb.collisionDetectionMode,
+                interpolation = rb.interpolation
+            };
+
+            _cachedRbStates.Add(rb, state);
+
+            rb.linearVelocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+            rb.useGravity = false;
+            rb.constraints = RigidbodyConstraints.FreezeAll;
+        }
+    }
+
+    private void RestoreRigidbodies()
+    {
+        foreach (var kv in _cachedRbStates)
+        {
+            var rb = kv.Key;
+            var state = kv.Value;
+            if (rb == null) continue;
+
+            rb.isKinematic = state.isKinematic;
+            rb.useGravity = state.useGravity;
+            rb.constraints = state.constraints;
+            rb.collisionDetectionMode = state.detectionMode;
+            rb.interpolation = state.interpolation;
+            rb.linearVelocity = state.velocity;
+            rb.angularVelocity = state.angularVelocity;
+        }
+
+        _cachedRbStates.Clear();
     }
 }
