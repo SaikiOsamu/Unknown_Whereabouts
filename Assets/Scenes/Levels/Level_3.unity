@@ -474,6 +474,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270722719}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &434418532 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1786151253377936127, guid: 66b41603bc46e5a479650bfa1093784e,
+    type: 3}
+  m_PrefabInstance: {fileID: 629446811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &457499876
 GameObject:
   m_ObjectHideFlags: 0
@@ -1467,6 +1473,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 937209627}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &952633357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 952633359}
+  - component: {fileID: 952633358}
+  m_Layer: 0
+  m_Name: Trigger_Zone
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &952633358
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952633357}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 6, y: 6, z: 6}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &952633359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952633357}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 31.56323, y: 0.29571056, z: -3.5100002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1198855188}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1127621642
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,7 +1882,7 @@ MonoBehaviour:
   rotationSpeed: 120
   rotationCenter: {fileID: 166570859}
   objectsToRotateWithRoom:
-  - {fileID: 0}
+  - {fileID: 434418532}
   - {fileID: 457499881}
   inputControllersToDisable: []
 --- !u!4 &1198855188
@@ -1853,6 +1912,7 @@ Transform:
   - {fileID: 1344392156}
   - {fileID: 270722720}
   - {fileID: 2117243705}
+  - {fileID: 952633359}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1273658708
@@ -2664,13 +2724,14 @@ GameObject:
   - component: {fileID: 2117243707}
   - component: {fileID: 2117243708}
   - component: {fileID: 2117243709}
+  - component: {fileID: 2117243710}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2117243705
 Transform:
   m_ObjectHideFlags: 0
@@ -2680,7 +2741,7 @@ Transform:
   m_GameObject: {fileID: 2117243704}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.22323, y: -10.36, z: -0.010000229}
+  m_LocalPosition: {x: -4.35, y: -10.36, z: -0.010000229}
   m_LocalScale: {x: 1.7364372, y: 2.7530174, z: 1.766}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2709,7 +2770,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: bc548e83297b5a447aaf936af8049120, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2794,6 +2855,23 @@ MonoBehaviour:
   requiredHoldTime: 0.5
   playerTag: Player
   fadeDuration: 0.6
+--- !u!114 &2117243710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117243704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7fd0144d5d701ea46816c742c032f355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  planeMaterial: {fileID: 2100000, guid: bc548e83297b5a447aaf936af8049120, type: 2}
+  TriggerObject: {fileID: 457499876}
+  TriggerZone: {fileID: 952633357}
+  requiredOverlapFraction: 0.666
+  transparencyDuration: 3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2804,6 +2882,6 @@ SceneRoots:
   - {fileID: 166570859}
   - {fileID: 1198855188}
   - {fileID: 527259340}
-  - {fileID: 880643198}
   - {fileID: 457499881}
   - {fileID: 629446811}
+  - {fileID: 880643198}

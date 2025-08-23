@@ -1,29 +1,34 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Renderer))]
 public class PlaneBreak : MonoBehaviour
 {
-    [Header("Material Settings")]
     public Material planeMaterial;
-
-    [Header("Additional GameObject")]
-    public GameObject targetObject;
-
-    [Header("Transparency Settings")]
+    public GameObject TriggerObject;
+    public GameObject TriggerZone;
+    [Range(0f, 1f)] public float requiredOverlapFraction = 2f / 3f;
     public float transparencyDuration = 3f;
 
-    private Renderer planeRenderer;
-    private int clickCount = 0;
+    private Renderer doorRenderer;
+    private Collider doorCollider;
+    private Collider triggerObjectCollider;
+    private Collider triggerZoneCollider;
+
     private float timeElapsed = 0f;
-    private bool isFading = false;
+    private bool isFadingIn = false;
+    private bool hasActivated = false;
+
+    void Awake()
+    {
+        doorRenderer = GetComponent<Renderer>();
+        if (planeMaterial == null && doorRenderer != null) planeMaterial = doorRenderer.material;
+        doorCollider = GetComponent<Collider>();
+        if (TriggerObject != null) triggerObjectCollider = TriggerObject.GetComponent<Collider>();
+        if (TriggerZone != null) triggerZoneCollider = TriggerZone.GetComponent<Collider>();
+    }
 
     void Start()
     {
-        if (planeMaterial == null)
-        {
-            planeRenderer = GetComponent<Renderer>();
-            planeMaterial = planeRenderer.material;
-        }
-
         if (planeMaterial != null && planeMaterial.HasProperty("_Mode"))
         {
             planeMaterial.SetFloat("_Mode", 3);
@@ -35,64 +40,70 @@ public class PlaneBreak : MonoBehaviour
             planeMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
             planeMaterial.renderQueue = 3000;
         }
-
-        SetTransparency(1f);
+        SetTransparency(0f);
+        if (doorCollider != null) doorCollider.enabled = false;
+        if (doorRenderer != null) doorRenderer.enabled = true;
     }
 
     void Update()
     {
-        // 用 Raycast 检测点击是否命中标签为 "Facade" 的物体
-        if (Input.GetMouseButtonDown(0))
-        {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit[] hits = Physics.RaycastAll(ray);
-
-            foreach (RaycastHit hit in hits)
-            {
-                Debug.Log("Hit: " + hit.collider.name);
-
-                if (hit.collider.CompareTag("Facade"))
-                {
-                    HandleClick();
-                    break;
-                }
-            }
-        }
-
-
-        if (isFading)
+        if (isFadingIn)
         {
             timeElapsed += Time.deltaTime;
-            float newAlpha = Mathf.Lerp(1f, 0f, timeElapsed / transparencyDuration);
-            SetTransparency(newAlpha);
-
-            if (newAlpha <= 0f)
+            float t = (transparencyDuration > 0f) ? Mathf.Clamp01(timeElapsed / transparencyDuration) : 1f;
+            SetTransparency(Mathf.Lerp(0f, 1f, t));
+            if (t >= 1f)
             {
-                Destroy(gameObject);
+                isFadingIn = false;
+                SetTransparency(1f);
             }
+            return;
+        }
+
+        if (!hasActivated && triggerObjectCollider != null && triggerZoneCollider != null)
+        {
+            float fraction = ComputeOverlapFraction(triggerObjectCollider.bounds, triggerZoneCollider.bounds);
+            if (fraction >= requiredOverlapFraction) ActivateDoorAndRemoveRigidbody();
         }
     }
 
-    void HandleClick()
+    void ActivateDoorAndRemoveRigidbody()
     {
-        if (clickCount == 0)
-        {
-            isFading = true;
-            timeElapsed = 0f;
-        }
+        hasActivated = true;
+        timeElapsed = 0f;
+        SetTransparency(0f);
+        isFadingIn = true;
+        if (doorCollider != null) doorCollider.enabled = true;
 
-        clickCount++;
-
-        if (clickCount == 1 && targetObject != null)
+        if (TriggerObject != null)
         {
-            targetObject.SetActive(true);
+            Rigidbody rb = TriggerObject.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                Destroy(rb);
+            }
         }
     }
 
     void SetTransparency(float alpha)
     {
-        Color currentColor = planeMaterial.color;
-        currentColor.a = alpha;
-        planeMaterial.color = currentColor;
+        if (planeMaterial == null) return;
+        Color c = planeMaterial.color;
+        c.a = Mathf.Clamp01(alpha);
+        planeMaterial.color = c;
+        if (doorRenderer != null && !doorRenderer.enabled && alpha > 0f) doorRenderer.enabled = true;
+    }
+
+    float ComputeOverlapFraction(Bounds objectBounds, Bounds zoneBounds)
+    {
+        float ix = Mathf.Max(0f, Mathf.Min(objectBounds.max.x, zoneBounds.max.x) - Mathf.Max(objectBounds.min.x, zoneBounds.min.x));
+        float iy = Mathf.Max(0f, Mathf.Min(objectBounds.max.y, zoneBounds.max.y) - Mathf.Max(objectBounds.min.y, zoneBounds.min.y));
+        float iz = Mathf.Max(0f, Mathf.Min(objectBounds.max.z, zoneBounds.max.z) - Mathf.Max(objectBounds.min.z, zoneBounds.min.z));
+        float intersectionVolume = ix * iy * iz;
+        float zoneVolume = zoneBounds.size.x * zoneBounds.size.y * zoneBounds.size.z;
+        if (zoneVolume <= 0f) return 0f;
+        return Mathf.Clamp01(intersectionVolume / zoneVolume);
     }
 }
