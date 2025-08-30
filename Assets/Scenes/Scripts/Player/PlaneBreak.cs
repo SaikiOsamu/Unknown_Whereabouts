@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(Renderer))]
 public class PlaneBreak : MonoBehaviour
@@ -9,6 +10,9 @@ public class PlaneBreak : MonoBehaviour
     [Range(0f, 1f)] public float requiredOverlapFraction = 2f / 3f;
     public float transparencyDuration = 3f;
 
+    public GameObject PlayerKillZone;
+    public string playerTag = "Player";
+
     private Renderer doorRenderer;
     private Collider doorCollider;
     private Collider triggerObjectCollider;
@@ -18,6 +22,15 @@ public class PlaneBreak : MonoBehaviour
     private bool isFadingIn = false;
     private bool hasActivated = false;
 
+    private class TriggerForwarder : MonoBehaviour
+    {
+        public PlaneBreak owner;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (owner != null) owner.OnKillZoneTriggerEnter(other);
+        }
+    }
+
     void Awake()
     {
         doorRenderer = GetComponent<Renderer>();
@@ -25,6 +38,17 @@ public class PlaneBreak : MonoBehaviour
         doorCollider = GetComponent<Collider>();
         if (TriggerObject != null) triggerObjectCollider = TriggerObject.GetComponent<Collider>();
         if (TriggerZone != null) triggerZoneCollider = TriggerZone.GetComponent<Collider>();
+
+        if (PlayerKillZone != null)
+        {
+            var col = PlayerKillZone.GetComponent<Collider>();
+            if (col == null) col = PlayerKillZone.AddComponent<BoxCollider>();
+            col.isTrigger = true;
+
+            var fwd = PlayerKillZone.GetComponent<TriggerForwarder>();
+            if (fwd == null) fwd = PlayerKillZone.AddComponent<TriggerForwarder>();
+            fwd.owner = this;
+        }
     }
 
     void Start()
@@ -40,6 +64,7 @@ public class PlaneBreak : MonoBehaviour
             planeMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
             planeMaterial.renderQueue = 3000;
         }
+
         SetTransparency(0f);
         if (doorCollider != null) doorCollider.enabled = false;
         if (doorRenderer != null) doorRenderer.enabled = true;
@@ -63,28 +88,17 @@ public class PlaneBreak : MonoBehaviour
         if (!hasActivated && triggerObjectCollider != null && triggerZoneCollider != null)
         {
             float fraction = ComputeOverlapFraction(triggerObjectCollider.bounds, triggerZoneCollider.bounds);
-            if (fraction >= requiredOverlapFraction) ActivateDoorAndRemoveRigidbody();
+            if (fraction >= requiredOverlapFraction) ActivateDoor();
         }
     }
 
-    void ActivateDoorAndRemoveRigidbody()
+    void ActivateDoor()
     {
         hasActivated = true;
         timeElapsed = 0f;
         SetTransparency(0f);
         isFadingIn = true;
         if (doorCollider != null) doorCollider.enabled = true;
-
-        if (TriggerObject != null)
-        {
-            Rigidbody rb = TriggerObject.GetComponent<Rigidbody>();
-            if (rb != null)
-            {
-                rb.linearVelocity = Vector3.zero;
-                rb.angularVelocity = Vector3.zero;
-                Destroy(rb);
-            }
-        }
     }
 
     void SetTransparency(float alpha)
@@ -105,5 +119,13 @@ public class PlaneBreak : MonoBehaviour
         float zoneVolume = zoneBounds.size.x * zoneBounds.size.y * zoneBounds.size.z;
         if (zoneVolume <= 0f) return 0f;
         return Mathf.Clamp01(intersectionVolume / zoneVolume);
+    }
+
+    private void OnKillZoneTriggerEnter(Collider other)
+    {
+        if (string.IsNullOrEmpty(playerTag) || other.CompareTag(playerTag))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
     }
 }
