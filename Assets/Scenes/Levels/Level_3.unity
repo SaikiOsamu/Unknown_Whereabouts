@@ -252,7 +252,7 @@ Transform:
   m_GameObject: {fileID: 166570858}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.95, y: 7.5, z: -3.92}
+  m_LocalPosition: {x: 3.95, y: 7.46, z: -3.44}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1705,7 +1705,7 @@ Transform:
   m_GameObject: {fileID: 952633357}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.34, y: -4.35, z: -4.75}
+  m_LocalPosition: {x: -4.34, y: -4.21, z: -23.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2513,7 +2513,7 @@ Transform:
   m_GameObject: {fileID: 1340575477}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.35, y: 7.89, z: -30.3}
+  m_LocalPosition: {x: -1.45, y: 7.89, z: -52.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3770,7 +3770,7 @@ MonoBehaviour:
   planeMaterial: {fileID: 2100000, guid: bc548e83297b5a447aaf936af8049120, type: 2}
   TriggerObject: {fileID: 457499876}
   TriggerZone: {fileID: 952633357}
-  requiredOverlapFraction: 0.666
+  requiredOverlapFraction: 0.1
   transparencyDuration: 3
   PlayerKillZone: {fileID: 1912429643}
   playerTag: Player
@@ -3790,7 +3790,7 @@ PrefabInstance:
     - target: {fileID: 1786151253377936127, guid: 66b41603bc46e5a479650bfa1093784e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.26
+      value: 7.79
       objectReference: {fileID: 0}
     - target: {fileID: 1786151253377936127, guid: 66b41603bc46e5a479650bfa1093784e,
         type: 3}
