@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 368537995300888426}
   - component: {fileID: 3915400725384927227}
   - component: {fileID: 3588711354865018000}
+  - component: {fileID: 3026299710705282055}
   - component: {fileID: 4764399191892633653}
   - component: {fileID: 2645227919555283877}
-  - component: {fileID: 3026299710705282055}
   - component: {fileID: 85122312519273769}
   - component: {fileID: -1087519141395203983}
   m_Layer: 0
@@ -249,6 +249,27 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &3026299710705282055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3790980069204776622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae869e0b1f8c29545b44351af8080da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  input: {fileID: 11400000, guid: df7542d82523a3645a0dc7abeb718919, type: 2}
+  maxSpeed: 8
+  startStep: 60
+  stopStep: 80
+  sleepThreshold: 0.01
+  graphicsRoot: {fileID: 0}
+  turnSpeed: 720
+  facingAxis: 1
+  instantFace: 0
 --- !u!114 &4764399191892633653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,27 +299,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxGroundAngle: 50
---- !u!114 &3026299710705282055
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3790980069204776622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae869e0b1f8c29545b44351af8080da8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  input: {fileID: 11400000, guid: df7542d82523a3645a0dc7abeb718919, type: 2}
-  maxSpeed: 8
-  startStep: 60
-  stopStep: 80
-  sleepThreshold: 0.01
-  graphicsRoot: {fileID: 0}
-  turnSpeed: 720
-  facingAxis: 1
-  instantFace: 0
 --- !u!114 &85122312519273769
 MonoBehaviour:
   m_ObjectHideFlags: 0

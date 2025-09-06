@@ -90,10 +90,12 @@ public class PushableBlock : MonoBehaviour
     {
         if (triggerCol == null) return;
 
-        var bounds = triggerCol.bounds;
-        Vector3 center = bounds.center;
-        Vector3 halfExtents = bounds.extents;
-        Quaternion orientation = triggerCol.transform.rotation;
+        var tr = triggerCol.transform;
+        var m = tr.localToWorldMatrix;
+
+        Vector3 center = m.MultiplyPoint3x4(triggerCol.center);
+        Vector3 halfExtents = Vector3.Scale(triggerCol.size * 0.5f, tr.lossyScale);
+        Quaternion orientation = tr.rotation;
 
         Collider[] hits = Physics.OverlapBox(center, halfExtents, orientation, ~0, QueryTriggerInteraction.Ignore);
 
@@ -107,20 +109,21 @@ public class PushableBlock : MonoBehaviour
         foreach (var col in hits)
         {
             if (col == null) continue;
+            if (col.transform == transform) continue;
             if (!col.CompareTag(playerTag)) continue;
 
-            Transform tr = col.transform;
-            seenThisFrame.Add(tr);
+            Transform pTr = col.transform;
+            seenThisFrame.Add(pTr);
 
-            Vector3 currPos = tr.position;
-            if (!lastPlayerPos.TryGetValue(tr, out var lastPos))
+            Vector3 currPos = pTr.position;
+            if (!lastPlayerPos.TryGetValue(pTr, out var lastPos))
             {
-                lastPlayerPos[tr] = currPos;
+                lastPlayerPos[pTr] = currPos;
                 continue;
             }
 
             Vector3 delta = currPos - lastPos;
-            lastPlayerPos[tr] = currPos;
+            lastPlayerPos[pTr] = currPos;
 
             float playerAxisDelta = Vector3.Dot(delta, railDir);
             float sPlayer = Vector3.Dot(currPos, railDir);
@@ -144,7 +147,7 @@ public class PushableBlock : MonoBehaviour
             {
                 if (!seenThisFrame.Contains(kv.Key)) toRemove.Add(kv.Key);
             }
-            foreach (var tr in toRemove) lastPlayerPos.Remove(tr);
+            foreach (var rem in toRemove) lastPlayerPos.Remove(rem);
             ListPool<Transform>.Release(toRemove);
         }
 
