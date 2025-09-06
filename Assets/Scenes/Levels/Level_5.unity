@@ -935,7 +935,7 @@ Transform:
   m_GameObject: {fileID: 419898964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.96, y: 2.53, z: -4.48}
+  m_LocalPosition: {x: 11.96, y: 2.91, z: -4.48}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -956,7 +956,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   emitterA: {fileID: 1491339040}
   directionAxisA: {fileID: 1491339040}
-  directionModeA: 2
+  directionModeA: 1
   worldDirectionA: {x: 0, y: 1, z: 0}
   maxDistanceA: 200
   receiverA: {fileID: 555646184}
@@ -3860,13 +3860,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1491339039}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 419898968}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!65 &1491339041
 BoxCollider:
   m_ObjectHideFlags: 0
