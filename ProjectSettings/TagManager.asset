@@ -10,6 +10,7 @@ TagManager:
   - NoMask
   - Ground
   - Facade
+  - LightTrigger
   layers:
   - Default
   - TransparentFX
@@ -41,8 +42,8 @@ TagManager:
   - Pushables
   - Stairs
   - 
-  - 
-  - 
+  - Push
+  - LightTrigger
   m_SortingLayers:
   - name: Background
     uniqueID: 2674791413
