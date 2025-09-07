@@ -188,13 +188,13 @@ MonoBehaviour:
     m_Value: 1000
   baseHeight:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 50
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 138.78
+    m_Value: 150
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 134.9
+    m_Value: 170
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1
@@ -218,7 +218,7 @@ MonoBehaviour:
     m_Value: 0.75
   multipleScatteringIntensity:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.2
   m_FogControlMode:
     m_OverrideState: 1
     m_Value: 0
@@ -278,7 +278,7 @@ MonoBehaviour:
     m_Value: 0
   contrast:
     m_OverrideState: 1
-    m_Value: 75
+    m_Value: 85
   colorFilter:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -287,7 +287,7 @@ MonoBehaviour:
     m_Value: 0
   saturation:
     m_OverrideState: 1
-    m_Value: 25
+    m_Value: 40
 --- !u!114 &7367363047282350791
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -711,7 +711,7 @@ MonoBehaviour:
     m_Value: 0.45
   radius:
     m_OverrideState: 1
-    m_Value: 2
+    m_Value: 1
   spatialBilateralAggressiveness:
     m_OverrideState: 0
     m_Value: 0.15
