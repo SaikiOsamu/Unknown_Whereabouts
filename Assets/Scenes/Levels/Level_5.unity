@@ -1926,7 +1926,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85bb80bc83af6894d955c00558f6a544, type: 2}
+  - {fileID: 2100000, guid: bd0795fa9db03ef469277a798402c803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2065,7 +2065,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85bb80bc83af6894d955c00558f6a544, type: 2}
+  - {fileID: 2100000, guid: bd0795fa9db03ef469277a798402c803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2758,7 +2758,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85bb80bc83af6894d955c00558f6a544, type: 2}
+  - {fileID: 2100000, guid: bd0795fa9db03ef469277a798402c803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3142,13 +3142,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1173206894}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.24, y: -8.27, z: -11.196}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
+  m_LocalPosition: {x: -6.13, y: 1.47, z: -10.97}
   m_LocalScale: {x: 1.73644, y: 2.75302, z: 1.7659999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2063693895}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &1173206896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3162,11 +3162,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planeMaterial: {fileID: 2100000, guid: bc548e83297b5a447aaf936af8049120, type: 2}
-  TriggerObject: {fileID: 0}
-  TriggerZone: {fileID: 0}
-  requiredOverlapFraction: 0.666
+  TriggerObject: {fileID: 581386105}
+  TriggerZone: {fileID: 1297364437}
+  requiredOverlapFraction: 0.1
   transparencyDuration: 3
-  PlayerKillZone: {fileID: 0}
+  PlayerKillZone: {fileID: 1165797759}
   playerTag: Player
 --- !u!114 &1173206897
 MonoBehaviour:
@@ -3453,8 +3453,8 @@ Transform:
   m_GameObject: {fileID: 1297364437}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 6.8, y: 2.3, z: -4.94}
-  m_LocalScale: {x: 1, y: 1.572352, z: 1.5918}
+  m_LocalPosition: {x: 0.46, y: -1.29, z: -14.52}
+  m_LocalScale: {x: 0.71145, y: 0.6381, z: 0.69925}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2063693895}
@@ -3558,7 +3558,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85bb80bc83af6894d955c00558f6a544, type: 2}
+  - {fileID: 2100000, guid: bd0795fa9db03ef469277a798402c803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3631,6 +3631,7 @@ GameObject:
   - component: {fileID: 1352024515}
   - component: {fileID: 1352024514}
   - component: {fileID: 1352024513}
+  - component: {fileID: 1352024516}
   m_Layer: 0
   m_Name: Plane (8)
   m_TagString: Untagged
@@ -3727,6 +3728,22 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1352024511}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1352024516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1352024511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 754db24e4f5f5794a81d53fca96699ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  receiverPortal: {fileID: 0}
+  triggerDepth: 0.6
+  teleportCooldown: 0.5
+  exitPoint: {fileID: 0}
 --- !u!1 &1374286123
 GameObject:
   m_ObjectHideFlags: 0
@@ -3966,7 +3983,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85bb80bc83af6894d955c00558f6a544, type: 2}
+  - {fileID: 2100000, guid: bd0795fa9db03ef469277a798402c803, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
