@@ -18,15 +18,15 @@ TagManager:
   - Ground
   - Water
   - UI
-  - 
-  - 
+  - PortalMask
+  - PortalContent
   - Platforms
   - Player
   - Volumes
   - OneWayPlatforms
   - Projectiles
   - Enemies
-  - 
+  - StencilR
   - Ladders
   - PlayerProjectiles
   - MovingObjects
@@ -41,7 +41,7 @@ TagManager:
   - MidHeightOneWayPlatforms
   - Pushables
   - Stairs
-  - 
+  - StencilW
   - Push
   - LightTrigger
   m_SortingLayers:
