@@ -1,0 +1,94 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Laser_mtl
+  m_Shader: {fileID: 4800000, guid: d3a262c7a298181468321757b59a1501, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - _COLORMODE_MULTIPLY
+  - _SCROLLROTATE_SCROLL
+  m_InvalidKeywords:
+  - _GLOBALEMISSIONFLICKER_ON
+  - _SHARPX_ON
+  - _SHARPY_ON
+  - _SHARPZ_ON
+  m_LightmapFlags: 0
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Masktexture:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Tex:
+        m_Texture: {fileID: 2800000, guid: 65af138d86470e24f9a3de1ffeb2e76b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Colormode: 2
+    - _Globalemissionflicker: 1
+    - _Globalemissionflickeramplitude: 4
+    - _Globalemissionflickerfreq: 40
+    - _Globalemissionflickeroffset: 1
+    - _Horizontalmovement: 0
+    - _Horizontalmovementamplitude: 0.5
+    - _Horizontalmovementfreq: 1
+    - _Horizontalmovementoffset: 0
+    - _Horizontalstretch: 0
+    - _Horizontalstretchamplitude: 0.5
+    - _Horizontalstretchfreq: 0.5
+    - _Horizontalstretchoffset: 0
+    - _Horizontalstretchpivotpoint: 0
+    - _Masktexturerotationspeed: 0
+    - _RotationSpeed: 1
+    - _ScanlinesX: 0
+    - _ScanlinesY: 0
+    - _ScanlinesZ: 0
+    - _ScanlinesscaleX: 30
+    - _ScanlinesscaleY: 30
+    - _ScanlinesscaleZ: 30
+    - _ScanlinesspeedX: -5
+    - _ScanlinesspeedY: -5
+    - _ScanlinesspeedZ: -5
+    - _ScrollingspeedX: -4
+    - _ScrollingspeedY: 0
+    - _Scrollrotate: 0
+    - _SharpX: 1
+    - _SharpY: 1
+    - _SharpZ: 1
+    - _Verticalmovement: 0
+    - _Verticalmovementamplitude: 0.5
+    - _Verticalmovementfreq: 1
+    - _Verticalmovementoffset: 0
+    - _Verticalstretch: 0
+    - _Verticalstretchamplitude: 0.5
+    - _Verticalstretchfreq: 0.5
+    - _Verticalstretchoffset: 0
+    - _Verticalstretchpivotpoint: -0.06438866
+    - __dirty: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 0}
+    - _Masktextureoffset: {r: 0, g: 0, b: 0, a: 0}
+    - _Masktexturetiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+  m_BuildTextureStacks: []
+  m_AllowLocking: 1
