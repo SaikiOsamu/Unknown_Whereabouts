@@ -141,12 +141,12 @@ Material:
     - _EmissiveExposureWeight: 1
     - _EmissiveIntensity: 1
     - _EmissiveIntensityUnit: 0
-    - _EmissiveMul: 1
+    - _EmissiveMul: 2
     - _EnableBlendModePreserveSpecularLighting: 0
     - _EnableFogOnTransparent: 0
     - _ExcludeFromTUAndAA: 0
-    - _FlickerAmp: 4
-    - _FlickerFreq: 40
+    - _FlickerAmp: 0.5
+    - _FlickerFreq: 10
     - _Globalemissionflicker: 1
     - _Globalemissionflickeramplitude: 4
     - _Globalemissionflickerfreq: 40
@@ -166,7 +166,7 @@ Material:
     - _PerPixelSorting: 0
     - _RenderQueueType: 1
     - _RotationSpeed: 1
-    - _ScanScale: 30
+    - _ScanScale: 1
     - _ScanSpeed: -5
     - _ScanStrength: 0.5
     - _ScanlinesX: 0
@@ -226,9 +226,9 @@ Material:
     - _Masktextureoffset: {r: 0, g: 0, b: 0, a: 0}
     - _Masktexturetiling: {r: 1, g: 1, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _ScrollSpeed: {r: -4, g: 0, b: 0, a: 0}
-    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
-    - _Tint: {r: 2.9960787, g: 2.9960787, b: 2.9960787, a: 1}
+    - _ScrollSpeed: {r: -0.5, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 0.1, g: 1, b: 0, a: 0}
+    - _Tint: {r: 1.4142134, g: 1.4142134, b: 1.4142134, a: 1}
     - _UnlitColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
