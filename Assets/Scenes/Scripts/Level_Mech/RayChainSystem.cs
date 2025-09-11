@@ -44,6 +44,10 @@ public class RayChainSystem : MonoBehaviour
     [Header("Player Control Disable Mode")]
     public bool disableWholeObject = false;
 
+    [Header("Laser (activate only when A->A is valid)")]
+    public GameObject laser;
+    public bool laserStartsInactive = true;
+
     [Header("Debug")]
     public bool drawDebugRay = true;
 
@@ -52,7 +56,6 @@ public class RayChainSystem : MonoBehaviour
     private bool _aSatisfied = false;
     private bool _wallMoved = false;
     private bool _bSatisfied = false;
-
     private Transform _cam;
     private Vector3 _camBaseLocalPos;
     private Coroutine _moveCo;
@@ -64,7 +67,13 @@ public class RayChainSystem : MonoBehaviour
     {
         _cam = cameraToShake ? cameraToShake : (Camera.main ? Camera.main.transform : null);
         if (_cam) _camBaseLocalPos = _cam.localPosition;
-        if (startWithBInactive && emitterB != null) emitterB.gameObject.SetActive(false);
+
+        if (startWithBInactive && emitterB != null)
+            emitterB.gameObject.SetActive(false);
+
+        if (laserStartsInactive && laser != null)
+            laser.SetActive(false);
+
         if (autoFireAOnStart)
         {
             if (continuousScanA) _aSatisfied = false;
@@ -86,33 +95,43 @@ public class RayChainSystem : MonoBehaviour
     private void CastFromEmitterA()
     {
         if (emitterA == null || receiverA == null) return;
+
         Vector3 dirA = GetDirectionA();
         if (drawDebugRay) Debug.DrawRay(emitterA.position, dirA * maxDistanceA, Color.cyan);
         var qA = hitTriggersA ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
+
+        bool hitValid = false;
+
         if (Physics.Raycast(emitterA.position, dirA, out RaycastHit hit, maxDistanceA, Physics.DefaultRaycastLayers, qA))
         {
             if (hit.collider.CompareTag(LightTriggerTag) && IsSameOrAncestorOrDescendant(hit.collider.transform, receiverA))
             {
+                hitValid = true;
                 _aSatisfied = true;
                 EnableEmitterB();
             }
         }
+
+        if (laser != null)
+            laser.SetActive(hitValid);
     }
 
     private void EnableEmitterB()
     {
         _emitterBEnabled = true;
-        if (emitterB != null && !emitterB.gameObject.activeSelf) emitterB.gameObject.SetActive(true);
+        if (emitterB != null && !emitterB.gameObject.activeSelf)
+            emitterB.gameObject.SetActive(true);
     }
 
     private void CastFromEmitterB()
     {
         if (emitterB == null) return;
+
         Vector3 dirB = GetDirectionB();
         if (drawDebugRay) Debug.DrawRay(emitterB.position, dirB * maxDistanceB, Color.yellow);
         var qB = hitTriggersB ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
-
         bool hitValid = false;
+
         if (Physics.Raycast(emitterB.position, dirB, out RaycastHit hit, maxDistanceB, Physics.DefaultRaycastLayers, qB))
         {
             if (receiverB != null && hit.collider.CompareTag(LightTriggerTag) && IsSameOrAncestorOrDescendant(hit.collider.transform, receiverB))
@@ -168,6 +187,7 @@ public class RayChainSystem : MonoBehaviour
 
         wall.position = p1;
         _wallMoved = forward;
+
         StopShake();
         SetPlayerControllersEnabled(true);
         _isMoving = false;
@@ -209,13 +229,9 @@ public class RayChainSystem : MonoBehaviour
             if (controller != null)
             {
                 if (disableWholeObject)
-                {
                     controller.gameObject.SetActive(enabled);
-                }
                 else
-                {
                     controller.enabled = enabled;
-                }
             }
         }
     }
@@ -271,8 +287,18 @@ public class RayChainSystem : MonoBehaviour
     private bool IsSameOrAncestorOrDescendant(Transform a, Transform b)
     {
         if (a == null || b == null) return false;
-        Transform t = a; while (t != null) { if (t == b) return true; t = t.parent; }
-        t = b; while (t != null) { if (t == a) return true; t = t.parent; }
+        Transform t = a;
+        while (t != null)
+        {
+            if (t == b) return true;
+            t = t.parent;
+        }
+        t = b;
+        while (t != null)
+        {
+            if (t == a) return true;
+            t = t.parent;
+        }
         return false;
     }
 
