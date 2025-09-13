@@ -1709,7 +1709,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: f86706bbe22c7d14b8af5c9fa4431c75, type: 2}
+  sharedProfile: {fileID: 11400000, guid: a97dffb91c451c9459697a1731623db6, type: 2}
 --- !u!4 &535947952
 Transform:
   m_ObjectHideFlags: 0
@@ -1809,19 +1809,19 @@ VisualEffect:
       - m_Value: 2.5
         m_Name: Amount_1
         m_Overridden: 1
-      - m_Value: 1.5
+      - m_Value: 1.25
         m_Name: Amount_2
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.05
         m_Name: Size_Black
         m_Overridden: 1
-      - m_Value: 0.3
+      - m_Value: 0.45
         m_Name: Size
         m_Overridden: 1
       - m_Value: 40
         m_Name: AngularVelocityXYZ
         m_Overridden: 1
-      - m_Value: 4
+      - m_Value: 2.5
         m_Name: Amount_3
         m_Overridden: 1
       - m_Value: 0
@@ -1836,6 +1836,9 @@ VisualEffect:
       - m_Value: 3
         m_Name: SDFCollisionBounce
         m_Overridden: 1
+      - m_Value: 0.2
+        m_Name: Size 2
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -1848,6 +1851,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: 0.40000013, y: 0.5, z: 0.40000013}
         m_Name: PlayerSDF_Xform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1, z: 0}
+        m_Name: Direction
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -2590,25 +2596,25 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 4.5
+      - m_Value: 5
         m_Name: Amount_1
         m_Overridden: 1
-      - m_Value: 1.25
+      - m_Value: 2.25
         m_Name: Amount_2
         m_Overridden: 1
-      - m_Value: 0.01
+      - m_Value: 0.05
         m_Name: Size_Black
         m_Overridden: 1
-      - m_Value: 0.08
+      - m_Value: 0.1
         m_Name: Size
         m_Overridden: 1
-      - m_Value: 0.8
+      - m_Value: 1
         m_Name: TurbulenceIntensity
         m_Overridden: 1
       - m_Value: 0
         m_Name: TurbulenceDrag
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: TurbulenceFrequency
         m_Overridden: 1
       - m_Value: 0
@@ -2620,7 +2626,7 @@ VisualEffect:
       - m_Value: 15
         m_Name: AngularVelocityXYZ
         m_Overridden: 1
-      - m_Value: 5
+      - m_Value: 0
         m_Name: Amount_3
         m_Overridden: 1
       - m_Value: 0
@@ -2632,9 +2638,18 @@ VisualEffect:
       - m_Value: 4
         m_Name: SDFCollisionBounce
         m_Overridden: 1
+      - m_Value: 0
+        m_Name: Floating_Strength
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: Size 2
+        m_Overridden: 1
+      - m_Value: 0.85
+        m_Name: DirectionBlend
+        m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 0.2, y: 0.55}
+      - m_Value: {x: 0.1, y: 0.35}
         m_Name: Speed
         m_Overridden: 1
       - m_Value: {x: 0.8, y: 25}
@@ -2647,6 +2662,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: -20, y: -10, z: -20}
         m_Name: RandomPosition_2
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1, z: 0.25}
+        m_Name: Direction
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -3231,19 +3249,19 @@ VisualEffect:
       - m_Value: 2.5
         m_Name: Amount_1
         m_Overridden: 1
-      - m_Value: 1.5
+      - m_Value: 1.25
         m_Name: Amount_2
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.05
         m_Name: Size_Black
         m_Overridden: 1
-      - m_Value: 0.3
+      - m_Value: 0.45
         m_Name: Size
         m_Overridden: 1
       - m_Value: 40
         m_Name: AngularVelocityXYZ
         m_Overridden: 1
-      - m_Value: 4
+      - m_Value: 2.5
         m_Name: Amount_3
         m_Overridden: 1
       - m_Value: 0.05
@@ -3261,6 +3279,9 @@ VisualEffect:
       - m_Value: 0.05
         m_Name: SDFCollisionFriction
         m_Overridden: 1
+      - m_Value: 0.2
+        m_Name: Size 2
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -3273,6 +3294,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: 0.40000013, y: 0.5, z: 0.40000013}
         m_Name: PlayerSDF_Xform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1, z: 0}
+        m_Name: Direction
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -4666,22 +4690,22 @@ VisualEffect:
       - m_Value: 1
         m_Name: Amount_1
         m_Overridden: 1
-      - m_Value: 0.25
+      - m_Value: 0.5
         m_Name: Amount_2
         m_Overridden: 1
-      - m_Value: 0.01
+      - m_Value: 0.05
         m_Name: Size_Black
         m_Overridden: 1
       - m_Value: 0.1
         m_Name: Size
         m_Overridden: 1
-      - m_Value: 0.8
+      - m_Value: 1
         m_Name: TurbulenceIntensity
         m_Overridden: 1
       - m_Value: 0
         m_Name: TurbulenceDrag
         m_Overridden: 1
-      - m_Value: 0
+      - m_Value: 1
         m_Name: TurbulenceFrequency
         m_Overridden: 1
       - m_Value: 0
@@ -4693,7 +4717,7 @@ VisualEffect:
       - m_Value: 15
         m_Name: AngularVelocityXYZ
         m_Overridden: 1
-      - m_Value: 1
+      - m_Value: 0
         m_Name: Amount_3
         m_Overridden: 1
       - m_Value: 0
@@ -4705,9 +4729,18 @@ VisualEffect:
       - m_Value: 4
         m_Name: SDFCollisionBounce
         m_Overridden: 1
+      - m_Value: 0
+        m_Name: Floating_Strength
+        m_Overridden: 1
+      - m_Value: 0
+        m_Name: Size 2
+        m_Overridden: 1
+      - m_Value: 0.85
+        m_Name: DirectionBlend
+        m_Overridden: 1
     m_Vector2f:
       m_Array:
-      - m_Value: {x: 0.2, y: 0.55}
+      - m_Value: {x: 0.1, y: 0.35}
         m_Name: Speed
         m_Overridden: 1
       - m_Value: {x: 0.8, y: 25}
@@ -4720,6 +4753,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: -5, y: -5, z: -10}
         m_Name: RandomPosition_2
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1, z: 0.25}
+        m_Name: Direction
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -5424,19 +5460,19 @@ VisualEffect:
       - m_Value: 2.5
         m_Name: Amount_1
         m_Overridden: 1
-      - m_Value: 1.5
+      - m_Value: 1.25
         m_Name: Amount_2
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.05
         m_Name: Size_Black
         m_Overridden: 1
-      - m_Value: 0.3
+      - m_Value: 0.45
         m_Name: Size
         m_Overridden: 1
       - m_Value: 40
         m_Name: AngularVelocityXYZ
         m_Overridden: 1
-      - m_Value: 4
+      - m_Value: 2.5
         m_Name: Amount_3
         m_Overridden: 1
       - m_Value: 0
@@ -5451,6 +5487,9 @@ VisualEffect:
       - m_Value: 3
         m_Name: SDFCollisionBounce
         m_Overridden: 1
+      - m_Value: 0.2
+        m_Name: Size 2
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -5463,6 +5502,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: 0.40000013, y: 0.5, z: 0.40000013}
         m_Name: PlayerSDF_Xform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1, z: 0}
+        m_Name: Direction
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -6517,16 +6559,16 @@ VisualEffect:
       - m_Value: 30
         m_Name: Amount_2
         m_Overridden: 1
-      - m_Value: 0.1
+      - m_Value: 0.05
         m_Name: Size_Black
         m_Overridden: 1
-      - m_Value: 0.3
+      - m_Value: 0.45
         m_Name: Size
         m_Overridden: 1
       - m_Value: 40
         m_Name: AngularVelocityXYZ
         m_Overridden: 1
-      - m_Value: 4
+      - m_Value: 30
         m_Name: Amount_3
         m_Overridden: 1
       - m_Value: 0.05
@@ -6544,6 +6586,9 @@ VisualEffect:
       - m_Value: 0.05
         m_Name: SDFCollisionFriction
         m_Overridden: 1
+      - m_Value: 0.2
+        m_Name: Size 2
+        m_Overridden: 1
     m_Vector2f:
       m_Array: []
     m_Vector3f:
@@ -6556,6 +6601,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: 0.40000013, y: 0.5, z: 0.40000013}
         m_Name: PlayerSDF_Xform_scale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 1, z: 0}
+        m_Name: Direction
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
