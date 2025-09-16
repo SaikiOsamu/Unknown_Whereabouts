@@ -67,25 +67,29 @@ public class Level_Pass : MonoBehaviour
         UnityEditor.Selection.activeObject = null;
 #endif
 
-        bool fadeDone = false;
         if (FadeManager.Instance != null)
         {
             FadeManager.Instance.SetFadeColor(Color.black);
-            FadeManager.Instance.FadeOut(fadeDuration, true, () => fadeDone = true);
-            while (!fadeDone) yield return null;
+            FadeManager.Instance.TransitionToScene(
+                targetSceneName,
+                fadeInDur: fadeDuration,
+                fadeOutDur: fadeDuration,
+                unscaled: true,
+                inCv: null,
+                outCv: null,
+                onComplete: () =>
+                {
+                    if (GameManager.Instance != null)
+                        GameManager.Instance.ChangeState(nextGameState);
+                }
+            );
         }
-
-        AsyncOperation op = SceneManager.LoadSceneAsync(targetSceneName, LoadSceneMode.Single);
-        while (!op.isDone) yield return null;
-
-        if (GameManager.Instance != null)
+        else
         {
-            GameManager.Instance.ChangeState(nextGameState);
-        }
-
-        if (FadeManager.Instance != null)
-        {
-            FadeManager.Instance.FadeIn(fadeDuration, true);
+            AsyncOperation op = SceneManager.LoadSceneAsync(targetSceneName, LoadSceneMode.Single);
+            while (!op.isDone) yield return null;
+            if (GameManager.Instance != null)
+                GameManager.Instance.ChangeState(nextGameState);
         }
     }
 
