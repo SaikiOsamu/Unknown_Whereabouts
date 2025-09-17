@@ -120,9 +120,9 @@ MonoBehaviour:
     hdShadowInitParams:
       maxShadowRequests: 128
       directionalShadowsDepthBits: 32
-      punctualShadowFilteringQuality: 2
+      punctualShadowFilteringQuality: 1
       directionalShadowFilteringQuality: 2
-      areaShadowFilteringQuality: 1
+      areaShadowFilteringQuality: 0
       punctualLightShadowAtlas:
         shadowAtlasResolution: 4096
         shadowAtlasDepthBits: 32
@@ -318,7 +318,7 @@ MonoBehaviour:
       mode: 1
       smallMeshScreenPercentage: 0
       enableOcclusionCullingInCameras: 1
-      useDepthPrepassForOccluders: 0
+      useDepthPrepassForOccluders: 1
     m_ObsoleteLightLayerName0: 
     m_ObsoleteLightLayerName1: 
     m_ObsoleteLightLayerName2: 
