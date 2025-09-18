@@ -5080,10 +5080,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IsGlobal: 1
   fadeRadius: 0
-  priority: 2
+  priority: 0
   customPasses:
   - rid: 6205419534431551567
-  injectionPoint: 1
+  injectionPoint: 4
   m_TargetCamera: {fileID: 0}
   useTargetCamera: 0
   references:
@@ -5927,7 +5927,7 @@ MonoBehaviour:
   m_AreaLightShadowCone: 120
   m_UseScreenSpaceShadows: 0
   m_InteractsWithSky: 1
-  m_AngularDiameter: 4
+  m_AngularDiameter: 5
   diameterMultiplerMode: 0
   diameterMultiplier: 1
   diameterOverride: 0.62
@@ -6084,7 +6084,7 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
   m_ShadowRadius: 0
-  m_ShadowAngle: 4
+  m_ShadowAngle: 5
   m_LightUnit: 2
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1

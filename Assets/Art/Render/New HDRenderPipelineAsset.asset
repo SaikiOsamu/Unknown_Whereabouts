@@ -54,7 +54,7 @@ MonoBehaviour:
     supportCustomPass: 1
     supportVariableRateShading: 1
     customBufferFormat: 8
-    supportedLitShaderMode: 3
+    supportedLitShaderMode: 1
     planarReflectionResolution:
       m_Values: 000100000004000000080000
       m_SchemaId:
@@ -86,8 +86,8 @@ MonoBehaviour:
     supportProbeVolumeScenarioBlending: 1
     probeVolumeBlendingMemoryBudget: 128
     supportRayTracing: 0
-    supportVFXRayTracing: 0
-    supportedRayTracingMode: 3
+    supportVFXRayTracing: 1
+    supportedRayTracingMode: 1
     lightLoopSettings:
       cookieAtlasSize: 2048
       cookieFormat: 74
