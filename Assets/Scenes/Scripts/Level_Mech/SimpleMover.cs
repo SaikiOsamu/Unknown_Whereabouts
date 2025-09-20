@@ -10,6 +10,9 @@ public class SimpleMover : MonoBehaviour
     public Transform endPoint;
 
     [Header("Motion")]
+    public bool useLocalSpace = false;
+    public bool placeAtStartOnAwake = true;
+    public bool followMovingAnchor = true;
     public float duration = 1f;
     public AnimationCurve curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
@@ -21,19 +24,27 @@ public class SimpleMover : MonoBehaviour
     private void Awake()
     {
         if (!target) target = transform;
+        if (placeAtStartOnAwake && startPoint)
+        {
+            if (useLocalSpace)
+                target.localPosition = WorldToLocal(startPoint.position, target.parent) + _extraOffset;
+            else
+                target.position = startPoint.position + _extraOffset;
+            _atEnd = false;
+        }
     }
 
     [ContextMenu("Forward")]
     public void Forward()
     {
-        if (_isMoving || !endPoint || !startPoint) return;
+        if (_isMoving || !endPoint || !startPoint || !target) return;
         StartMove(true);
     }
 
     [ContextMenu("Backward")]
     public void Backward()
     {
-        if (_isMoving || !endPoint || !startPoint) return;
+        if (_isMoving || !endPoint || !startPoint || !target) return;
         StartMove(false);
     }
 
@@ -49,6 +60,11 @@ public class SimpleMover : MonoBehaviour
         ApplyOffsetIfIdle();
     }
 
+    public void RefreshSnapToCurrentEndpoint()
+    {
+        ApplyOffsetIfIdle(true);
+    }
+
     private void StartMove(bool toEnd)
     {
         if (_moveCo != null) StopCoroutine(_moveCo);
@@ -58,27 +74,69 @@ public class SimpleMover : MonoBehaviour
     private IEnumerator MoveCo(bool toEnd)
     {
         _isMoving = true;
-        Vector3 p0 = target.position;
-        Vector3 p1 = (toEnd ? endPoint.position : startPoint.position) + _extraOffset;
+
+        Vector3 p0 = useLocalSpace ? target.localPosition : target.position;
+        Transform anchor = toEnd ? endPoint : startPoint;
+
+        Vector3 p1StartWorld = anchor.position;
+        Vector3 p1StartLocal = WorldToLocal(p1StartWorld, target.parent);
+
         float t = 0f;
         float dur = Mathf.Max(0.0001f, duration);
+
         while (t < 1f)
         {
             t += Time.deltaTime / dur;
             float k = curve.Evaluate(Mathf.Clamp01(t));
-            target.position = Vector3.LerpUnclamped(p0, p1, k);
+
+            Vector3 goal;
+            if (followMovingAnchor)
+            {
+                if (useLocalSpace)
+                    goal = WorldToLocal(anchor.position, target.parent) + _extraOffset;
+                else
+                    goal = anchor.position + _extraOffset;
+            }
+            else
+            {
+                goal = (useLocalSpace ? p1StartLocal : p1StartWorld) + _extraOffset;
+            }
+
+            Vector3 pos = Vector3.LerpUnclamped(p0, goal, k);
+
+            if (useLocalSpace) target.localPosition = pos;
+            else target.position = pos;
+
             yield return null;
         }
-        target.position = p1;
+
+        if (useLocalSpace) target.localPosition = (followMovingAnchor ? WorldToLocal(anchor.position, target.parent) : p1StartLocal) + _extraOffset;
+        else target.position = (followMovingAnchor ? anchor.position : p1StartWorld) + _extraOffset;
+
         _atEnd = toEnd;
         _isMoving = false;
         _moveCo = null;
     }
 
-    private void ApplyOffsetIfIdle()
+    private void ApplyOffsetIfIdle(bool force = false)
     {
-        if (_isMoving || !startPoint || !endPoint) return;
-        target.position = (_atEnd ? endPoint.position : startPoint.position) + _extraOffset;
+        if ((!force && _isMoving) || !startPoint || !endPoint || !target) return;
+        Transform anchor = _atEnd ? endPoint : startPoint;
+        if (useLocalSpace)
+        {
+            Vector3 baseLocal = WorldToLocal(anchor.position, target.parent);
+            target.localPosition = baseLocal + _extraOffset;
+        }
+        else
+        {
+            target.position = anchor.position + _extraOffset;
+        }
+    }
+
+    private static Vector3 WorldToLocal(Vector3 worldPos, Transform localSpaceRoot)
+    {
+        if (!localSpaceRoot) return worldPos;
+        return localSpaceRoot.InverseTransformPoint(worldPos);
     }
 
 #if UNITY_EDITOR
