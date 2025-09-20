@@ -31,12 +31,16 @@ public class RayChainSystem : MonoBehaviour
     }
 
     public string triggerTag = "LightTrigger";
+    public string ignoreTag = "IgnoreTag";
+    public LayerMask raycastMask = ~0;
+    public bool ignoreLasersAsBlockers = true;
     public List<RayLink> links = new List<RayLink>();
     public UnityEngine.Events.UnityEvent onAnyLinkSatisfiedOnce;
     public UnityEngine.Events.UnityEvent onAnyLinkLoseAfterSatisfied;
-
     public EventFireMode eventFireMode = EventFireMode.LastLink;
     public int eventIndex = 0;
+
+    private HashSet<Collider> _ignoredColliders = new();
 
     private void Start()
     {
@@ -47,6 +51,11 @@ public class RayChainSystem : MonoBehaviour
             if (L.startActive && i == 0) L.isActive = true;
             ApplyLaserVisibility(L, true, false);
             L.satisfied = false;
+            if (ignoreLasersAsBlockers && L.laser != null)
+            {
+                foreach (var c in L.laser.GetComponentsInChildren<Collider>(true))
+                    _ignoredColliders.Add(c);
+            }
         }
         RecomputeActivationFrom(0);
     }
@@ -87,16 +96,31 @@ public class RayChainSystem : MonoBehaviour
         var L = links[index];
         if (L.emitter == null) return;
 
+        Vector3 origin = L.emitter.position;
         Vector3 dir = GetDirection(L);
-        if (L.drawDebugRay) Debug.DrawRay(L.emitter.position, dir * L.maxDistance, Color.cyan);
+
+        if (L.drawDebugRay) Debug.DrawRay(origin, dir * L.maxDistance, Color.cyan);
 
         var q = L.hitTriggers ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
+        var hits = Physics.RaycastAll(origin, dir, L.maxDistance, raycastMask, q);
+        System.Array.Sort(hits, (a, b) => a.distance.CompareTo(b.distance));
+
         bool hitValid = false;
 
-        if (Physics.Raycast(L.emitter.position, dir, out RaycastHit hit, L.maxDistance, Physics.DefaultRaycastLayers, q))
+        for (int h = 0; h < hits.Length; h++)
         {
-            if (hit.collider.CompareTag(triggerTag) && IsSameOrAncestorOrDescendant(hit.collider.transform, L.receiver))
+            var col = hits[h].collider;
+            if (col == null) continue;
+            if (!string.IsNullOrEmpty(ignoreTag) && col.CompareTag(ignoreTag))
+                continue;
+            if (_ignoredColliders.Contains(col))
+                continue;
+            if (col.CompareTag(triggerTag) && IsSameOrAncestorOrDescendant(col.transform, L.receiver))
+            {
                 hitValid = true;
+                break;
+            }
+            break;
         }
 
         bool wasSatisfied = L.satisfied;
