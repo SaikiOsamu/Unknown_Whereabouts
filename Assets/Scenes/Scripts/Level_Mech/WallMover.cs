@@ -31,13 +31,19 @@ public class WallMover : MonoBehaviour
     [Header("Rotation At Waypoints")]
     public bool applyRotationOnForward = true;
     public bool applyRotationOnBackward = true;
+
+    public bool rotationIsDelta = true;
+    public bool autoMirrorRotateTimingOnReturn = true;
     public bool autoInvertRotationOnReturn = true;
+
     public bool rotateBeforeMoveForward = false;
     public bool rotateBeforeMoveBackward = false;
+
     public List<bool> rotateAtWaypoint = new List<bool>();
     public List<Vector3> rotateEulerAtWaypoint = new List<Vector3>();
     public List<float> rotateDurations = new List<float>() { 0.5f };
     public List<AnimationCurve> rotateCurves = new List<AnimationCurve>();
+
     public List<bool> rotateAtWaypointBackward = new List<bool>();
     public List<Vector3> rotateEulerAtWaypointBackward = new List<Vector3>();
     public List<float> rotateDurationsBackward = new List<float>();
@@ -50,11 +56,13 @@ public class WallMover : MonoBehaviour
     private bool _isMoving = false;
     private bool _movedForward = false;
     private Vector3 _originalPos;
+    private Quaternion _baseRot;
 
     private void Awake()
     {
         if (wall == null) wall = transform;
         _originalPos = wall.position;
+        _baseRot = wall.rotation;
         _cam = cameraToShake ? cameraToShake : (Camera.main ? Camera.main.transform : null);
         if (_cam) _camBaseLocalPos = _cam.localPosition;
     }
@@ -77,43 +85,87 @@ public class WallMover : MonoBehaviour
 
     private IEnumerator MoveAlongPathCo(bool forward)
     {
-        if (forward && forwardWaypoints.Count == 0) yield break;
+        int total = forwardWaypoints.Count;
+        int validCount = 0;
+        for (int i = 0; i < total; i++) if (forwardWaypoints[i]) validCount++;
+
+        if (forward && validCount == 0) yield break;
+
         _isMoving = true;
         SetControllersEnabled(false);
         StartShake();
 
         List<Vector3> nodes = new List<Vector3>();
-        nodes.Add(forward ? wall.position : (forwardWaypoints.Count > 0 ? forwardWaypoints[forwardWaypoints.Count - 1].position : wall.position));
+        List<int> nodeWpIdx = new List<int>(); // 每个节点对应的原始 waypoint 索引；起点/原点为 -1
+        List<int> segToWpIdx = new List<int>(); // 每段运动的“目的地 waypoint 索引”；原点为 -1
+
         if (forward)
         {
-            foreach (var wp in forwardWaypoints) if (wp) nodes.Add(wp.position);
+            nodes.Add(wall.position); nodeWpIdx.Add(-1);
+            for (int i = 0; i < total; i++)
+            {
+                var wp = forwardWaypoints[i];
+                if (!wp) continue;
+                nodes.Add(wp.position);
+                nodeWpIdx.Add(i);
+            }
         }
         else
         {
-            for (int i = forwardWaypoints.Count - 1; i >= 0; i--) if (forwardWaypoints[i]) nodes.Add(forwardWaypoints[i].position);
+            int lastValid = -1;
+            for (int i = total - 1; i >= 0; i--)
+            {
+                if (forwardWaypoints[i]) { lastValid = i; break; }
+            }
+
+            if (lastValid >= 0)
+            {
+                nodes.Add(forwardWaypoints[lastValid].position);
+                nodeWpIdx.Add(lastValid);
+                for (int i = lastValid - 1; i >= 0; i--)
+                {
+                    var wp = forwardWaypoints[i];
+                    if (!wp) continue;
+                    nodes.Add(wp.position);
+                    nodeWpIdx.Add(i);
+                }
+            }
+            else
+            {
+                nodes.Add(wall.position);
+                nodeWpIdx.Add(-1);
+            }
             nodes.Add(_originalPos);
+            nodeWpIdx.Add(-1);
         }
+
+        for (int s = 0; s < nodes.Count - 1; s++)
+            segToWpIdx.Add(nodeWpIdx[s + 1]);
+
+        bool rotateBeforeThisDir = forward
+            ? rotateBeforeMoveForward
+            : (autoMirrorRotateTimingOnReturn ? !rotateBeforeMoveForward : rotateBeforeMoveBackward);
 
         AnimationCurve defaultMoveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
 
         for (int seg = 0; seg < nodes.Count - 1; seg++)
         {
-            if (forward)
+            int wpIdxDest = segToWpIdx[seg];
+
+            if (rotateBeforeThisDir)
             {
-                if (seg < forwardWaypoints.Count && applyRotationOnForward && rotateBeforeMoveForward)
-                    yield return RotateStepAtIndexForward(seg);
-            }
-            else
-            {
-                if (seg < forwardWaypoints.Count && applyRotationOnBackward && rotateBeforeMoveBackward)
-                    yield return RotateStepAtIndexBackward(seg);
+                if (forward && applyRotationOnForward && wpIdxDest >= 0)
+                    yield return RotateAtWaypointForward(wpIdxDest);
+                if (!forward && applyRotationOnBackward && wpIdxDest >= 0)
+                    yield return RotateAtWaypointBackward(wpIdxDest);
             }
 
             Vector3 p0 = nodes[seg];
             Vector3 p1 = nodes[seg + 1];
-            float dur = PickByIndex(segmentDurations, seg, nodes.Count - 1, 1.0f);
+
+            float dur = PickFloat_Broadcast(segmentDurations, seg, 1.0f);
             dur = Mathf.Max(0.0001f, dur);
-            AnimationCurve curve = PickCurveByIndex(segmentCurves, seg, nodes.Count - 1, defaultMoveCurve);
+            AnimationCurve curve = PickCurve_Broadcast(segmentCurves, seg, defaultMoveCurve);
 
             float t = 0f;
             while (t < 1f)
@@ -125,15 +177,12 @@ public class WallMover : MonoBehaviour
             }
             wall.position = p1;
 
-            if (forward)
+            if (!rotateBeforeThisDir)
             {
-                if (seg < forwardWaypoints.Count && applyRotationOnForward && !rotateBeforeMoveForward)
-                    yield return RotateStepAtIndexForward(seg);
-            }
-            else
-            {
-                if (seg < forwardWaypoints.Count && applyRotationOnBackward && !rotateBeforeMoveBackward)
-                    yield return RotateStepAtIndexBackward(seg);
+                if (forward && applyRotationOnForward && wpIdxDest >= 0)
+                    yield return RotateAtWaypointForward(wpIdxDest);
+                if (!forward && applyRotationOnBackward && wpIdxDest >= 0)
+                    yield return RotateAtWaypointBackward(wpIdxDest);
             }
         }
 
@@ -144,15 +193,20 @@ public class WallMover : MonoBehaviour
         _moveCo = null;
     }
 
-    private IEnumerator RotateStepAtIndexForward(int seg)
+    private IEnumerator RotateAtWaypointForward(int wpIdx)
     {
-        bool doRotate = PickBoolByIndex(rotateAtWaypoint, seg, forwardWaypoints.Count, false);
+        bool doRotate = PickBool_Strict(rotateAtWaypoint, wpIdx, false);
         if (!doRotate) yield break;
-        Vector3 euler = PickByIndex(rotateEulerAtWaypoint, seg, forwardWaypoints.Count, Vector3.zero);
-        float dur = Mathf.Max(0.0001f, PickByIndex(rotateDurations, seg, forwardWaypoints.Count, 0.5f));
-        AnimationCurve curve = PickCurveByIndex(rotateCurves, seg, forwardWaypoints.Count, AnimationCurve.EaseInOut(0, 0, 1, 1));
+
+        Vector3 euler = PickVector_Strict(rotateEulerAtWaypoint, wpIdx, Vector3.zero);
+        float dur = Mathf.Max(0.0001f, PickFloat_Strict(rotateDurations, wpIdx, 0.5f));
+        AnimationCurve curve = PickCurve_Strict(rotateCurves, wpIdx, AnimationCurve.EaseInOut(0, 0, 1, 1));
+
         Quaternion startRot = wall.rotation;
-        Quaternion endRot = Quaternion.Euler(wall.rotation.eulerAngles + euler);
+        Quaternion endRot = rotationIsDelta
+            ? startRot * Quaternion.Euler(euler)
+            : _baseRot * Quaternion.Euler(euler);
+
         float t = 0f;
         while (t < 1f)
         {
@@ -164,34 +218,35 @@ public class WallMover : MonoBehaviour
         wall.rotation = endRot;
     }
 
-    private IEnumerator RotateStepAtIndexBackward(int seg)
+    private IEnumerator RotateAtWaypointBackward(int wpIdx)
     {
-        int iFwd = forwardWaypoints.Count - 1 - seg;
-        bool doRotate;
-        Vector3 euler;
-        float dur;
-        AnimationCurve curve;
-
-        if (rotateAtWaypointBackward != null && rotateAtWaypointBackward.Count > 0)
-        {
-            doRotate = PickBoolByIndex(rotateAtWaypointBackward, seg, forwardWaypoints.Count, false);
-            euler = PickByIndex(rotateEulerAtWaypointBackward, seg, forwardWaypoints.Count, Vector3.zero);
-            dur = Mathf.Max(0.0001f, PickByIndex(rotateDurationsBackward, seg, forwardWaypoints.Count, 0.5f));
-            curve = PickCurveByIndex(rotateCurvesBackward, seg, forwardWaypoints.Count, AnimationCurve.EaseInOut(0, 0, 1, 1));
-        }
-        else
-        {
-            doRotate = PickBoolByIndex(rotateAtWaypoint, iFwd, forwardWaypoints.Count, false);
-            Vector3 baseEuler = PickByIndex(rotateEulerAtWaypoint, iFwd, forwardWaypoints.Count, Vector3.zero);
-            euler = autoInvertRotationOnReturn ? -baseEuler : baseEuler;
-            dur = Mathf.Max(0.0001f, PickByIndex(rotateDurations, iFwd, forwardWaypoints.Count, 0.5f));
-            curve = PickCurveByIndex(rotateCurves, iFwd, forwardWaypoints.Count, AnimationCurve.EaseInOut(0, 0, 1, 1));
-        }
-
+        bool hasBackwardTables = (rotateAtWaypointBackward != null && rotateAtWaypointBackward.Count > 0);
+        bool doRotate = hasBackwardTables
+            ? PickBool_Strict(rotateAtWaypointBackward, wpIdx, false)
+            : PickBool_Strict(rotateAtWaypoint, wpIdx, false);
         if (!doRotate) yield break;
 
+        Vector3 baseEuler = hasBackwardTables
+            ? PickVector_Strict(rotateEulerAtWaypointBackward, wpIdx, Vector3.zero)
+            : PickVector_Strict(rotateEulerAtWaypoint, wpIdx, Vector3.zero);
+
+        Vector3 euler = rotationIsDelta && !hasBackwardTables && autoInvertRotationOnReturn
+            ? -baseEuler
+            : baseEuler;
+
+        float dur = Mathf.Max(0.0001f, hasBackwardTables
+            ? PickFloat_Strict(rotateDurationsBackward, wpIdx, 0.5f)
+            : PickFloat_Strict(rotateDurations, wpIdx, 0.5f));
+
+        AnimationCurve curve = hasBackwardTables
+            ? PickCurve_Strict(rotateCurvesBackward, wpIdx, AnimationCurve.EaseInOut(0, 0, 1, 1))
+            : PickCurve_Strict(rotateCurves, wpIdx, AnimationCurve.EaseInOut(0, 0, 1, 1));
+
         Quaternion startRot = wall.rotation;
-        Quaternion endRot = Quaternion.Euler(wall.rotation.eulerAngles + euler);
+        Quaternion endRot = rotationIsDelta
+            ? startRot * Quaternion.Euler(euler)
+            : _baseRot * Quaternion.Euler(euler);
+
         float t = 0f;
         while (t < 1f)
         {
@@ -263,32 +318,48 @@ public class WallMover : MonoBehaviour
     }
 #endif
 
-    private static float PickByIndex(List<float> list, int index, int countNeeded, float fallback)
+    // ---- Pick helpers ----
+    // 段用：允许广播（列表只有 1 个元素时对所有段生效）
+    private static float PickFloat_Broadcast(List<float> list, int segIndex, float fallback)
     {
         if (list == null || list.Count == 0) return fallback;
-        if (list.Count == countNeeded) return list[Mathf.Clamp(index, 0, list.Count - 1)];
-        return list[Mathf.Clamp(0, 0, list.Count - 1)];
+        if (list.Count == 1) return list[0];
+        segIndex = Mathf.Clamp(segIndex, 0, list.Count - 1);
+        return list[segIndex];
     }
 
-    private static Vector3 PickByIndex(List<Vector3> list, int index, int countNeeded, Vector3 fallback)
-    {
-        if (list == null || list.Count == 0) return fallback;
-        if (list.Count == countNeeded) return list[Mathf.Clamp(index, 0, list.Count - 1)];
-        return list[Mathf.Clamp(0, 0, list.Count - 1)];
-    }
-
-    private static bool PickBoolByIndex(List<bool> list, int index, int countNeeded, bool fallback)
-    {
-        if (list == null || list.Count == 0) return fallback;
-        if (list.Count == countNeeded) return list[Mathf.Clamp(index, 0, list.Count - 1)];
-        return list[Mathf.Clamp(0, 0, list.Count - 1)];
-    }
-
-    private static AnimationCurve PickCurveByIndex(List<AnimationCurve> list, int index, int countNeeded, AnimationCurve fallback)
+    private static AnimationCurve PickCurve_Broadcast(List<AnimationCurve> list, int segIndex, AnimationCurve fallback)
     {
         if (fallback == null) fallback = AnimationCurve.EaseInOut(0, 0, 1, 1);
         if (list == null || list.Count == 0) return fallback;
-        if (list.Count == countNeeded) return list[Mathf.Clamp(index, 0, list.Count - 1)] ?? fallback;
-        return list[Mathf.Clamp(0, 0, list.Count - 1)] ?? fallback;
+        if (list.Count == 1) return list[0] ?? fallback;
+        segIndex = Mathf.Clamp(segIndex, 0, list.Count - 1);
+        return list[segIndex] ?? fallback;
+    }
+
+    // 旋转用：严格索引（缺/越界直接 fallback），绝不广播或夹到 0
+    private static bool PickBool_Strict(List<bool> list, int index, bool fallback)
+    {
+        if (list == null || index < 0 || index >= list.Count) return fallback;
+        return list[index];
+    }
+
+    private static Vector3 PickVector_Strict(List<Vector3> list, int index, Vector3 fallback)
+    {
+        if (list == null || index < 0 || index >= list.Count) return fallback;
+        return list[index];
+    }
+
+    private static float PickFloat_Strict(List<float> list, int index, float fallback)
+    {
+        if (list == null || index < 0 || index >= list.Count) return fallback;
+        return list[index];
+    }
+
+    private static AnimationCurve PickCurve_Strict(List<AnimationCurve> list, int index, AnimationCurve fallback)
+    {
+        if (fallback == null) fallback = AnimationCurve.EaseInOut(0, 0, 1, 1);
+        if (list == null || index < 0 || index >= list.Count) return fallback;
+        return list[index] ?? fallback;
     }
 }
