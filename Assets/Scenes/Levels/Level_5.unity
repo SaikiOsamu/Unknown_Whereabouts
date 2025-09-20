@@ -10649,6 +10649,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   triggerTag: LightTrigger
+  ignoreTag: IgnoreTag
+  raycastMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  ignoreLasersAsBlockers: 1
   links:
   - emitter: {fileID: 1491339040}
     receiver: {fileID: 555646184}
@@ -10688,8 +10693,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1373944939}
-        m_TargetAssemblyTypeName: WallMover, Assembly-CSharp
-        m_MethodName: StartMoveForward
+        m_TargetAssemblyTypeName: SimpleMover, Assembly-CSharp
+        m_MethodName: Forward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -10703,8 +10708,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1373944939}
-        m_TargetAssemblyTypeName: WallMover, Assembly-CSharp
-        m_MethodName: StartMoveBackward
+        m_TargetAssemblyTypeName: SimpleMover, Assembly-CSharp
+        m_MethodName: Backward
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -57440,18 +57445,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1193843285 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3026299710705282055, guid: 66b41603bc46e5a479650bfa1093784e,
-    type: 3}
-  m_PrefabInstance: {fileID: 98001551}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193843269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae869e0b1f8c29545b44351af8080da8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1297364437
 GameObject:
   m_ObjectHideFlags: 0
@@ -57888,16 +57881,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1373944934}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e52950bd882a2bb4fa52bdef1f7d7e2d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2eca752bb16017142ab741fad3bc90ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wall: {fileID: 1373944935}
-  forwardWaypoints:
-  - {fileID: 2126976071}
-  segmentDurations:
-  - 2.5
-  segmentCurves:
-  - serializedVersion: 2
+  target: {fileID: 1373944935}
+  startPoint: {fileID: 1134399775}
+  endPoint: {fileID: 2126976071}
+  duration: 3
+  curve:
+    serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
@@ -57920,53 +57912,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  allowReturn: 1
-  cameraToShake: {fileID: 2038946136}
-  shakeAmplitude: 0.1
-  shakeFrequency: 12
-  playerControllersToDisable:
-  - {fileID: 1193843285}
-  - {fileID: 2063693894}
-  disableWholeObject: 0
-  drawPathGizmos: 1
-  applyRotationOnForward: 0
-  applyRotationOnBackward: 0
-  autoInvertRotationOnReturn: 0
-  rotateBeforeMoveForward: 0
-  rotateBeforeMoveBackward: 0
-  rotateAtWaypoint: 01
-  rotateEulerAtWaypoint:
-  - {x: 90, y: 0, z: 0}
-  rotateDurations:
-  - 2
-  rotateCurves:
-  - serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  rotateAtWaypointBackward: 
-  rotateEulerAtWaypointBackward: []
-  rotateDurationsBackward: []
-  rotateCurvesBackward: []
 --- !u!1 &1402977043
 GameObject:
   m_ObjectHideFlags: 0
