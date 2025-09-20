@@ -1,281 +1,199 @@
 using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 
+[DisallowMultipleComponent]
 public class RayChainSystem : MonoBehaviour
 {
     public enum DirectionMode { AxisForward, EmitterForward, WorldVector, TowardsTarget }
+    public enum LaserMode { OnWhenHit, OnWhenActive, Manual }
+    public enum EventFireMode { AnyLink, LastLink, SpecificIndex }
 
-    [Header("EmitterA -> ReceiverA")]
-    public Transform emitterA;
-    public Transform directionAxisA;
-    public DirectionMode directionModeA = DirectionMode.AxisForward;
-    public Vector3 worldDirectionA = Vector3.forward;
-    public float maxDistanceA = 100f;
-    public Transform receiverA;
-    public bool autoFireAOnStart = true;
-    public bool continuousScanA = true;
-    public bool hitTriggersA = false;
+    [System.Serializable]
+    public class RayLink
+    {
+        public Transform emitter;
+        public Transform receiver;
+        public Transform directionAxis;
+        public DirectionMode directionMode = DirectionMode.AxisForward;
+        public Vector3 worldDirection = Vector3.forward;
+        public float maxDistance = 100f;
+        public bool startActive = false;
+        public bool continuousScan = true;
+        public bool hitTriggers = false;
+        public bool enableNextOnSatisfied = true;
+        public bool returnOnLose = false;
+        public GameObject laser;
+        public LaserMode laserMode = LaserMode.OnWhenHit;
+        public bool drawDebugRay = true;
+        [HideInInspector] public bool isActive;
+        [HideInInspector] public bool satisfied;
+        [HideInInspector] public bool everSatisfied;
+    }
 
-    [Header("EmitterB -> ReceiverB")]
-    public Transform emitterB;
-    public Transform directionAxisB;
-    public DirectionMode directionModeB = DirectionMode.AxisForward;
-    public Vector3 worldDirectionB = Vector3.forward;
-    public float maxDistanceB = 100f;
-    public Transform receiverB;
-    public bool startWithBInactive = true;
-    public bool hitTriggersB = false;
-    public bool returnOnLoseB = true;
+    public string triggerTag = "LightTrigger";
+    public List<RayLink> links = new List<RayLink>();
+    public UnityEngine.Events.UnityEvent onAnyLinkSatisfiedOnce;
+    public UnityEngine.Events.UnityEvent onAnyLinkLoseAfterSatisfied;
 
-    [Header("Wall Move (translation only)")]
-    public Transform wall;
-    public Transform wallTarget;
-    public Transform wallOrigin;
-    public float moveDuration = 1.0f;
-    public AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
-    [Header("Control During Move")]
-    public Transform cameraToShake;
-    public float shakeAmplitude = 0.1f;
-    public float shakeFrequency = 12f;
-    public List<MonoBehaviour> playerControllersToDisable;
-
-    [Header("Player Control Disable Mode")]
-    public bool disableWholeObject = false;
-
-    [Header("Laser (activate only when A->A is valid)")]
-    public GameObject laser;
-    public bool laserStartsInactive = true;
-
-    [Header("Debug")]
-    public bool drawDebugRay = true;
-
-    private bool _emitterBEnabled = false;
-    private bool _isMoving = false;
-    private bool _aSatisfied = false;
-    private bool _wallMoved = false;
-    private bool _bSatisfied = false;
-    private Transform _cam;
-    private Vector3 _camBaseLocalPos;
-    private Coroutine _moveCo;
-    private Coroutine _shakeCo;
-
-    private const string LightTriggerTag = "LightTrigger";
+    public EventFireMode eventFireMode = EventFireMode.LastLink;
+    public int eventIndex = 0;
 
     private void Start()
     {
-        _cam = cameraToShake ? cameraToShake : (Camera.main ? Camera.main.transform : null);
-        if (_cam) _camBaseLocalPos = _cam.localPosition;
-
-        if (startWithBInactive && emitterB != null)
-            emitterB.gameObject.SetActive(false);
-
-        if (laserStartsInactive && laser != null)
-            laser.SetActive(false);
-
-        if (autoFireAOnStart)
+        for (int i = 0; i < links.Count; i++)
         {
-            if (continuousScanA) _aSatisfied = false;
-            else FireFromEmitterA();
+            var L = links[i];
+            L.isActive = (i == 0) ? true : false;
+            if (L.startActive && i == 0) L.isActive = true;
+            ApplyLaserVisibility(L, true, false);
+            L.satisfied = false;
         }
+        RecomputeActivationFrom(0);
     }
 
     private void Update()
     {
-        if (continuousScanA && !_aSatisfied) CastFromEmitterA();
-        if (_emitterBEnabled) CastFromEmitterB();
+        for (int i = 0; i < links.Count; i++)
+        {
+            var L = links[i];
+            if (!L.isActive) continue;
+            if (!L.continuousScan) continue;
+            CastLink(i);
+        }
     }
 
-    public void FireFromEmitterA()
+    public void FireLinkOnce(int index)
     {
-        CastFromEmitterA();
+        if (index < 0 || index >= links.Count) return;
+        CastLink(index);
     }
 
-    private void CastFromEmitterA()
+    private bool ShouldFireForIndex(int index)
     {
-        if (emitterA == null || receiverA == null) return;
+        if (links.Count == 0) return false;
+        switch (eventFireMode)
+        {
+            case EventFireMode.AnyLink: return true;
+            case EventFireMode.LastLink: return index == links.Count - 1;
+            case EventFireMode.SpecificIndex:
+                int i = Mathf.Clamp(eventIndex, 0, links.Count - 1);
+                return index == i;
+            default: return false;
+        }
+    }
 
-        Vector3 dirA = GetDirectionA();
-        if (drawDebugRay) Debug.DrawRay(emitterA.position, dirA * maxDistanceA, Color.cyan);
-        var qA = hitTriggersA ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
+    private void CastLink(int index)
+    {
+        var L = links[index];
+        if (L.emitter == null) return;
 
+        Vector3 dir = GetDirection(L);
+        if (L.drawDebugRay) Debug.DrawRay(L.emitter.position, dir * L.maxDistance, Color.cyan);
+
+        var q = L.hitTriggers ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
         bool hitValid = false;
 
-        if (Physics.Raycast(emitterA.position, dirA, out RaycastHit hit, maxDistanceA, Physics.DefaultRaycastLayers, qA))
+        if (Physics.Raycast(L.emitter.position, dir, out RaycastHit hit, L.maxDistance, Physics.DefaultRaycastLayers, q))
         {
-            if (hit.collider.CompareTag(LightTriggerTag) && IsSameOrAncestorOrDescendant(hit.collider.transform, receiverA))
-            {
+            if (hit.collider.CompareTag(triggerTag) && IsSameOrAncestorOrDescendant(hit.collider.transform, L.receiver))
                 hitValid = true;
-                _aSatisfied = true;
-                EnableEmitterB();
-            }
         }
 
-        if (laser != null)
-            laser.SetActive(hitValid);
-    }
+        bool wasSatisfied = L.satisfied;
+        ApplyLaserVisibility(L, false, hitValid);
 
-    private void EnableEmitterB()
-    {
-        _emitterBEnabled = true;
-        if (emitterB != null && !emitterB.gameObject.activeSelf)
-            emitterB.gameObject.SetActive(true);
-    }
-
-    private void CastFromEmitterB()
-    {
-        if (emitterB == null) return;
-
-        Vector3 dirB = GetDirectionB();
-        if (drawDebugRay) Debug.DrawRay(emitterB.position, dirB * maxDistanceB, Color.yellow);
-        var qB = hitTriggersB ? QueryTriggerInteraction.Collide : QueryTriggerInteraction.Ignore;
-        bool hitValid = false;
-
-        if (Physics.Raycast(emitterB.position, dirB, out RaycastHit hit, maxDistanceB, Physics.DefaultRaycastLayers, qB))
+        if (hitValid && !L.satisfied)
         {
-            if (receiverB != null && hit.collider.CompareTag(LightTriggerTag) && IsSameOrAncestorOrDescendant(hit.collider.transform, receiverB))
+            L.satisfied = true;
+            L.everSatisfied = true;
+            if (ShouldFireForIndex(index))
+                onAnyLinkSatisfiedOnce?.Invoke();
+            RecomputeActivationFrom(index);
+        }
+        else if (!hitValid && L.satisfied)
+        {
+            L.satisfied = false;
+            if (ShouldFireForIndex(index) && L.returnOnLose)
+                onAnyLinkLoseAfterSatisfied?.Invoke();
+            RecomputeActivationFrom(index);
+        }
+        else if (!hitValid && wasSatisfied == false)
+        {
+            RecomputeActivationFrom(index);
+        }
+    }
+
+    private void RecomputeActivationFrom(int indexChanged)
+    {
+        if (links == null || links.Count == 0) return;
+
+        for (int i = indexChanged; i < links.Count - 1; i++)
+        {
+            var cur = links[i];
+            var next = links[i + 1];
+            if (!cur.enableNextOnSatisfied) break;
+
+            bool shouldActive = cur.satisfied;
+            if (next.isActive != shouldActive)
             {
-                hitValid = true;
-                if (!_wallMoved) TryMoveWallForward();
-            }
-        }
-
-        if (returnOnLoseB)
-        {
-            if (hitValid) _bSatisfied = true;
-            else
-            {
-                if (_bSatisfied) TryMoveWallBack();
-                _bSatisfied = false;
-            }
-        }
-    }
-
-    private void TryMoveWallForward()
-    {
-        if (_isMoving || _wallMoved || wall == null || wallTarget == null) return;
-        if (_moveCo != null) StopCoroutine(_moveCo);
-        _moveCo = StartCoroutine(MoveWallCo(true));
-    }
-
-    private void TryMoveWallBack()
-    {
-        if (_isMoving || !_wallMoved || wall == null) return;
-        if (_moveCo != null) StopCoroutine(_moveCo);
-        _moveCo = StartCoroutine(MoveWallCo(false));
-    }
-
-    private IEnumerator MoveWallCo(bool forward)
-    {
-        _isMoving = true;
-        SetPlayerControllersEnabled(false);
-        StartShake();
-
-        Vector3 p0 = wall.position;
-        Vector3 p1 = forward ? wallTarget.position : (wallOrigin ? wallOrigin.position : wall.position);
-        float t = 0f;
-        float dur = Mathf.Max(0.0001f, moveDuration);
-
-        while (t < 1f)
-        {
-            t += Time.deltaTime / dur;
-            float k = moveCurve.Evaluate(Mathf.Clamp01(t));
-            wall.position = Vector3.LerpUnclamped(p0, p1, k);
-            yield return null;
-        }
-
-        wall.position = p1;
-        _wallMoved = forward;
-
-        StopShake();
-        SetPlayerControllersEnabled(true);
-        _isMoving = false;
-        _moveCo = null;
-    }
-
-    private void StartShake()
-    {
-        if (_cam == null) return;
-        if (_shakeCo != null) StopCoroutine(_shakeCo);
-        _shakeCo = StartCoroutine(ShakeCo());
-    }
-
-    private void StopShake()
-    {
-        if (_cam != null) _cam.localPosition = _camBaseLocalPos;
-        if (_shakeCo != null) StopCoroutine(_shakeCo);
-        _shakeCo = null;
-    }
-
-    private IEnumerator ShakeCo()
-    {
-        float t = 0f;
-        while (_isMoving)
-        {
-            t += Time.deltaTime * shakeFrequency;
-            float ox = (Mathf.PerlinNoise(t, 0.0f) - 0.5f) * 2f * shakeAmplitude;
-            float oy = (Mathf.PerlinNoise(0.0f, t) - 0.5f) * 2f * shakeAmplitude;
-            if (_cam) _cam.localPosition = _camBaseLocalPos + new Vector3(ox, oy, 0f);
-            yield return null;
-        }
-    }
-
-    private void SetPlayerControllersEnabled(bool enabled)
-    {
-        if (playerControllersToDisable == null) return;
-        foreach (var controller in playerControllersToDisable)
-        {
-            if (controller != null)
-            {
-                if (disableWholeObject)
-                    controller.gameObject.SetActive(enabled);
-                else
-                    controller.enabled = enabled;
-            }
-        }
-    }
-
-    private Vector3 GetDirectionA()
-    {
-        switch (directionModeA)
-        {
-            case DirectionMode.AxisForward:
-                if (directionAxisA != null) return directionAxisA.forward;
-                if (emitterA != null) return emitterA.forward;
-                return Vector3.forward;
-            case DirectionMode.EmitterForward:
-                return emitterA ? emitterA.forward : Vector3.forward;
-            case DirectionMode.WorldVector:
-                return worldDirectionA.sqrMagnitude > 0f ? worldDirectionA.normalized : Vector3.forward;
-            case DirectionMode.TowardsTarget:
-                if (emitterA != null && receiverA != null)
+                next.isActive = shouldActive;
+                if (!shouldActive)
                 {
-                    Vector3 v = receiverA.position - emitterA.position;
-                    return v.sqrMagnitude > 0f ? v.normalized : Vector3.forward;
+                    next.satisfied = false;
+                    ApplyLaserVisibility(next, true, false);
                 }
-                return Vector3.forward;
-            default:
-                return Vector3.forward;
+                else
+                {
+                    ApplyLaserVisibility(next, true, false);
+                }
+            }
+
+            if (!shouldActive)
+            {
+                for (int j = i + 2; j < links.Count; j++)
+                {
+                    if (!links[j - 1].enableNextOnSatisfied) break;
+                    links[j].isActive = false;
+                    links[j].satisfied = false;
+                    ApplyLaserVisibility(links[j], true, false);
+                }
+                break;
+            }
         }
     }
 
-    private Vector3 GetDirectionB()
+    private void ApplyLaserVisibility(RayLink L, bool initial, bool hit)
     {
-        switch (directionModeB)
+        if (L.laser == null) return;
+        if (L.laserMode == LaserMode.Manual) return;
+        if (L.laserMode == LaserMode.OnWhenActive)
+        {
+            L.laser.SetActive(L.isActive);
+            return;
+        }
+        if (L.laserMode == LaserMode.OnWhenHit)
+        {
+            if (initial) { L.laser.SetActive(false); return; }
+            L.laser.SetActive(hit);
+        }
+    }
+
+    private Vector3 GetDirection(RayLink L)
+    {
+        switch (L.directionMode)
         {
             case DirectionMode.AxisForward:
-                if (directionAxisB != null) return directionAxisB.forward;
-                if (emitterB != null) return emitterB.forward;
+                if (L.directionAxis != null) return L.directionAxis.forward;
+                if (L.emitter != null) return L.emitter.forward;
                 return Vector3.forward;
             case DirectionMode.EmitterForward:
-                return emitterB ? emitterB.forward : Vector3.forward;
+                return L.emitter ? L.emitter.forward : Vector3.forward;
             case DirectionMode.WorldVector:
-                return worldDirectionB.sqrMagnitude > 0f ? worldDirectionB.normalized : Vector3.forward;
+                return L.worldDirection.sqrMagnitude > 0f ? L.worldDirection.normalized : Vector3.forward;
             case DirectionMode.TowardsTarget:
-                if (emitterB != null && receiverB != null)
+                if (L.emitter != null && L.receiver != null)
                 {
-                    Vector3 v = receiverB.position - emitterB.position;
+                    Vector3 v = L.receiver.position - L.emitter.position;
                     return v.sqrMagnitude > 0f ? v.normalized : Vector3.forward;
                 }
                 return Vector3.forward;
@@ -305,33 +223,23 @@ public class RayChainSystem : MonoBehaviour
 #if UNITY_EDITOR
     private void OnDrawGizmosSelected()
     {
-        if (!drawDebugRay) return;
-
-        if (emitterA)
+        if (links == null) return;
+        Gizmos.matrix = Matrix4x4.identity;
+        for (int i = 0; i < links.Count; i++)
         {
-            Vector3 dirA = GetDirectionA();
-            Gizmos.color = Color.cyan;
-            Gizmos.DrawLine(emitterA.position, emitterA.position + dirA * Mathf.Max(1f, maxDistanceA * 0.1f));
-        }
-
-        if (_emitterBEnabled && emitterB)
-        {
-            Vector3 dirB = GetDirectionB();
-            Gizmos.color = Color.yellow;
-            Gizmos.DrawLine(emitterB.position, emitterB.position + dirB * Mathf.Max(1f, maxDistanceB * 0.1f));
-        }
-
-        if (wall && wallTarget)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawLine(wall.position, wallTarget.position);
-            Gizmos.DrawWireCube(wallTarget.position, Vector3.one * 0.2f);
-        }
-
-        if (wallOrigin)
-        {
-            Gizmos.color = Color.white;
-            Gizmos.DrawWireCube(wallOrigin.position, Vector3.one * 0.2f);
+            var L = links[i];
+            if (L == null) continue;
+            if (L.emitter)
+            {
+                Vector3 dir = GetDirection(L);
+                Gizmos.color = i == 0 ? Color.cyan : Color.yellow;
+                Gizmos.DrawLine(L.emitter.position, L.emitter.position + dir * Mathf.Max(1f, L.maxDistance * 0.1f));
+            }
+            if (L.receiver)
+            {
+                Gizmos.color = Color.green;
+                Gizmos.DrawWireCube(L.receiver.position, Vector3.one * 0.2f);
+            }
         }
     }
 #endif

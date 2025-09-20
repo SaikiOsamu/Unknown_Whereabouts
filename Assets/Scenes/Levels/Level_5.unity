@@ -10628,7 +10628,7 @@ Transform:
   m_GameObject: {fileID: 419898964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.96, y: 2.91, z: -4.48}
+  m_LocalPosition: {x: 12.11, y: 2.91, z: -4.48}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10648,62 +10648,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83828eafced4c441abadd08dba2e043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  emitterA: {fileID: 1491339040}
-  directionAxisA: {fileID: 1491339040}
-  directionModeA: 1
-  worldDirectionA: {x: 0, y: 1, z: 0}
-  maxDistanceA: 200
-  receiverA: {fileID: 555646184}
-  autoFireAOnStart: 1
-  continuousScanA: 1
-  hitTriggersA: 1
-  emitterB: {fileID: 1600469291}
-  directionAxisB: {fileID: 1600469291}
-  directionModeB: 1
-  worldDirectionB: {x: 0, y: 0, z: 0}
-  maxDistanceB: 100
-  receiverB: {fileID: 357937724}
-  startWithBInactive: 0
-  hitTriggersB: 1
-  returnOnLoseB: 1
-  wall: {fileID: 1373944935}
-  wallTarget: {fileID: 2126976071}
-  wallOrigin: {fileID: 1134399775}
-  moveDuration: 3
-  moveCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.20062637
-      value: 0.0119018555
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  cameraToShake: {fileID: 2038946136}
-  shakeAmplitude: 0.1
-  shakeFrequency: 12
-  playerControllersToDisable:
-  - {fileID: 2063693894}
-  - {fileID: 1193843285}
-  disableWholeObject: 0
-  laser: {fileID: 424580929}
-  laserStartsInactive: 1
-  drawDebugRay: 1
+  triggerTag: LightTrigger
+  links:
+  - emitter: {fileID: 1491339040}
+    receiver: {fileID: 555646184}
+    directionAxis: {fileID: 1491339040}
+    directionMode: 1
+    worldDirection: {x: 0, y: 0, z: 0}
+    maxDistance: 200
+    startActive: 1
+    continuousScan: 1
+    hitTriggers: 1
+    enableNextOnSatisfied: 1
+    returnOnLose: 1
+    laser: {fileID: 459352632277799387}
+    laserMode: 1
+    drawDebugRay: 1
+    isActive: 0
+    satisfied: 0
+    everSatisfied: 0
+  - emitter: {fileID: 1600469291}
+    receiver: {fileID: 667741960}
+    directionAxis: {fileID: 1600469291}
+    directionMode: 1
+    worldDirection: {x: 0, y: 0, z: 0}
+    maxDistance: 300
+    startActive: 0
+    continuousScan: 1
+    hitTriggers: 1
+    enableNextOnSatisfied: 1
+    returnOnLose: 1
+    laser: {fileID: 424580929}
+    laserMode: 1
+    drawDebugRay: 1
+    isActive: 0
+    satisfied: 0
+    everSatisfied: 0
+  onAnyLinkSatisfiedOnce:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1373944939}
+        m_TargetAssemblyTypeName: WallMover, Assembly-CSharp
+        m_MethodName: StartMoveForward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onAnyLinkLoseAfterSatisfied:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1373944939}
+        m_TargetAssemblyTypeName: WallMover, Assembly-CSharp
+        m_MethodName: StartMoveBackward
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  eventFireMode: 1
+  eventIndex: 0
 --- !u!1 &424580929
 GameObject:
   m_ObjectHideFlags: 0
@@ -57770,6 +57782,7 @@ GameObject:
   - component: {fileID: 1373944938}
   - component: {fileID: 1373944937}
   - component: {fileID: 1373944936}
+  - component: {fileID: 1373944939}
   m_Layer: 0
   m_Name: Cube (2)
   m_TagString: Untagged
@@ -57866,6 +57879,94 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373944934}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1373944939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373944934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52950bd882a2bb4fa52bdef1f7d7e2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wall: {fileID: 1373944935}
+  forwardWaypoints:
+  - {fileID: 2126976071}
+  segmentDurations:
+  - 2.5
+  segmentCurves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  allowReturn: 1
+  cameraToShake: {fileID: 2038946136}
+  shakeAmplitude: 0.1
+  shakeFrequency: 12
+  playerControllersToDisable:
+  - {fileID: 1193843285}
+  - {fileID: 2063693894}
+  disableWholeObject: 0
+  drawPathGizmos: 1
+  applyRotationOnForward: 0
+  applyRotationOnBackward: 0
+  autoInvertRotationOnReturn: 0
+  rotateBeforeMoveForward: 0
+  rotateBeforeMoveBackward: 0
+  rotateAtWaypoint: 01
+  rotateEulerAtWaypoint:
+  - {x: 90, y: 0, z: 0}
+  rotateDurations:
+  - 2
+  rotateCurves:
+  - serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rotateAtWaypointBackward: 
+  rotateEulerAtWaypointBackward: []
+  rotateDurationsBackward: []
+  rotateCurvesBackward: []
 --- !u!1 &1402977043
 GameObject:
   m_ObjectHideFlags: 0
@@ -73841,7 +73942,7 @@ Transform:
   m_GameObject: {fileID: 2126976070}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.31, y: 3.17, z: -16.5}
+  m_LocalPosition: {x: -15.31, y: 2.785996, z: -16.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
