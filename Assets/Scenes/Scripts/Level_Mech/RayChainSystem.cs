@@ -158,9 +158,17 @@ public class RayChainSystem : MonoBehaviour
             if (!cur.enableNextOnSatisfied) break;
 
             bool shouldActive = cur.satisfied;
+
+            if (!shouldActive && next.isActive && next.satisfied)
+            {
+                if (ShouldFireForIndex(i + 1) && next.returnOnLose)
+                    onAnyLinkLoseAfterSatisfied?.Invoke();
+            }
+
             if (next.isActive != shouldActive)
             {
                 next.isActive = shouldActive;
+
                 if (!shouldActive)
                 {
                     next.satisfied = false;
@@ -169,6 +177,8 @@ public class RayChainSystem : MonoBehaviour
                 else
                 {
                     ApplyLaserVisibility(next, true, false);
+                    if (next.continuousScan)
+                        FireLinkOnce(i + 1);
                 }
             }
 
@@ -176,15 +186,24 @@ public class RayChainSystem : MonoBehaviour
             {
                 for (int j = i + 2; j < links.Count; j++)
                 {
+                    var jl = links[j];
                     if (!links[j - 1].enableNextOnSatisfied) break;
-                    links[j].isActive = false;
-                    links[j].satisfied = false;
-                    ApplyLaserVisibility(links[j], true, false);
+
+                    if (jl.isActive && jl.satisfied)
+                    {
+                        if (ShouldFireForIndex(j) && jl.returnOnLose)
+                            onAnyLinkLoseAfterSatisfied?.Invoke();
+                    }
+
+                    jl.isActive = false;
+                    jl.satisfied = false;
+                    ApplyLaserVisibility(jl, true, false);
                 }
                 break;
             }
         }
     }
+
 
     private void ApplyLaserVisibility(RayLink L, bool initial, bool hit)
     {
