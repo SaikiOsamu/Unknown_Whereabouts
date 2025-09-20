@@ -177,8 +177,7 @@ public class RayChainSystem : MonoBehaviour
                 else
                 {
                     ApplyLaserVisibility(next, true, false);
-                    if (next.continuousScan)
-                        FireLinkOnce(i + 1);
+                    FireLinkOnce(i + 1);
                 }
             }
 
@@ -203,6 +202,7 @@ public class RayChainSystem : MonoBehaviour
             }
         }
     }
+
 
 
     private void ApplyLaserVisibility(RayLink L, bool initial, bool hit)
