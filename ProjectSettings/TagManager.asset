@@ -12,6 +12,7 @@ TagManager:
   - Facade
   - LightTrigger
   - IgnoreTag
+  - Trigger_Ball
   layers:
   - Default
   - TransparentFX

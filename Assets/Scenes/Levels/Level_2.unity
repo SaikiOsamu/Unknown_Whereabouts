@@ -1816,7 +1816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 1223200015}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 0.05
   exitPoint: {fileID: 1541175157}
 --- !u!1 &1223200014
 GameObject:
@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 1170262773}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 0.05
   exitPoint: {fileID: 2105718031}
 --- !u!1 &1359064265
 GameObject:
