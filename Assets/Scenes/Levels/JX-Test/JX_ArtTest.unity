@@ -248,6 +248,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 2054415095}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &117660327
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -558,7 +561,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3758096183
+    m_Bits: 4294967095
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1924,6 +1927,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1812048639094021624, guid: 0ce88bcba2dace040a0d76260518d9a9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b64238dc9de5c4cb3027318e94b2a1, type: 2}
     - target: {fileID: 1938267813450243971, guid: 0ce88bcba2dace040a0d76260518d9a9,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2073,6 +2081,11 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1812048639094021624, guid: 0ce88bcba2dace040a0d76260518d9a9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b64238dc9de5c4cb3027318e94b2a1, type: 2}
     - target: {fileID: 1938267813450243971, guid: 0ce88bcba2dace040a0d76260518d9a9,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -2698,6 +2711,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 92745199}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &614393032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3208,6 +3224,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0.5
   exitPoint: {fileID: 0}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!1 &758261406
 GameObject:
   m_ObjectHideFlags: 0
@@ -3526,6 +3545,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1714588075}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &821357103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4600,6 +4622,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1677584079}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &902636384
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4800,6 +4825,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 267111243}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!1 &911229719
 GameObject:
   m_ObjectHideFlags: 0
@@ -4997,6 +5025,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1144235868}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &928786262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5325,6 +5356,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 615440479}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &976066482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5718,6 +5752,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 22081879}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &1004512261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6829,6 +6866,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1010016619}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!1 &1494618026
 GameObject:
   m_ObjectHideFlags: 0
@@ -7676,6 +7716,11 @@ PrefabInstance:
       propertyPath: m_DynamicOccludee
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1812048639094021624, guid: 0ce88bcba2dace040a0d76260518d9a9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 85b64238dc9de5c4cb3027318e94b2a1, type: 2}
     - target: {fileID: 1938267813450243971, guid: 0ce88bcba2dace040a0d76260518d9a9,
         type: 3}
       propertyPath: m_StaticEditorFlags
@@ -8523,6 +8568,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 118167243}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!1 &2098743243
 GameObject:
   m_ObjectHideFlags: 0
