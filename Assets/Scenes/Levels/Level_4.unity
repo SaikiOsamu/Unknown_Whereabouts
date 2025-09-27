@@ -231,8 +231,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 909233073}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 2054415095}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!65 &117660327
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1662,8 +1665,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 928786260}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 92745199}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!65 &614393032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2002,6 +2008,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0.5
   exitPoint: {fileID: 0}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!1 &821357100
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,6 +2063,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1714588075}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!65 &821357103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2585,8 +2597,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 821357101}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 1677584079}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!65 &902636384
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2785,8 +2800,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 117660325}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 267111243}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!1 &928786259
 GameObject:
   m_ObjectHideFlags: 0
@@ -2837,8 +2855,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 614393030}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 1144235868}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!65 &928786262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3071,8 +3092,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 1408273237}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 615440479}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!65 &976066482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3197,8 +3221,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 2066677448}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 22081879}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!65 &1004512261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4265,6 +4292,9 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1010016619}
+  activeMaterial: {fileID: 0}
+  cooldownMaterial: {fileID: 0}
+  renderers: []
 --- !u!1 &1614326394
 GameObject:
   m_ObjectHideFlags: 0
@@ -4890,8 +4920,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   receiverPortal: {fileID: 1004512259}
   triggerDepth: 0.3
-  teleportCooldown: 0
+  teleportCooldown: 2
   exitPoint: {fileID: 118167243}
+  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
+  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
+  renderers: []
 --- !u!1 &2129795896
 GameObject:
   m_ObjectHideFlags: 0
