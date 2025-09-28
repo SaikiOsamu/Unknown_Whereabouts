@@ -13,6 +13,9 @@ public class Level_Pass : MonoBehaviour
     public string playerTag = "Player";
 
     public float fadeDuration = 0.6f;
+    public float waitBeforeLoad = 1.0f;
+
+    public MonoBehaviour[] playerControllersToDisable;
 
     bool hasPassed = false;
     Collider triggerCol;
@@ -67,6 +70,11 @@ public class Level_Pass : MonoBehaviour
         UnityEditor.Selection.activeObject = null;
 #endif
 
+        SetPlayerControl(false);
+
+        if (waitBeforeLoad > 0f)
+            yield return new WaitForSeconds(waitBeforeLoad);
+
         if (FadeManager.Instance != null)
         {
             FadeManager.Instance.SetFadeColor(Color.black);
@@ -81,6 +89,7 @@ public class Level_Pass : MonoBehaviour
                 {
                     if (GameManager.Instance != null)
                         GameManager.Instance.ChangeState(nextGameState);
+                    SetPlayerControl(true);
                 }
             );
         }
@@ -90,6 +99,17 @@ public class Level_Pass : MonoBehaviour
             while (!op.isDone) yield return null;
             if (GameManager.Instance != null)
                 GameManager.Instance.ChangeState(nextGameState);
+            SetPlayerControl(true);
+        }
+    }
+
+    void SetPlayerControl(bool enable)
+    {
+        if (playerControllersToDisable == null) return;
+        foreach (var ctrl in playerControllersToDisable)
+        {
+            if (ctrl != null)
+                ctrl.enabled = enable;
         }
     }
 
@@ -99,6 +119,7 @@ public class Level_Pass : MonoBehaviour
         requiredDepth = Mathf.Max(0.001f, requiredDepth);
         requiredHoldTime = Mathf.Max(0.0f, requiredHoldTime);
         fadeDuration = Mathf.Max(0.0f, fadeDuration);
+        waitBeforeLoad = Mathf.Max(0.0f, waitBeforeLoad);
     }
 #endif
 }
