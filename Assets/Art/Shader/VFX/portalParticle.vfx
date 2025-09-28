@@ -884,8 +884,8 @@ VisualEffectResource:
       lightProbeUsage: 0
     m_CullingFlags: 0
     m_UpdateMode: 0
-    m_PreWarmDeltaTime: 0
-    m_PreWarmStepCount: 1
+    m_PreWarmDeltaTime: 0.125
+    m_PreWarmStepCount: 120
     m_InitialEventName: OnPlay
     m_InstancingMode: 0
     m_InstancingCapacity: 64
@@ -6281,7 +6281,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
@@ -7740,7 +7740,7 @@ MonoBehaviour:
   - {fileID: 8926484042661615435}
   - {fileID: 8926484042661615628}
   - {fileID: 8926484042661615679}
-  m_UIPosition: {x: 3224, y: -1162}
+  m_UIPosition: {x: 3224, y: -1164}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -23456,7 +23456,7 @@ MonoBehaviour:
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
   m_UIPosition: {x: 0, y: 0}
-  m_UICollapsed: 0
+  m_UICollapsed: 1
   m_UISuperCollapsed: 0
   m_InputSlots: []
   m_OutputSlots:
