@@ -3839,9 +3839,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 936323544}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &1113364176
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4228,9 +4229,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 139901071}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &1255261017
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7513,9 +7515,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 894920688}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!33 &6019461938280064837
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8104,9 +8107,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 77519435}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!33 &7730706194127090665
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -8152,9 +8156,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 1297391010}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!1 &7731999551196071846
 GameObject:
   m_ObjectHideFlags: 0
@@ -8276,9 +8281,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 1541175157}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!4 &7885933736738284289
 Transform:
   m_ObjectHideFlags: 0
@@ -8664,9 +8670,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 2105718031}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!4 &8885800997411729358
 Transform:
   m_ObjectHideFlags: 0
@@ -8756,9 +8763,10 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 584244971}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
   renderers: []
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

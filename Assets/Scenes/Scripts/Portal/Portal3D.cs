@@ -10,10 +10,11 @@ public class Portal3D : MonoBehaviour
     public float teleportCooldown = 0.5f;
     public Transform exitPoint;
 
-    [Header("Visuals (Optional)")]
-    public Material activeMaterial;
-    public Material cooldownMaterial;
+    [Header("Visuals")]
     public List<Renderer> renderers = new List<Renderer>();
+    public string noiseScaleRef = "_NoiseScale";
+    public float activeNoiseScale = 20f;
+    public float cooldownNoiseScale = 0f;
 
     private bool playerIsInside = false;
     private Transform player;
@@ -21,6 +22,7 @@ public class Portal3D : MonoBehaviour
     private bool hasTeleported = false;
     private float lastTeleportTime = -Mathf.Infinity;
     private Collider portalCollider;
+    private int noiseScaleID;
 
     void Awake()
     {
@@ -30,38 +32,36 @@ public class Portal3D : MonoBehaviour
             var r = GetComponent<Renderer>();
             if (r != null) renderers = new List<Renderer> { r };
         }
+
+        noiseScaleID = Shader.PropertyToID(noiseScaleRef);
+
+        foreach (var r in renderers)
+        {
+            if (r == null) continue;
+            var mats = r.materials;
+            r.materials = mats;
+        }
+
         ApplyCooldownState(IsOnCooldown());
     }
 
-    void OnEnable()
-    {
-        ApplyCooldownState(IsOnCooldown());
-    }
+    void OnEnable() { ApplyCooldownState(IsOnCooldown()); }
 
     void Update()
     {
         ApplyCooldownState(IsOnCooldown());
+        if (!playerIsInside || player == null || hasTeleported) return;
 
-        if (!playerIsInside || player == null || hasTeleported)
-            return;
-
-        Vector3 currentLocalPos = transform.InverseTransformPoint(player.position);
-        float penetrationDistance = Vector3.Distance(currentLocalPos, entryLocalPosition);
-
-        if (!IsOnCooldown() && portalCollider != null && portalCollider.isTrigger)
-        {
-            if (penetrationDistance >= triggerDepth)
-            {
-                TeleportPlayer();
-            }
-        }
+        Vector3 pLocal = transform.InverseTransformPoint(player.position);
+        float pen = Vector3.Distance(pLocal, entryLocalPosition);
+        if (!IsOnCooldown() && portalCollider != null && portalCollider.isTrigger && pen >= triggerDepth)
+            TeleportPlayer();
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (!IsValidPlayer(other)) return;
+        if (!other.CompareTag("Player")) return;
         if (IsOnCooldown()) return;
-
         playerIsInside = true;
         player = other.transform;
         entryLocalPosition = transform.InverseTransformPoint(player.position);
@@ -70,8 +70,7 @@ public class Portal3D : MonoBehaviour
 
     void OnTriggerExit(Collider other)
     {
-        if (!IsValidPlayer(other)) return;
-
+        if (!other.CompareTag("Player")) return;
         playerIsInside = false;
         player = null;
     }
@@ -79,21 +78,11 @@ public class Portal3D : MonoBehaviour
     void TeleportPlayer()
     {
         if (receiverPortal == null || player == null) return;
-
         lastTeleportTime = Time.time;
-        Portal3D receiver = receiverPortal.GetComponent<Portal3D>();
-        if (receiver != null && receiver.exitPoint != null)
-        {
-            player.position = receiver.exitPoint.position;
-        }
-        else
-        {
-            player.position = receiverPortal.position;
-        }
-
+        var receiver = receiverPortal.GetComponent<Portal3D>();
+        player.position = (receiver != null && receiver.exitPoint != null) ? receiver.exitPoint.position : receiverPortal.position;
         ForceCooldown();
         if (receiver != null) receiver.ForceCooldown();
-
         hasTeleported = true;
         playerIsInside = false;
         player = null;
@@ -105,39 +94,26 @@ public class Portal3D : MonoBehaviour
         ApplyCooldownState(true);
     }
 
-    private bool IsOnCooldown()
-    {
-        return (Time.time - lastTeleportTime) < teleportCooldown;
-    }
+    bool IsOnCooldown() => (Time.time - lastTeleportTime) < teleportCooldown;
 
-    private bool IsValidPlayer(Collider other)
+    void ApplyCooldownState(bool cooling)
     {
-        return other.CompareTag("Player");
-    }
+        if (portalCollider != null) portalCollider.isTrigger = !cooling;
+        if (renderers == null || renderers.Count == 0) return;
 
-    private void ApplyCooldownState(bool cooling)
-    {
-        if (portalCollider != null)
+        float ns = cooling ? cooldownNoiseScale : activeNoiseScale;
+
+        foreach (var r in renderers)
         {
-            portalCollider.isTrigger = !cooling;
-        }
-
-        if (renderers != null && renderers.Count > 0)
-        {
-            Material targetMat = cooling ? cooldownMaterial : activeMaterial;
-            if (targetMat != null)
+            if (r == null) continue;
+            var mats = r.materials;
+            for (int i = 0; i < mats.Length; i++)
             {
-                foreach (var r in renderers)
-                {
-                    if (r == null) continue;
-                    var mats = r.materials;
-                    for (int i = 0; i < mats.Length; i++)
-                    {
-                        mats[i] = targetMat;
-                    }
-                    r.materials = mats;
-                }
+                var m = mats[i];
+                if (m == null) continue;
+                if (noiseScaleID != 0 && m.HasFloat(noiseScaleID)) m.SetFloat(noiseScaleID, ns);
             }
+            r.materials = mats;
         }
     }
 }
