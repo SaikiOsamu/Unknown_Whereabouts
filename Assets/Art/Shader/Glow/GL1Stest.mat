@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: G_Level01topBott
+  m_Name: GL1Stest
   m_Shader: {fileID: -6465566751694194690, guid: 8b13b9015260fd44786156c570b2745d,
     type: 3}
   m_Parent: {fileID: 0}
@@ -48,7 +48,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: e26808df8814a4948a4117f4cbc005c6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 00bc2242853a43342886a02956c8e713, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 395404d9409022c47a62d20967c40e64, type: 3}
+        m_Texture: {fileID: 2800000, guid: 32d9f07aee36c3847979eeb0711fbee4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -95,19 +95,19 @@ Material:
     - _GlowIntensity: 4
     - _InnerRadius: -10
     - _LumaSoftness: 0.1
-    - _LumaThreshold: 0.29
+    - _LumaThreshold: 0.13
     - _MaskPower: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _Metallic: 0.238
+    - _Metallic: 0
     - _NoiseMask3: 1
-    - _NoiseMask3Strength: 0.1
-    - _NoiseScale: 29.7
+    - _NoiseMask3Strength: 0.2
+    - _NoiseScale: 12.6
     - _NoiseSpeed: 5
     - _NoiseStrength: 5.9
     - _NormalScale: 2
     - _OpaqueCullMode: 2
-    - _OuterRadius: 6
+    - _OuterRadius: 5
     - _PerPixelSorting: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -115,7 +115,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0.863
+    - _Smoothness: 0
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
