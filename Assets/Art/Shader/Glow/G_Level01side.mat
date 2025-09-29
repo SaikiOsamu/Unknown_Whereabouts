@@ -107,7 +107,7 @@ Material:
     - _NoiseStrength: 5.9
     - _NormalScale: 2
     - _OpaqueCullMode: 2
-    - _OuterRadius: 6
+    - _OuterRadius: 5
     - _PerPixelSorting: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
