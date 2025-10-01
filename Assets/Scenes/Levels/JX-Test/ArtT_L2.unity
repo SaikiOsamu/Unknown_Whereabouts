@@ -5486,7 +5486,7 @@ Light:
   serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 10
+  m_Intensity: 6.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -12339,6 +12339,19 @@ MonoBehaviour:
   - {fileID: 7154648669262431161}
   - {fileID: 5979301371342268470}
   - {fileID: 1897489607167345275}
+  - {fileID: 879498974686779622}
+  - {fileID: 5540492424299993777}
+  - {fileID: 99533103703143236}
+  - {fileID: 725841521}
+  - {fileID: 4998408603479779952}
+  - {fileID: 5587640915268094655}
+  - {fileID: 7326102069481563505}
+  - {fileID: 1971121627145915454}
+  - {fileID: 4673835867643174635}
+  - {fileID: 298619793790036817}
+  - {fileID: 277874284142853162}
+  - {fileID: 153788894778223326}
+  - {fileID: 1883755717}
 --- !u!1 &1163140538
 GameObject:
   m_ObjectHideFlags: 0
@@ -20820,7 +20833,7 @@ MeshRenderer:
   m_RenderingLayerMask: 3
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7ae229eb7eed45a4996d6782046831d5, type: 2}
+  - {fileID: 2100000, guid: 9bcdf20307599d3419dac5397e070b24, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

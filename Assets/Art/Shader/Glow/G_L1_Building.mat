@@ -71,22 +71,30 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _GlowIntensity: 0.04
+    - _GlowIntensity: 0.05
+    - _GlowIntensity_Building: 0.05
+    - _GlowIntensity_Player: 1
     - _InnerRadius: 11.1
+    - _InnerRadius_Building: 1.6
+    - _InnerRadius_Player: 1.6
     - _LumaSoftness: 0.1
     - _LumaThreshold: 0.13
     - _MaskPower: 0.1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _Metallic: 0.25
+    - _Metallic: 0.15
     - _NoiseMask3: 50
     - _NoiseMask3Strength: 0
     - _NoiseScale: 20
     - _NoiseSpeed: 1.5
+    - _NoiseSpeed_Building: 1
+    - _NoiseSpeed_Player: 5
     - _NoiseStrength: 15
     - _NormalScale: 1.5
     - _OpaqueCullMode: 2
     - _OuterRadius: 11.4
+    - _OuterRadius_Building: 3.2
+    - _OuterRadius_Player: 3.2
     - _PerPixelSorting: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -126,7 +134,10 @@ Material:
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 7.129739, g: 7.129739, b: 7.129739, a: 1}
+    - _GlowColor_Building: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
+    - _GlowColor_Player: {r: 0, g: 7.8425016, b: 6.6587267, a: 1}
     - _NoiseTiling: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _PlayerPosWS: {r: 0, g: 0, b: 0, a: 0}
     - _PosWS: {r: -18.14, g: 13.14, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
