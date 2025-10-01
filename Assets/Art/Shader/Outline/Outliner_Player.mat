@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Outliner_3D
+  m_Name: Outliner_Player
   m_Shader: {fileID: -6465566751694194690, guid: 183c68c8c4d9e144885cf1ba9fb8b158,
     type: 3}
   m_Parent: {fileID: 0}
@@ -56,7 +56,7 @@ Material:
     - _AO: 0
     - _AddPrecomputedVelocity: 0
     - _Alpha: 1
-    - _AlphaClip: 1
+    - _AlphaClip: 0
     - _AlphaCutoffEnable: 1
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
@@ -78,9 +78,9 @@ Material:
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
-    - _NoiseScale: 85
+    - _NoiseScale: 0
     - _NoiseScape: 35
-    - _NoiseSpeed: 0.1
+    - _NoiseSpeed: 0
     - _NoiseStrength: 1
     - _NoiseThreshold: 1
     - _OpaqueCullMode: 1
@@ -111,7 +111,7 @@ Material:
     - _StencilWriteMaskMV: 43
     - _SupportDecals: 1
     - _SurfaceType: 1
-    - _Thickness: 3.57
+    - _Thickness: 3.305
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 1
