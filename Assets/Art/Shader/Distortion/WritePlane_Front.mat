@@ -172,6 +172,7 @@ Material:
     - _DisplacementMode: 0
     - _DistortionStrength: -0.01
     - _Distortion_Blur: 0
+    - _Divide_Strength: 0.06
     - _DoubleSidedEnable: 0
     - _DoubleSidedGIMode: 0
     - _DoubleSidedNormalMode: 1

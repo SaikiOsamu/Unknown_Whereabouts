@@ -61,6 +61,7 @@ Material:
     - _AlphaDstBlend: 10
     - _AlphaSrcBlend: 1
     - _BlendMode: 0
+    - _Brightness: 1
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 1
     - _CullModeForward: 1
@@ -131,8 +132,8 @@ Material:
     m_Colors:
     - _DoubleSidedConstants: {r: 1, g: 1, b: 1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Emissive: {r: 1.4980391, g: 1.4980391, b: 1.4980391, a: 1}
-    - _Outline_Color: {r: 0.7490196, g: 0.7490196, b: 0.7490196, a: 1}
+    - _Emissive: {r: 2.9960785, g: 2.9960785, b: 2.9960785, a: 1}
+    - _Outline_Color: {r: 2, g: 2, b: 2, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &1532694473249878888
