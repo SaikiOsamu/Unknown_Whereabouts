@@ -6223,7 +6223,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 1798217173}
-  renderers: []
+  visualsRoot: {fileID: 565011307}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
@@ -10918,7 +10919,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 266073797}
-  renderers: []
+  visualsRoot: {fileID: 1030941794}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
@@ -16713,7 +16715,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 479611331}
-  renderers: []
+  visualsRoot: {fileID: 1495101663}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
@@ -19576,7 +19579,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 581768743}
-  renderers: []
+  visualsRoot: {fileID: 1758566187}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
@@ -24050,7 +24054,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 894920688}
-  renderers: []
+  visualsRoot: {fileID: 2058216299795857865}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
@@ -24531,7 +24536,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 1297391010}
-  renderers: []
+  visualsRoot: {fileID: 2066944973104775903}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
@@ -24658,7 +24664,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 1541175157}
-  renderers: []
+  visualsRoot: {fileID: 7871670996228155745}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
@@ -25047,7 +25054,8 @@ MonoBehaviour:
   triggerDepth: 0.1
   teleportCooldown: 2
   exitPoint: {fileID: 2105718031}
-  renderers: []
+  visualsRoot: {fileID: 7752041410448648185}
+  includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 20
   cooldownNoiseScale: 0
