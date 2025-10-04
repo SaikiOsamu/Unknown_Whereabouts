@@ -551,12 +551,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Level_1
+  targetSceneName: Level01
   nextGameState: 1
   requiredDepth: 1
   requiredHoldTime: 0.5
   playerTag: Player
   fadeDuration: 0.8
+  waitBeforeLoad: 1
+  playerControllersToDisable: []
 --- !u!1 &99908647
 GameObject:
   m_ObjectHideFlags: 0
@@ -2464,9 +2466,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1318672060}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!1 &726841815
 GameObject:
   m_ObjectHideFlags: 0
@@ -4686,14 +4690,14 @@ MonoBehaviour:
   subtitleTMP: {fileID: 1832130686}
   subtitleUI: {fileID: 0}
   subtitles:
-  - sceneName: Level_1
+  - sceneName: Level01
     subtitle: "My super intelligence tells me it\u2019s time to use my super powers!"
-  - sceneName: Level_2
+  - sceneName: Level02
     subtitle: In the Valley of Desolation the cold wind blows, with cicadas singing
       through spring and autumn, the young man returns!
   defaultSubtitle: 
   subtitleInDuration: 3
-  subtitleHoldDuration: 2
+  subtitleHoldDuration: 1.5
   subtitleOutDuration: 3
   subtitleUnscaledTime: 1
   subtitleInCurve:
@@ -4711,8 +4715,8 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
@@ -5693,9 +5697,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 331274432}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!23 &1451180013
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -7020,7 +7026,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -7082,7 +7088,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1848370601
 GameObject:
