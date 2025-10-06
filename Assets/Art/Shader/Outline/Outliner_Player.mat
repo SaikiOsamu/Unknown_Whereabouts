@@ -85,11 +85,11 @@ Material:
     - _NoiseStrength: 1
     - _NoiseThreshold: 1
     - _OpaqueCullMode: 1
-    - _OverallScale: 0.3
+    - _OverallScale: 0.305
     - _PerPixelSorting: 0
     - _PlacementScale: 0.8
     - _PlacementSpeed: 1.5
-    - _PlacementStrength: 0.17
+    - _PlacementStrength: 0.1
     - _PlacementThreshold: 1
     - _RayTracing: 0
     - _ReceivesSSR: 1
