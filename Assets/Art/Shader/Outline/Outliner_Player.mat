@@ -87,8 +87,8 @@ Material:
     - _OpaqueCullMode: 1
     - _OverallScale: 0.3
     - _PerPixelSorting: 0
-    - _PlacementScale: 2
-    - _PlacementSpeed: 1
+    - _PlacementScale: 0.8
+    - _PlacementSpeed: 1.5
     - _PlacementStrength: 0.17
     - _PlacementThreshold: 1
     - _RayTracing: 0
