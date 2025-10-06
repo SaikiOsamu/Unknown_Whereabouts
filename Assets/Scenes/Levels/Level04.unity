@@ -233,9 +233,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 2054415095}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &117660327
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -341,6 +343,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2066677448}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &140458347
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -17.98
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.17
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 7335c130ae2285f4881de2ddd82f56ed,
+        type: 3}
+      propertyPath: m_Name
+      value: level04
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7335c130ae2285f4881de2ddd82f56ed, type: 3}
 --- !u!1 &191037526
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,6 +1592,8 @@ MonoBehaviour:
   requiredHoldTime: 0.5
   playerTag: Player
   fadeDuration: 0.6
+  waitBeforeLoad: 1
+  playerControllersToDisable: []
 --- !u!114 &406089177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2152,9 +2224,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 92745199}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &614393032
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2380,7 +2454,6 @@ GameObject:
   - component: {fileID: 756109973}
   - component: {fileID: 756109972}
   - component: {fileID: 756109971}
-  - component: {fileID: 756109974}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -2477,25 +2550,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 756109969}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &756109974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 756109969}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 754db24e4f5f5794a81d53fca96699ba, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  receiverPortal: {fileID: 0}
-  triggerDepth: 0.3
-  teleportCooldown: 0.5
-  exitPoint: {fileID: 0}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
-  renderers: []
 --- !u!1 &798978753
 GameObject:
   m_ObjectHideFlags: 0
@@ -2788,9 +2842,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1714588075}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &821357103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3324,9 +3380,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 1677584079}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &902636384
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3527,9 +3585,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 267111243}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!1 &928786259
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,9 +3642,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 1144235868}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &928786262
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3819,9 +3881,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 615440479}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &976066482
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3948,9 +4012,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 22081879}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!65 &1004512261
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4586,9 +4652,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 1010016619}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!1 &1464650396
 GameObject:
   m_ObjectHideFlags: 0
@@ -5730,9 +5798,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 2
   exitPoint: {fileID: 118167243}
-  activeMaterial: {fileID: 2100000, guid: 0b79a5a5233650e4c8fd5e5f6d599148, type: 2}
-  cooldownMaterial: {fileID: 2100000, guid: c2bf57a5188df7446bb8475bf88faee0, type: 2}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!1 &2129795896
 GameObject:
   m_ObjectHideFlags: 0
@@ -5850,3 +5920,4 @@ SceneRoots:
   - {fileID: 1829473989}
   - {fileID: 249063735}
   - {fileID: 843061563}
+  - {fileID: 140458347}
