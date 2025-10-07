@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
     private void Start()
     {
         ChangeState(GameState.Tutorial);
+        AudioManager.Instance.PlayBGM("Loop_BGM", "Wave_BGM");
+
         Debug.Log("Menu");
     }
 

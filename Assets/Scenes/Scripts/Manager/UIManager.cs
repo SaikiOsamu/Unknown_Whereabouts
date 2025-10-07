@@ -37,16 +37,31 @@ public class UIManager : Singleton<UIManager>
     {
         if (bgmSlider != null)
         {
-            bgmSlider.value = AudioManager.Instance.BGMVolume;
+            bgmSlider.onValueChanged.RemoveAllListeners();
+            bgmSlider.value = AudioManager.Instance.GetChannelVolume(AudioChannel.BGM);
             bgmSlider.onValueChanged.AddListener(OnBGMVolumeChanged);
         }
 
         if (sfxSlider != null)
         {
-            sfxSlider.value = AudioManager.Instance.SFXVolume;
+            sfxSlider.onValueChanged.RemoveAllListeners();
+            sfxSlider.value = AudioManager.Instance.GetChannelVolume(AudioChannel.SFX);
             sfxSlider.onValueChanged.AddListener(OnSFXVolumeChanged);
         }
     }
+
+    private void OnBGMVolumeChanged(float value)
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.SetChannelVolume(AudioChannel.BGM, value);
+    }
+
+    private void OnSFXVolumeChanged(float value)
+    {
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.SetChannelVolume(AudioChannel.SFX, value);
+    }
+
     public void ToggleSettingMenu()
     {
         isSettingOpen = !isSettingOpen;
@@ -85,15 +100,4 @@ public class UIManager : Singleton<UIManager>
         TutorialMenu.SetActive(false);
     }
 
-    private void OnBGMVolumeChanged(float value)
-    {
-        if (AudioManager.Instance != null)
-            AudioManager.Instance.BGMVolume = value;
-    }
-
-    private void OnSFXVolumeChanged(float value)
-    {
-        if (AudioManager.Instance != null)
-            AudioManager.Instance.SFXVolume = value;
-    }
 }
