@@ -5089,7 +5089,13 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4764399191892633653, guid: 66b41603bc46e5a479650bfa1093784e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4764399191892633653, guid: 66b41603bc46e5a479650bfa1093784e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

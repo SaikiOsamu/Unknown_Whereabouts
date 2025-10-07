@@ -5043,9 +5043,6 @@ MonoBehaviour:
   subtitles:
   - sceneName: Level01
     subtitle: "My super intelligence tells me it\u2019s time to use my super powers!"
-  - sceneName: Level02
-    subtitle: In the Valley of Desolation the cold wind blows, with cicadas singing
-      through spring and autumn, the young man returns!
   defaultSubtitle: 
   subtitleInDuration: 3
   subtitleHoldDuration: 1.5
