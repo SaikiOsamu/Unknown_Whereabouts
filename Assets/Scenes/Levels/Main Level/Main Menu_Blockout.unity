@@ -3187,6 +3187,50 @@ MonoBehaviour:
     priority: 0
     voices: 0
     mixerGroup: {fileID: 0}
+  - key: Laser_SFX
+    clip: {fileID: 8300000, guid: 0244b36bdc8dd2441aec12f723a28234, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 0.5
+    loop: 1
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Portal_SFX
+    clip: {fileID: 8300000, guid: 9ebb89f7baa6a0340879be5555350714, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Rotate_SFX
+    clip: {fileID: 8300000, guid: 301c927c5cce79942a0a422ed1c54cd9, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 2
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
+  - key: WallMove_SFX
+    clip: {fileID: 8300000, guid: 9e77694f7e3be2c41a7be9e25ce7a6c0, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 2
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
   defaultMaster: 1
   defaultBGM: 0.75
   defaultSFX: 0.75
@@ -6297,6 +6341,50 @@ Light:
   m_LightUnit: 2
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &1519879276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1519879277}
+  - component: {fileID: 1519879278}
+  m_Layer: 0
+  m_Name: Laser_Audio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1519879277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519879276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1519879278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519879276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 771c3e49fc4840e4f85c3c7ac9f53d6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1573173856
 GameObject:
   m_ObjectHideFlags: 0
@@ -10187,3 +10275,4 @@ SceneRoots:
   - {fileID: 1848370603}
   - {fileID: 1228241420}
   - {fileID: 445366110}
+  - {fileID: 1519879277}

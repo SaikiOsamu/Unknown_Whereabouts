@@ -290,4 +290,13 @@ public class AudioManager : Singleton<AudioManager>
             s.volume = target;
         }
     }
+    private void Prewarm(SoundInstance inst)
+    {
+        foreach (var s in inst.sources)
+        {
+            if (inst.def.loop) { s.volume = 0f; s.Play(); s.Stop(); }
+            else { s.PlayOneShot(inst.def.clip, 0f); }
+        }
+    }
+
 }
