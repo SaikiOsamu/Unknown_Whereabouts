@@ -1779,7 +1779,7 @@ PrefabInstance:
     - target: {fileID: 1786151253377936127, guid: 66b41603bc46e5a479650bfa1093784e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.06
+      value: 23.5
       objectReference: {fileID: 0}
     - target: {fileID: 1786151253377936127, guid: 66b41603bc46e5a479650bfa1093784e,
         type: 3}
@@ -1829,7 +1829,11 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3790980069204776622, guid: 66b41603bc46e5a479650bfa1093784e,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 966570840}
   m_SourcePrefab: {fileID: 100100000, guid: 66b41603bc46e5a479650bfa1093784e, type: 3}
 --- !u!1 &450034542
 GameObject:
@@ -2008,6 +2012,12 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &512758448 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3790980069204776622, guid: 66b41603bc46e5a479650bfa1093784e,
+    type: 3}
+  m_PrefabInstance: {fileID: 445366110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &517599455
 GameObject:
   m_ObjectHideFlags: 0
@@ -3135,122 +3145,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &839324436
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 839324438}
-  - component: {fileID: 839324437}
-  m_Layer: 0
-  m_Name: AudioManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &839324437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 839324436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5961639afb8237498ae4b22a815ae4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - key: Loop_BGM
-    clip: {fileID: 8300000, guid: 9d87672e903af0643aa05c284322b09d, type: 3}
-    channel: 0
-    volume: 1
-    pitch: 0.5
-    loop: 1
-    playOnAwake: 1
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Wave_BGM
-    clip: {fileID: 8300000, guid: 328394bcf25e8514c9fd56820c4f3c38, type: 3}
-    channel: 0
-    volume: 1
-    pitch: 0.5
-    loop: 1
-    playOnAwake: 1
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Laser_SFX
-    clip: {fileID: 8300000, guid: 0244b36bdc8dd2441aec12f723a28234, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 0.5
-    loop: 1
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Portal_SFX
-    clip: {fileID: 8300000, guid: 9ebb89f7baa6a0340879be5555350714, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1.5
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Rotate_SFX
-    clip: {fileID: 8300000, guid: 301c927c5cce79942a0a422ed1c54cd9, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 2
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 1
-    mixerGroup: {fileID: 0}
-  - key: WallMove_SFX
-    clip: {fileID: 8300000, guid: 9e77694f7e3be2c41a7be9e25ce7a6c0, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 2
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 1
-    mixerGroup: {fileID: 0}
-  defaultMaster: 1
-  defaultBGM: 0.75
-  defaultSFX: 0.75
-  defaultUI: 0.75
-  defaultAmb: 0.75
---- !u!4 &839324438
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 839324436}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &854103037
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,6 +3338,177 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897387103}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &906253600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 906253602}
+  - component: {fileID: 906253601}
+  m_Layer: 0
+  m_Name: 'AudioManager '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &906253601
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906253600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5961639afb8237498ae4b22a815ae4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - key: Loop_BGM
+    clip: {fileID: 8300000, guid: 9d87672e903af0643aa05c284322b09d, type: 3}
+    channel: 0
+    volume: 1
+    pitch: 0.5
+    loop: 1
+    playOnAwake: 1
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Wave_BGM
+    clip: {fileID: 8300000, guid: 328394bcf25e8514c9fd56820c4f3c38, type: 3}
+    channel: 0
+    volume: 1
+    pitch: 0.5
+    loop: 1
+    playOnAwake: 1
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Laser_SFX
+    clip: {fileID: 8300000, guid: 0244b36bdc8dd2441aec12f723a28234, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 0.5
+    loop: 1
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Portal_SFX
+    clip: {fileID: 8300000, guid: 9ebb89f7baa6a0340879be5555350714, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Rotate_SFX
+    clip: {fileID: 8300000, guid: 301c927c5cce79942a0a422ed1c54cd9, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 2
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
+  - key: WallMove_SFX
+    clip: {fileID: 8300000, guid: 9e77694f7e3be2c41a7be9e25ce7a6c0, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 2
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
+  - key: ExitShown_SFX
+    clip: {fileID: 8300000, guid: 970f39e6c8150c74fb93fc48fad948b2, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
+  - key: TriggerZone_PartOne
+    clip: {fileID: 8300000, guid: e3407363d475b884baeddcb8248834f6, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 1
+    voices: 2
+    mixerGroup: {fileID: 0}
+  - key: TriggerZone_PartTwo
+    clip: {fileID: 8300000, guid: 5afd9c824e4f57248abda501e4c63ae1, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 2
+    mixerGroup: {fileID: 0}
+  - key: Landing_SFX
+    clip: {fileID: 8300000, guid: ac434fe78364ad74ea4648c8e2b807e0, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 1
+    voices: 2
+    mixerGroup: {fileID: 0}
+  - key: CubeDrop_SFX
+    clip: {fileID: 8300000, guid: 5afeb6bd2e9761245837d2b2cfacc1e2, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 1
+    voices: 2
+    mixerGroup: {fileID: 0}
+  defaultMaster: 1
+  defaultBGM: 0.75
+  defaultSFX: 0.75
+  defaultUI: 0.75
+  defaultAmb: 0.75
+--- !u!4 &906253602
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 906253600}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &932410652
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,6 +3654,41 @@ MeshFilter:
 --- !u!4 &966570839 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1786151253377936127, guid: 66b41603bc46e5a479650bfa1093784e,
+    type: 3}
+  m_PrefabInstance: {fileID: 445366110}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &966570840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512758448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510761bc22059454d97a238910c67d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground: {fileID: 966570843}
+  rb: {fileID: 966570845}
+  minFallDistance: 0.2
+  heightWeight: 2
+  cooldown: 0.1
+--- !u!114 &966570843 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2645227919555283877, guid: 66b41603bc46e5a479650bfa1093784e,
+    type: 3}
+  m_PrefabInstance: {fileID: 445366110}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512758448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c436ef479ea801147968f1ad9816cc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &966570845 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 368537995300888426, guid: 66b41603bc46e5a479650bfa1093784e,
     type: 3}
   m_PrefabInstance: {fileID: 445366110}
   m_PrefabAsset: {fileID: 0}
@@ -10270,9 +10370,9 @@ SceneRoots:
   - {fileID: 1122300668}
   - {fileID: 1353582334}
   - {fileID: 189487424}
-  - {fileID: 839324438}
   - {fileID: 1774169410}
   - {fileID: 1848370603}
   - {fileID: 1228241420}
   - {fileID: 445366110}
   - {fileID: 1519879277}
+  - {fileID: 906253602}

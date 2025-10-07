@@ -203,6 +203,71 @@ public class AudioManager : Singleton<AudioManager>
             src.Play();
         }
     }
+    public void PlaySequenceScheduled(double crossfade = 0.08, params string[] keys)
+    {
+        StartCoroutine(CoPlaySequenceScheduled(crossfade, keys));
+    }
+
+    private System.Collections.IEnumerator CoPlaySequenceScheduled(double crossfade, string[] keys)
+    {
+        if (keys == null || keys.Length == 0) yield break;
+        double startTime = AudioSettings.dspTime + 0.05;
+        for (int i = 0; i < keys.Length; i++)
+        {
+            if (!_map.TryGetValue(keys[i], out var inst) || inst.sources.Count == 0) continue;
+            var src = inst.Next();
+            if (src == null) continue;
+            src.clip = inst.def.clip;
+            src.loop = false;
+            src.pitch = inst.def.pitch;
+            src.spatialBlend = inst.def.spatialBlend;
+            src.priority = inst.def.priority;
+            src.outputAudioMixerGroup = inst.def.mixerGroup;
+            float targetVol = FinalVolume(inst.def, 1f);
+            src.volume = 0f;
+            double length = (inst.def.clip != null)
+                ? inst.def.clip.length / Mathf.Max(0.0001f, Mathf.Abs(inst.def.pitch))
+                : 0.0;
+            src.PlayScheduled(startTime);
+            double inDur = Mathf.Max(0f, (float)crossfade);
+            double outDur = Mathf.Max(0f, (float)crossfade);
+            StartCoroutine(CoGainAutomation(src, startTime, inDur, outDur, length, targetVol));
+            startTime += Math.Max(0.0, length - crossfade);
+        }
+        yield break;
+    }
+
+    private System.Collections.IEnumerator CoGainAutomation(AudioSource src,
+        double dspStart, double inDur, double outDur, double length, float targetVol)
+    {
+        while (AudioSettings.dspTime < dspStart) yield return null;
+        if (inDur > 0.0)
+        {
+            double t0 = AudioSettings.dspTime;
+            while (AudioSettings.dspTime - t0 < inDur && src != null)
+            {
+                float k = (float)((AudioSettings.dspTime - t0) / inDur);
+                src.volume = Mathf.Lerp(0f, targetVol, k);
+                yield return null;
+            }
+        }
+        if (src != null) src.volume = targetVol;
+        double fadeOutAt = dspStart + Math.Max(0.0, length - outDur);
+        while (AudioSettings.dspTime < fadeOutAt) yield return null;
+        if (outDur > 0.0)
+        {
+            double t1 = AudioSettings.dspTime;
+            float from = src != null ? src.volume : 0f;
+            while (AudioSettings.dspTime - t1 < outDur && src != null)
+            {
+                float k = (float)((AudioSettings.dspTime - t1) / outDur);
+                src.volume = Mathf.Lerp(from, 0f, k);
+                yield return null;
+            }
+        }
+        if (src != null) { src.volume = 0f; src.Stop(); }
+    }
+
 
     public void Stop(string key)
     {
