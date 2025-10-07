@@ -3188,6 +3188,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6622264641530768373, guid: 9d78d937c75342c4080311504397ec5e,
         type: 3}
+    - target: {fileID: 3559179900178377310, guid: 66b41603bc46e5a479650bfa1093784e,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3790980069204776622, guid: 66b41603bc46e5a479650bfa1093784e,
         type: 3}
       propertyPath: m_Name
@@ -3228,7 +3233,8 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: 3.5240412
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3559179900178377310, guid: 66b41603bc46e5a479650bfa1093784e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

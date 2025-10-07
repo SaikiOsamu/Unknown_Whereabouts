@@ -21,9 +21,7 @@ MonoBehaviour:
   m_OverrideGlobalSceneList: 1
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/Levels/Main Menu_Blockout.unity
-  - m_enabled: 1
-    m_path: Assets/Scenes/Levels/Level01.unity
+    m_path: Assets/Scenes/Levels/Main Level/Main Menu_Blockout.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Levels/Final_Test.unity
   m_ScriptingDefines: []
