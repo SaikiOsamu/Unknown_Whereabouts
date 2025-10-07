@@ -16,10 +16,15 @@ public class SimpleMover : MonoBehaviour
     public float duration = 1f;
     public AnimationCurve curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
+    [Header("Player Lock (Optional)")]
+    [Tooltip("将需要在移动期间禁用的玩家脚本拖到这里，比如 PlayerInput/CharacterMotor/FirstPersonController 等。")]
+    public Behaviour[] playerScriptsToDisable;
+
     private Coroutine _moveCo;
     private bool _isMoving = false;
     private bool _atEnd = false;
     private Vector3 _extraOffset = Vector3.zero;
+    private bool _controlsLockedByThis = false;
 
     private void Awake()
     {
@@ -67,7 +72,12 @@ public class SimpleMover : MonoBehaviour
 
     private void StartMove(bool toEnd)
     {
-        if (_moveCo != null) StopCoroutine(_moveCo);
+        if (_moveCo != null)
+        {
+            StopCoroutine(_moveCo);
+            _moveCo = null;
+            UnlockPlayerControls();
+        }
         _moveCo = StartCoroutine(MoveCo(toEnd));
     }
 
@@ -75,7 +85,9 @@ public class SimpleMover : MonoBehaviour
     {
         _isMoving = true;
 
-        AudioManager.Instance.Play("WallMove_SFX");
+        if (AudioManager.Instance) AudioManager.Instance.Play("WallMove_SFX");
+
+        LockPlayerControls();
 
         Vector3 p0 = useLocalSpace ? target.localPosition : target.position;
         Transform anchor = toEnd ? endPoint : startPoint;
@@ -118,6 +130,8 @@ public class SimpleMover : MonoBehaviour
         _atEnd = toEnd;
         _isMoving = false;
         _moveCo = null;
+
+        UnlockPlayerControls();
     }
 
     private void ApplyOffsetIfIdle(bool force = false)
@@ -139,6 +153,36 @@ public class SimpleMover : MonoBehaviour
     {
         if (!localSpaceRoot) return worldPos;
         return localSpaceRoot.InverseTransformPoint(worldPos);
+    }
+
+    private void LockPlayerControls()
+    {
+        if (playerScriptsToDisable == null || playerScriptsToDisable.Length == 0) return;
+        if (_controlsLockedByThis) return;
+
+        foreach (var b in playerScriptsToDisable)
+        {
+            if (!b) continue;
+            if (b.enabled)
+            {
+                b.enabled = false;
+            }
+        }
+        _controlsLockedByThis = true;
+    }
+
+    private void UnlockPlayerControls()
+    {
+        if (!_controlsLockedByThis) return;
+        if (playerScriptsToDisable != null)
+        {
+            foreach (var b in playerScriptsToDisable)
+            {
+                if (!b) continue;
+                b.enabled = true;
+            }
+        }
+        _controlsLockedByThis = false;
     }
 
 #if UNITY_EDITOR
@@ -167,4 +211,16 @@ public class SimpleMover : MonoBehaviour
         }
     }
 #endif
+
+    private void OnDisable()
+    {
+        UnlockPlayerControls();
+        if (_moveCo != null) { StopCoroutine(_moveCo); _moveCo = null; }
+        _isMoving = false;
+    }
+
+    private void OnDestroy()
+    {
+        UnlockPlayerControls();
+    }
 }
