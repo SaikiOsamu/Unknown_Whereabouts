@@ -98,6 +98,10 @@ public class PlaneBreak : MonoBehaviour
         timeElapsed = 0f;
         SetTransparency(0f);
         isFadingIn = true;
+       
+        AudioManager.Instance.PlaySequenceScheduled(0.10, "ExitShown_SFX", "TriggerZone_PartOne", "TriggerZone_PartTwo");
+
+
         if (doorCollider != null) doorCollider.enabled = true;
     }
 

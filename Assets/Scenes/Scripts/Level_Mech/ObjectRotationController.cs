@@ -46,22 +46,26 @@ public class ObjectRotationController : MonoBehaviour
         if (vertical > 0 && canRotateX)
         {
             StartCoroutine(RotateSmoothly(Vector3.right, 90f));
+            AudioManager.Instance.Play("Rotate_SFX");
             canRotateX = false;
         }
         else if (vertical < 0 && canRotateX)
         {
             StartCoroutine(RotateSmoothly(Vector3.left, 90f));
+            AudioManager.Instance.Play("Rotate_SFX");
             canRotateX = false;
         }
 
         if (horizontal > 0 && canRotateY)
         {
             StartCoroutine(RotateSmoothly(Vector3.up, 90f));
+            AudioManager.Instance.Play("Rotate_SFX");
             canRotateY = false;
         }
         else if (horizontal < 0 && canRotateY)
         {
             StartCoroutine(RotateSmoothly(Vector3.down, 90f));
+            AudioManager.Instance.Play("Rotate_SFX");
             canRotateY = false;
         }
 

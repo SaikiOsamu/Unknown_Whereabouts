@@ -75,6 +75,8 @@ public class SimpleMover : MonoBehaviour
     {
         _isMoving = true;
 
+        AudioManager.Instance.Play("WallMove_SFX");
+
         Vector3 p0 = useLocalSpace ? target.localPosition : target.position;
         Transform anchor = toEnd ? endPoint : startPoint;
 

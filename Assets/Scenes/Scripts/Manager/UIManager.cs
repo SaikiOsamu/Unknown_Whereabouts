@@ -99,5 +99,19 @@ public class UIManager : Singleton<UIManager>
         GameOverMenu.SetActive(false);
         TutorialMenu.SetActive(false);
     }
+    public void QuitGame()
+    {
+        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
+        AudioManager.Instance.Play("Quit_SFX");
+    }
+    public void ResumeGame()
+    {
+        SettingMenu.SetActive(false);
 
+        AudioManager.Instance.Play("Resume_SFX");
+
+        Time.timeScale = 1f;
+        
+    }
 }

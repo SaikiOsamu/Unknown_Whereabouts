@@ -5332,9 +5332,160 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 0}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
+--- !u!1 &272865624
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 272865626}
+  - component: {fileID: 272865625}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &272865625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272865624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5961639afb8237498ae4b22a815ae4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - key: Loop_BGM
+    clip: {fileID: 8300000, guid: 9d87672e903af0643aa05c284322b09d, type: 3}
+    channel: 0
+    volume: 1
+    pitch: 0.5
+    loop: 1
+    playOnAwake: 1
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Wave_BGM
+    clip: {fileID: 8300000, guid: 328394bcf25e8514c9fd56820c4f3c38, type: 3}
+    channel: 0
+    volume: 1
+    pitch: 0.5
+    loop: 1
+    playOnAwake: 1
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Laser_SFX
+    clip: {fileID: 8300000, guid: 0244b36bdc8dd2441aec12f723a28234, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 0.5
+    loop: 1
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Portal_SFX
+    clip: {fileID: 8300000, guid: 9ebb89f7baa6a0340879be5555350714, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1.5
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 0
+    mixerGroup: {fileID: 0}
+  - key: Rotate_SFX
+    clip: {fileID: 8300000, guid: 301c927c5cce79942a0a422ed1c54cd9, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 2
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
+  - key: WallMove_SFX
+    clip: {fileID: 8300000, guid: 9e77694f7e3be2c41a7be9e25ce7a6c0, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 2
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
+  - key: ExitShown_SFX
+    clip: {fileID: 8300000, guid: 970f39e6c8150c74fb93fc48fad948b2, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 1
+    mixerGroup: {fileID: 0}
+  - key: TriggerZone_PartOne
+    clip: {fileID: 8300000, guid: e3407363d475b884baeddcb8248834f6, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 1
+    voices: 2
+    mixerGroup: {fileID: 0}
+  - key: TriggerZone_PartTwo
+    clip: {fileID: 8300000, guid: 5afd9c824e4f57248abda501e4c63ae1, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 1
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 0
+    voices: 2
+    mixerGroup: {fileID: 0}
+  defaultMaster: 1
+  defaultBGM: 0.75
+  defaultSFX: 0.75
+  defaultUI: 0.75
+  defaultAmb: 0.75
+--- !u!4 &272865626
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 272865624}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &275496302
 GameObject:
   m_ObjectHideFlags: 0
@@ -21096,7 +21247,7 @@ Transform:
   m_GameObject: {fileID: 581386105}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.98, y: 2.84, z: -4.33}
+  m_LocalPosition: {x: 0.99, y: 12.95, z: -4.33}
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -52098,7 +52249,7 @@ Transform:
   m_GameObject: {fileID: 1115483024}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.25, y: 12.95, z: -4.48}
+  m_LocalPosition: {x: 12.25, y: 17.53, z: -4.48}
   m_LocalScale: {x: 1.6027, y: 1.9406, z: 2.3494606}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57927,6 +58078,8 @@ MonoBehaviour:
   requiredHoldTime: 0.5
   playerTag: Player
   fadeDuration: 0.6
+  waitBeforeLoad: 1
+  playerControllersToDisable: []
 --- !u!114 &1173206898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58366,9 +58519,11 @@ MonoBehaviour:
   triggerDepth: 0.3
   teleportCooldown: 0
   exitPoint: {fileID: 0}
-  activeMaterial: {fileID: 0}
-  cooldownMaterial: {fileID: 0}
-  renderers: []
+  visualsRoot: {fileID: 0}
+  includeInactiveChildren: 1
+  noiseScaleRef: _NoiseScale
+  activeNoiseScale: 20
+  cooldownNoiseScale: 0
 --- !u!1 &1373944934
 GameObject:
   m_ObjectHideFlags: 0
@@ -143146,3 +143301,4 @@ SceneRoots:
   - {fileID: 1115483028}
   - {fileID: 419898968}
   - {fileID: 275496306}
+  - {fileID: 272865626}

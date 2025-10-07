@@ -76,6 +76,9 @@ public class Portal3D : MonoBehaviour
     {
         if (receiverPortal == null || player == null) return;
         lastTeleportTime = Time.time;
+
+        AudioManager.Instance.Play("Portal_SFX");
+
         var receiver = receiverPortal.GetComponent<Portal3D>();
         player.position = (receiver != null && receiver.exitPoint != null)
             ? receiver.exitPoint.position
