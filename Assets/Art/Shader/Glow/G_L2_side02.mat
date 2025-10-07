@@ -95,7 +95,7 @@ Material:
     - _GlowIntensity: 4
     - _InnerRadius: -2
     - _LumaSoftness: 0.1
-    - _LumaThreshold: 0.12
+    - _LumaThreshold: 0.1
     - _MaskPower: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
