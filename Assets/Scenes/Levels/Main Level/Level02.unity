@@ -4774,7 +4774,7 @@ PrefabInstance:
     - target: {fileID: 3790980069204776622, guid: 66b41603bc46e5a479650bfa1093784e,
         type: 3}
       propertyPath: m_Name
-      value: PlayerCharacter (1)
+      value: PlayerCharacter
       objectReference: {fileID: 0}
     - target: {fileID: 3790980069204776622, guid: 66b41603bc46e5a479650bfa1093784e,
         type: 3}
@@ -16116,7 +16116,7 @@ MonoBehaviour:
   rotationSpeed: 90
   rotationCenter: {fileID: 1655153169}
   objectsToRotateWithRoom:
-  - {fileID: 0}
+  - {fileID: 436223348}
   inputControllersToDisable: []
 --- !u!4 &1458925085
 Transform:
@@ -16131,7 +16131,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1655153169}
   - {fileID: 6919292698620189980}
   - {fileID: 702166197}
   - {fileID: 1542811083}
@@ -17322,7 +17321,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.000000119209275, y: -0.70710677, z: -0.000000012344527,
     w: 0.7071068}
-  m_LocalPosition: {x: 0.21368802, y: 0.123, z: 0.031}
+  m_LocalPosition: {x: 0.01, y: 0.123, z: 0.319}
   m_LocalScale: {x: 0.29257068, y: 0.08522804, z: 0.38601387}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18514,7 +18513,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1458925085}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1680196386
 GameObject:
@@ -25199,6 +25198,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1330427724}
+  - {fileID: 1655153169}
   - {fileID: 1458925085}
   - {fileID: 1956529684}
   - {fileID: 436223338}
