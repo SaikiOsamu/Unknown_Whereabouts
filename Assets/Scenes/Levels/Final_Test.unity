@@ -5977,6 +5977,7 @@ GameObject:
   - component: {fileID: 1573451646}
   - component: {fileID: 1573451645}
   - component: {fileID: 1573451644}
+  - component: {fileID: 1573451650}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -6094,7 +6095,7 @@ Transform:
   m_GameObject: {fileID: 1573451643}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0.0000032037492}
-  m_LocalPosition: {x: 0, y: 2.63, z: 0}
+  m_LocalPosition: {x: 0, y: 9.33, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -6103,6 +6104,34 @@ Transform:
   - {fileID: 1580231386}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!114 &1573451650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1573451643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510761bc22059454d97a238910c67d3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground: {fileID: 1573451645}
+  rb: {fileID: 1573451647}
+  animator: {fileID: 1573451648}
+  minFallDistance: 1
+  heightWeight: 2
+  cooldown: 0.1
+  minImpactForAnim: 1
+  speedParam: Speed
+  landTrigger: Land
+  impactParam: Impact
+  landStateName: Land
+  landLayerIndex: 0
+  systemsToDisable:
+  - {fileID: 1573451646}
+  - {fileID: 1613841388}
+  freezeRigidbodyDuringLock: 0
 --- !u!1 &1574314278
 GameObject:
   m_ObjectHideFlags: 0
