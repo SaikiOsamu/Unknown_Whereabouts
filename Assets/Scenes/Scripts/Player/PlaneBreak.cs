@@ -49,6 +49,7 @@ public class PlaneBreak : MonoBehaviour
             if (fwd == null) fwd = PlayerKillZone.AddComponent<TriggerForwarder>();
             fwd.owner = this;
         }
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
@@ -131,5 +132,9 @@ public class PlaneBreak : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        AudioManager.Instance.Stop("TriggerZone_PartTwo");
     }
 }
