@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: G_L3_Wall02
+  m_Name: G_L5_BWall02
   m_Shader: {fileID: -6465566751694194690, guid: 8b13b9015260fd44786156c570b2745d,
     type: 3}
   m_Parent: {fileID: 0}
@@ -48,7 +48,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: 80f2c5079c839f1409f6d4b7ed93c160, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5d52b1cbcf8eda747a762bad838ca29e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 5d931a99c21a75c40ac9fcb298c995da, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7b65edefbbd6fb94d95abfcb60ec2f94, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -92,17 +92,17 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _GlowIntensity: 4
+    - _GlowIntensity: 10
     - _InnerRadius: -2
-    - _LumaSoftness: 0.1
-    - _LumaThreshold: 0.62
+    - _LumaSoftness: 0.14
+    - _LumaThreshold: 0.34
     - _MaskPower: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _NoiseMask3: 1
-    - _NoiseMask3Strength: 0.1
-    - _NoiseScale: 11
+    - _NoiseMask3Strength: 0.2
+    - _NoiseScale: 29.7
     - _NoiseSpeed: 5
     - _NoiseStrength: 5.9
     - _NormalScale: 2
@@ -115,7 +115,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0
+    - _Smoothness: 0.8
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -148,6 +148,8 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Offset: {r: 0.08, g: -0.56, b: 0, a: 0}
     - _PlayerPosWS: {r: 0, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 3.51, g: 2.49, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
