@@ -26944,7 +26944,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 120
   rotationCenter: {fileID: 1499448551}
-  objectsToRotateWithRoom: []
+  objectsToRotateWithRoom:
+  - {fileID: 1573451649}
   inputControllersToDisable: []
 --- !u!1 &1672749262
 GameObject:
