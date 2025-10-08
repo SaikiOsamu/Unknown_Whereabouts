@@ -15,6 +15,11 @@ public class Move3D : MonoBehaviour
     [SerializeField] private FacingAxis facingAxis = FacingAxis.Z;
     [SerializeField] private bool instantFace = false;
 
+    [Header("Animation")]
+    [SerializeField] private Animator animator;
+    [SerializeField] private string speedParam = "Speed";
+    [SerializeField, Range(0f, 1f)] private float speedDamp = 0.1f;
+
     private Rigidbody body;
     private float inputX;
     private float currentSpeedX;
@@ -26,6 +31,11 @@ public class Move3D : MonoBehaviour
         body = GetComponent<Rigidbody>();
         body.constraints = RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         if (graphicsRoot == null) graphicsRoot = transform;
+        if (animator == null)
+        {
+            if (graphicsRoot != null) animator = graphicsRoot.GetComponentInChildren<Animator>();
+            if (animator == null) animator = GetComponentInChildren<Animator>();
+        }
     }
 
     void Update()
@@ -77,6 +87,12 @@ public class Move3D : MonoBehaviour
                     graphicsRoot.rotation = Quaternion.RotateTowards(graphicsRoot.rotation, targetRot, step);
                 }
             }
+        }
+
+        if (animator != null && maxSpeed > 0f)
+        {
+            float speed01 = Mathf.Clamp01(Mathf.Abs(currentSpeedX) / maxSpeed);
+            animator.SetFloat(speedParam, speed01, speedDamp, Time.fixedDeltaTime);
         }
     }
 }
