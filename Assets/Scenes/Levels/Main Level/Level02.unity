@@ -424,9 +424,6 @@ GameObject:
   m_Component:
   - component: {fileID: 12428782}
   - component: {fileID: 12428786}
-  - component: {fileID: 12428785}
-  - component: {fileID: 12428784}
-  - component: {fileID: 12428783}
   m_Layer: 0
   m_Name: Square1
   m_TagString: Untagged
@@ -453,60 +450,6 @@ Transform:
   - {fileID: 1028339069}
   m_Father: {fileID: 7871670996228155745}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 180}
---- !u!114 &12428783
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12428781}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &12428784
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12428781}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &12428785
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12428781}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &12428786
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3482,9 +3425,6 @@ GameObject:
   m_Component:
   - component: {fileID: 294209946}
   - component: {fileID: 294209950}
-  - component: {fileID: 294209949}
-  - component: {fileID: 294209948}
-  - component: {fileID: 294209947}
   m_Layer: 0
   m_Name: Square6
   m_TagString: Untagged
@@ -3511,60 +3451,6 @@ Transform:
   - {fileID: 389024885}
   m_Father: {fileID: 1030941794}
   m_LocalEulerAnglesHint: {x: -270, y: -180, z: 180}
---- !u!114 &294209947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294209945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &294209948
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294209945}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &294209949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294209945}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &294209950
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3717,9 +3603,6 @@ GameObject:
   m_Component:
   - component: {fileID: 313213980}
   - component: {fileID: 313213984}
-  - component: {fileID: 313213983}
-  - component: {fileID: 313213982}
-  - component: {fileID: 313213981}
   m_Layer: 0
   m_Name: Square8
   m_TagString: Untagged
@@ -3746,60 +3629,6 @@ Transform:
   - {fileID: 1173448420}
   m_Father: {fileID: 1495101663}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 180}
---- !u!114 &313213981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313213979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &313213982
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313213979}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &313213983
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 313213979}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &313213984
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6109,9 +5938,6 @@ GameObject:
   m_Component:
   - component: {fileID: 541364357}
   - component: {fileID: 541364361}
-  - component: {fileID: 541364360}
-  - component: {fileID: 541364359}
-  - component: {fileID: 541364358}
   m_Layer: 0
   m_Name: Square2
   m_TagString: Untagged
@@ -6138,60 +5964,6 @@ Transform:
   - {fileID: 2139184036}
   m_Father: {fileID: 7752041410448648185}
   m_LocalEulerAnglesHint: {x: 90, y: -180, z: 180}
---- !u!114 &541364358
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541364356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &541364359
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541364356}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &541364360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 541364356}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &541364361
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6786,9 +6558,6 @@ GameObject:
   m_Component:
   - component: {fileID: 597900697}
   - component: {fileID: 597900701}
-  - component: {fileID: 597900700}
-  - component: {fileID: 597900699}
-  - component: {fileID: 597900698}
   m_Layer: 0
   m_Name: Square7
   m_TagString: Untagged
@@ -6815,60 +6584,6 @@ Transform:
   - {fileID: 753066642}
   m_Father: {fileID: 565011307}
   m_LocalEulerAnglesHint: {x: 0.001, y: -180, z: 180}
---- !u!114 &597900698
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597900696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &597900699
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597900696}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &597900700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 597900696}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &597900701
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9241,9 +8956,6 @@ GameObject:
   m_Component:
   - component: {fileID: 810165860}
   - component: {fileID: 810165864}
-  - component: {fileID: 810165863}
-  - component: {fileID: 810165862}
-  - component: {fileID: 810165861}
   m_Layer: 0
   m_Name: Square3
   m_TagString: Untagged
@@ -9270,60 +8982,6 @@ Transform:
   - {fileID: 325908671}
   m_Father: {fileID: 2058216299795857865}
   m_LocalEulerAnglesHint: {x: 270, y: 0, z: 180}
---- !u!114 &810165861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810165859}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &810165862
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810165859}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &810165863
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 810165859}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &810165864
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9625,9 +9283,6 @@ GameObject:
   m_Component:
   - component: {fileID: 853944389}
   - component: {fileID: 853944393}
-  - component: {fileID: 853944392}
-  - component: {fileID: 853944391}
-  - component: {fileID: 853944390}
   m_Layer: 0
   m_Name: Square4
   m_TagString: Untagged
@@ -9654,60 +9309,6 @@ Transform:
   - {fileID: 1494978177}
   m_Father: {fileID: 2066944973104775903}
   m_LocalEulerAnglesHint: {x: 90, y: -180, z: 180}
---- !u!114 &853944390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853944388}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &853944391
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853944388}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &853944392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853944388}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &853944393
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -34317,9 +33918,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1321646702}
   - component: {fileID: 1321646706}
-  - component: {fileID: 1321646705}
-  - component: {fileID: 1321646704}
-  - component: {fileID: 1321646703}
   m_Layer: 0
   m_Name: Square5
   m_TagString: Untagged
@@ -34346,60 +33944,6 @@ Transform:
   - {fileID: 767060400}
   m_Father: {fileID: 1758566187}
   m_LocalEulerAnglesHint: {x: 0.001, y: -180, z: 180}
---- !u!114 &1321646703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321646701}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
-  nextGameState: 2
-  requiredDepth: 1
-  requiredHoldTime: 0.5
-  playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 1
-  playerControllersToDisable: []
---- !u!65 &1321646704
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321646701}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: -0.42}
---- !u!114 &1321646705
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1321646701}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1fa276c6b94264418c556f33a27f00a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetSceneName: Level_2
 --- !u!212 &1321646706
 SpriteRenderer:
   m_ObjectHideFlags: 0
