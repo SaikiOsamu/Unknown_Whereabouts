@@ -42,7 +42,7 @@ TagManager:
   - PlatformsPlayerOnly
   - MidHeightOneWayPlatforms
   - Pushables
-  - Stairs
+  - Button
   - StencilW
   - Push
   - LightTrigger
