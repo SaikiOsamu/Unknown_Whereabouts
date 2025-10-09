@@ -1,26 +1,40 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Collider))]
 public class PlaneBreak : MonoBehaviour
 {
-    public Material planeMaterial;
+    [Header("References")]
     public GameObject TriggerObject;
     public GameObject TriggerZone;
-    [Range(0f, 1f)] public float requiredOverlapFraction = 2f / 3f;
-    public float transparencyDuration = 3f;
 
+    [Header("Trigger Condition (same as before)")]
+    [Range(0f, 1f)] public float requiredOverlapFraction = 2f / 3f;
+
+    [Header("Kill Zone (optional)")]
     public GameObject PlayerKillZone;
     public string playerTag = "Player";
+
+    [Header("Noise Control (Shader property)")]
+    public string noisePropertyName = "_NoiseScale";
+    public float preTouchNoise = 20f;
+    public float postTouchNoise = 0f;
+    public Transform visualsRoot;
+    public bool includeInactiveChildren = true;
 
     private Renderer doorRenderer;
     private Collider doorCollider;
     private Collider triggerObjectCollider;
     private Collider triggerZoneCollider;
 
-    private float timeElapsed = 0f;
-    private bool isFadingIn = false;
     private bool hasActivated = false;
+    private int noisePropertyID;
+
+    private readonly List<Renderer> _renderers = new List<Renderer>();
+    private readonly Dictionary<(Renderer r, int matIndex), MaterialPropertyBlock> _mpbCache =
+        new Dictionary<(Renderer, int), MaterialPropertyBlock>(64);
 
     private class TriggerForwarder : MonoBehaviour
     {
@@ -34,8 +48,8 @@ public class PlaneBreak : MonoBehaviour
     void Awake()
     {
         doorRenderer = GetComponent<Renderer>();
-        if (planeMaterial == null && doorRenderer != null) planeMaterial = doorRenderer.material;
         doorCollider = GetComponent<Collider>();
+
         if (TriggerObject != null) triggerObjectCollider = TriggerObject.GetComponent<Collider>();
         if (TriggerZone != null) triggerZoneCollider = TriggerZone.GetComponent<Collider>();
 
@@ -49,70 +63,76 @@ public class PlaneBreak : MonoBehaviour
             if (fwd == null) fwd = PlayerKillZone.AddComponent<TriggerForwarder>();
             fwd.owner = this;
         }
+
+        noisePropertyID = Shader.PropertyToID(noisePropertyName);
+        Transform root = visualsRoot == null ? transform : visualsRoot;
+        _renderers.Clear();
+        root.GetComponentsInChildren(includeInactiveChildren, _renderers);
+        FilterRenderersByProperty(_renderers, noisePropertyID);
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void Start()
     {
-        if (planeMaterial != null && planeMaterial.HasProperty("_Mode"))
-        {
-            planeMaterial.SetFloat("_Mode", 3);
-            planeMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-            planeMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-            planeMaterial.SetInt("_ZWrite", 0);
-            planeMaterial.DisableKeyword("_ALPHATEST_ON");
-            planeMaterial.EnableKeyword("_ALPHABLEND_ON");
-            planeMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-            planeMaterial.renderQueue = 3000;
-        }
-
-        SetTransparency(0f);
-        if (doorCollider != null) doorCollider.enabled = false;
+        ApplyNoise(preTouchNoise);
         if (doorRenderer != null) doorRenderer.enabled = true;
+
+        if (doorCollider != null)
+        {
+            doorCollider.enabled = true;
+            doorCollider.isTrigger = false;
+        }
     }
 
     void Update()
     {
-        if (isFadingIn)
-        {
-            timeElapsed += Time.deltaTime;
-            float t = (transparencyDuration > 0f) ? Mathf.Clamp01(timeElapsed / transparencyDuration) : 1f;
-            SetTransparency(Mathf.Lerp(0f, 1f, t));
-            if (t >= 1f)
-            {
-                isFadingIn = false;
-                SetTransparency(1f);
-            }
-            return;
-        }
+        if (hasActivated) return;
+        if (triggerObjectCollider == null || triggerZoneCollider == null) return;
 
-        if (!hasActivated && triggerObjectCollider != null && triggerZoneCollider != null)
+        float fraction = ComputeOverlapFraction(triggerObjectCollider.bounds, triggerZoneCollider.bounds);
+        if (fraction >= requiredOverlapFraction)
         {
-            float fraction = ComputeOverlapFraction(triggerObjectCollider.bounds, triggerZoneCollider.bounds);
-            if (fraction >= requiredOverlapFraction) ActivateDoor();
+            ActivateDoor();
         }
     }
 
     void ActivateDoor()
     {
         hasActivated = true;
-        timeElapsed = 0f;
-        SetTransparency(0f);
-        isFadingIn = true;
-       
+        ApplyNoise(postTouchNoise);
+
+        if (doorCollider != null)
+        {
+            doorCollider.enabled = true;
+            doorCollider.isTrigger = true;
+        }
+
         AudioManager.Instance.PlaySequenceScheduled(0.10, "ExitShown_SFX", "TriggerZone_PartOne", "TriggerZone_PartTwo");
-
-
-        if (doorCollider != null) doorCollider.enabled = true;
     }
 
-    void SetTransparency(float alpha)
+    void ApplyNoise(float value)
     {
-        if (planeMaterial == null) return;
-        Color c = planeMaterial.color;
-        c.a = Mathf.Clamp01(alpha);
-        planeMaterial.color = c;
-        if (doorRenderer != null && !doorRenderer.enabled && alpha > 0f) doorRenderer.enabled = true;
+        if (_renderers.Count == 0) return;
+
+        foreach (var r in _renderers)
+        {
+            if (r == null) continue;
+            var mats = r.sharedMaterials;
+            int matCount = mats != null ? mats.Length : 0;
+            for (int i = 0; i < matCount; i++)
+            {
+                var key = (r, i);
+                if (!_mpbCache.TryGetValue(key, out var mpb))
+                {
+                    mpb = new MaterialPropertyBlock();
+                    _mpbCache[key] = mpb;
+                }
+                r.GetPropertyBlock(mpb, i);
+                mpb.SetFloat(noisePropertyID, value);
+                r.SetPropertyBlock(mpb, i);
+            }
+        }
     }
 
     float ComputeOverlapFraction(Bounds objectBounds, Bounds zoneBounds)
@@ -133,8 +153,37 @@ public class PlaneBreak : MonoBehaviour
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
+
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         AudioManager.Instance.Stop("TriggerZone_PartTwo");
+    }
+
+    static void FilterRenderersByProperty(List<Renderer> renderers, int propertyId)
+    {
+        for (int i = renderers.Count - 1; i >= 0; i--)
+        {
+            var r = renderers[i];
+            if (r == null)
+            {
+                renderers.RemoveAt(i);
+                continue;
+            }
+            var mats = r.sharedMaterials;
+            bool ok = false;
+            if (mats != null)
+            {
+                for (int m = 0; m < mats.Length; m++)
+                {
+                    var mat = mats[m];
+                    if (mat != null && mat.HasProperty(propertyId))
+                    {
+                        ok = true;
+                        break;
+                    }
+                }
+            }
+            if (!ok) renderers.RemoveAt(i);
+        }
     }
 }
