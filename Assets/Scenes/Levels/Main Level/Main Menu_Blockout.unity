@@ -24288,6 +24288,10 @@ MonoBehaviour:
   subtitles:
   - sceneName: Level01
     subtitle: "My super intelligence tells me it\u2019s time to use my super powers!"
+  - sceneName: Level02
+    subtitle: Man?
+  - sceneName: Level03
+    subtitle: Man!!!!
   defaultSubtitle: 
   subtitleInDuration: 3
   subtitleHoldDuration: 1.5
@@ -24344,6 +24348,7 @@ MonoBehaviour:
   fadeOutAfterSubtitle: 1
   loadThenActivateAfterFadeIn: 0
   autoIntroOnSceneLoaded: 1
+  blockGameplayDuringFade: 1
 --- !u!4 &1228241420
 Transform:
   m_ObjectHideFlags: 0
