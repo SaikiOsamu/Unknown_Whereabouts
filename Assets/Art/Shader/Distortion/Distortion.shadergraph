@@ -35,6 +35,9 @@
         },
         {
             "m_Id": "145c06de7dd64468a0a15214bb8576ed"
+        },
+        {
+            "m_Id": "8991f0cbfba646bfb184e0d4b56fe225"
         }
     ],
     "m_Keywords": [],
@@ -179,6 +182,9 @@
         },
         {
             "m_Id": "39e8d094909a4f57a98c7bc01b9b06e1"
+        },
+        {
+            "m_Id": "80f8d22ae84d4307808bdb73c4a6bd41"
         }
     ],
     "m_GroupDatas": [],
@@ -432,6 +438,20 @@
             "m_InputSlot": {
                 "m_Node": {
                     "m_Id": "480ca559777549e0b7353b3e0a80f6da"
+                },
+                "m_SlotId": 0
+            }
+        },
+        {
+            "m_OutputSlot": {
+                "m_Node": {
+                    "m_Id": "80f8d22ae84d4307808bdb73c4a6bd41"
+                },
+                "m_SlotId": 0
+            },
+            "m_InputSlot": {
+                "m_Node": {
+                    "m_Id": "803bf1abc74343f6bef6145c43799979"
                 },
                 "m_SlotId": 0
             }
@@ -1207,6 +1227,31 @@
     "m_CustomColors": {
         "m_SerializableColors": []
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.Vector4MaterialSlot",
+    "m_ObjectId": "1cc8293f41f34f20837dee454ec1fb89",
+    "m_Id": 0,
+    "m_DisplayName": "Emissive",
+    "m_SlotType": 1,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "Out",
+    "m_StageCapability": 3,
+    "m_Value": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_DefaultValue": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0,
+        "w": 0.0
+    },
+    "m_Labels": []
 }
 
 {
@@ -2992,6 +3037,42 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
+    "m_ObjectId": "80f8d22ae84d4307808bdb73c4a6bd41",
+    "m_Group": {
+        "m_Id": ""
+    },
+    "m_Name": "Property",
+    "m_DrawState": {
+        "m_Expanded": true,
+        "m_Position": {
+            "serializedVersion": "2",
+            "x": 952.6666870117188,
+            "y": 447.33331298828127,
+            "width": 125.99993896484375,
+            "height": 36.000030517578128
+        }
+    },
+    "m_Slots": [
+        {
+            "m_Id": "1cc8293f41f34f20837dee454ec1fb89"
+        }
+    ],
+    "synonyms": [],
+    "m_Precision": 0,
+    "m_PreviewExpanded": true,
+    "m_DismissedVersion": 0,
+    "m_PreviewMode": 0,
+    "m_CustomColors": {
+        "m_SerializableColors": []
+    },
+    "m_Property": {
+        "m_Id": "8991f0cbfba646bfb184e0d4b56fe225"
+    }
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.Vector1MaterialSlot",
     "m_ObjectId": "815b97eaad2a4f0b9fcf24e75b3824bf",
     "m_Id": 0,
@@ -3166,6 +3247,36 @@
     "m_SpecularAA": false,
     "m_SpecularOcclusionMode": 1,
     "m_OverrideBakedGI": false
+}
+
+{
+    "m_SGVersion": 3,
+    "m_Type": "UnityEditor.ShaderGraph.Internal.ColorShaderProperty",
+    "m_ObjectId": "8991f0cbfba646bfb184e0d4b56fe225",
+    "m_Guid": {
+        "m_GuidSerialized": "5f44e2b4-2254-4cd3-8f8e-10b8bb3c8f43"
+    },
+    "m_Name": "Emissive",
+    "m_DefaultRefNameVersion": 1,
+    "m_RefNameGeneratedByDisplayName": "Emissive",
+    "m_DefaultReferenceName": "_Emissive",
+    "m_OverrideReferenceName": "",
+    "m_GeneratePropertyBlock": true,
+    "m_UseCustomSlotLabel": false,
+    "m_CustomSlotLabel": "",
+    "m_DismissedVersion": 0,
+    "m_Precision": 0,
+    "overrideHLSLDeclaration": false,
+    "hlslDeclarationOverride": 0,
+    "m_Hidden": false,
+    "m_Value": {
+        "r": 0.0,
+        "g": 0.0,
+        "b": 0.0,
+        "a": 1.0
+    },
+    "isMainColor": false,
+    "m_ColorMode": 1
 }
 
 {
@@ -4034,6 +4145,9 @@
         },
         {
             "m_Id": "145c06de7dd64468a0a15214bb8576ed"
+        },
+        {
+            "m_Id": "8991f0cbfba646bfb184e0d4b56fe225"
         }
     ]
 }

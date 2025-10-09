@@ -109,8 +109,8 @@ Material:
     - _NoiseScale: 29.7
     - _NoiseSpeed: 5
     - _NoiseStrength: 5.9
-    - _NormalScale: 1
-    - _NormalScale_2: 3
+    - _NormalScale: 2
+    - _NormalScale_2: 0
     - _OpaqueCullMode: 2
     - _OuterRadius: 3.2
     - _PerPixelSorting: 0
