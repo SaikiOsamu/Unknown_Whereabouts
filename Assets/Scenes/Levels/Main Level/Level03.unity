@@ -25887,7 +25887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a180e142cecca45b9e0e754950364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 60
+  rotationSpeed: 90
   rotationCenter: {fileID: 166570859}
   objectsToRotateWithRoom:
   - {fileID: 1324686836}

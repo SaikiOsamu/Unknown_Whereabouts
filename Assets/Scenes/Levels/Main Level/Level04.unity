@@ -4001,12 +4001,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a180e142cecca45b9e0e754950364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 60
+  rotationSpeed: 90
   rotationCenter: {fileID: 1829473989}
   objectsToRotateWithRoom:
-  - {fileID: 0}
-  - {fileID: 0}
-  inputControllersToDisable: []
+  - {fileID: 1257590759}
+  - {fileID: 1742800968}
+  inputControllersToDisable:
+  - {fileID: 1257590756}
 --- !u!4 &391121838
 Transform:
   m_ObjectHideFlags: 0
@@ -8336,7 +8337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a57f8211d3bcafb478c2b303bbdb305f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 1257590759}
   targets:
   - {fileID: 0}
   - {fileID: 1608534391911062689}
