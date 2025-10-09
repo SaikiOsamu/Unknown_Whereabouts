@@ -40,6 +40,8 @@ public sealed class FadeManager : Singleton<FadeManager>
     public bool loadThenActivateAfterFadeIn = false;
     public bool autoIntroOnSceneLoaded = true;
 
+    public bool blockGameplayDuringFade = true;
+
     Material _instancedMat;
     float _currentAlpha;
     Coroutine _fadeRoutine;
@@ -49,6 +51,10 @@ public sealed class FadeManager : Singleton<FadeManager>
 
     const string BASE_COLOR = "_BaseColor";
     const string COLOR = "_Color";
+
+    public static event Action<bool> OnBlockChanged;
+    int _blockRefCount = 0;
+    public bool IsBlocked => _blockRefCount > 0;
 
     protected override void Awake()
     {
@@ -107,9 +113,11 @@ public sealed class FadeManager : Singleton<FadeManager>
 
     IEnumerator AutoIntroSequence()
     {
+        if (blockGameplayDuringFade) SetInteractionBlocked(true);
         yield return PlaySubtitleIfAny();
         if (fadeOutAfterSubtitle)
             yield return FadeRoutine(_currentAlpha, 0f, defaultOutDuration, defaultUnscaledTime, outCurve, null);
+        if (blockGameplayDuringFade) SetInteractionBlocked(false);
     }
 
     public Coroutine TransitionToScene(
@@ -168,6 +176,8 @@ public sealed class FadeManager : Singleton<FadeManager>
     {
         _managedLoadInProgress = true;
 
+        if (blockGameplayDuringFade) SetInteractionBlocked(true);
+
         yield return FadeRoutine(_currentAlpha, 1f, inDur, unscaled, inCv, null);
 
         AsyncOperation op = SceneManager.LoadSceneAsync(targetScene);
@@ -187,6 +197,9 @@ public sealed class FadeManager : Singleton<FadeManager>
             yield return FadeRoutine(1f, 0f, outDur, unscaled, outCv, null);
 
         onComplete?.Invoke();
+
+        if (blockGameplayDuringFade) SetInteractionBlocked(false);
+
         _managedLoadInProgress = false;
         _transitionRoutine = null;
     }
@@ -310,15 +323,26 @@ public sealed class FadeManager : Singleton<FadeManager>
 
     IEnumerator PlayLevelIntroRoutine(bool finalFadeOut, Action onComplete)
     {
+        if (blockGameplayDuringFade) SetInteractionBlocked(true);
         yield return PlaySubtitleIfAny();
         if (finalFadeOut)
             yield return FadeRoutine(_currentAlpha, 0f, defaultOutDuration, defaultUnscaledTime, outCurve, null);
         onComplete?.Invoke();
+        if (blockGameplayDuringFade) SetInteractionBlocked(false);
     }
 
-    public Coroutine FadeIn(float? duration = null, bool? useUnscaled = null, Action onComplete = null, AnimationCurve curve = null)
-        => FadeIn(duration, useUnscaled, curve, onComplete);
-
-    public Coroutine FadeOut(float? duration = null, bool? useUnscaled = null, Action onComplete = null, AnimationCurve curve = null)
-        => FadeOut(duration, useUnscaled, curve, onComplete);
+    void SetInteractionBlocked(bool blocked)
+    {
+        if (!blockGameplayDuringFade) return;
+        if (blocked)
+        {
+            _blockRefCount++;
+            if (_blockRefCount == 1) OnBlockChanged?.Invoke(true);
+        }
+        else
+        {
+            _blockRefCount = Mathf.Max(0, _blockRefCount - 1);
+            if (_blockRefCount == 0) OnBlockChanged?.Invoke(false);
+        }
+    }
 }

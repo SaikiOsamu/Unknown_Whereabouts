@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,12 +11,16 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
     public float rayMaxDistance = 1000f;
 
     public bool requireFrontClick = true;
-    [Range(0f, 1f)]
-    public float frontDotThreshold = 0.2f;
+    [Range(0f, 1f)] public float frontDotThreshold = 0.2f;
 
     public ActionType action = ActionType.StartGame;
     public string sceneToLoad = "Game";
     public bool disableAfterClick = true;
+
+    public bool useFade = true;
+    public Color fadeColor = Color.black;
+    public float fadeDuration = 0.6f;
+    public float waitBeforeLoad = 1.0f;
 
     void Awake()
     {
@@ -40,7 +45,7 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
         Ray ray = cam.ScreenPointToRay(screenPos);
         if (Physics.Raycast(ray, out RaycastHit hit, rayMaxDistance, clickableLayers, QueryTriggerInteraction.Ignore))
         {
-            if (!hit.collider || hit.collider.gameObject != gameObject) return;
+            if (!hit.collider || !hit.collider.transform.IsChildOf(transform)) return;
             if (requireFrontClick && !IsFrontHit(ray, hit)) return;
 
             RunAction();
@@ -60,10 +65,11 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
         {
             case ActionType.StartGame:
                 if (!string.IsNullOrEmpty(sceneToLoad))
-                    SceneManager.LoadScene(sceneToLoad);
+                    StartCoroutine(StartGameRoutine());
                 else
                     Debug.LogWarning("未设置 sceneToLoad，无法开始游戏。");
                 break;
+
             case ActionType.QuitGame:
 #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
@@ -71,6 +77,36 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
                 Application.Quit();
 #endif
                 break;
+        }
+    }
+
+    IEnumerator StartGameRoutine()
+    {
+#if UNITY_EDITOR
+        UnityEditor.Selection.activeObject = null;
+#endif
+        if (waitBeforeLoad > 0f)
+            yield return new WaitForSeconds(waitBeforeLoad);
+
+        if (useFade && FadeManager.Instance != null)
+        {
+            FadeManager.Instance.SetFadeColor(fadeColor);
+            bool done = false;
+            FadeManager.Instance.TransitionToScene(
+                sceneToLoad,
+                fadeInDur: fadeDuration,
+                fadeOutDur: fadeDuration,
+                unscaled: true,
+                inCv: null,
+                outCv: null,
+                onComplete: () => { done = true; }
+            );
+            while (!done) yield return null;
+        }
+        else
+        {
+            AsyncOperation op = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Single);
+            while (!op.isDone) yield return null;
         }
     }
 

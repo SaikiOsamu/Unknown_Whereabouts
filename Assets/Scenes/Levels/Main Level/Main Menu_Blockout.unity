@@ -28622,11 +28622,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 268435456
   rayMaxDistance: 1000
-  requireFrontClick: 1
+  requireFrontClick: 0
   frontDotThreshold: 0.2
   action: 0
   sceneToLoad: Level01
   disableAfterClick: 1
+  useFade: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeDuration: 0.8
+  waitBeforeLoad: 1
 --- !u!65 &8657079797917834029
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28646,7 +28650,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.10966778, y: 0.1, z: 1.9430081}
+  m_Size: {x: 0.4, y: 0.1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!33 &8678946765886615879
 MeshFilter:
@@ -28790,6 +28794,10 @@ MonoBehaviour:
   action: 1
   sceneToLoad: Game
   disableAfterClick: 1
+  useFade: 1
+  fadeColor: {r: 0, g: 0, b: 0, a: 1}
+  fadeDuration: 0.8
+  waitBeforeLoad: 0.1
 --- !u!65 &9155222329360036850
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28809,7 +28817,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.1244185, y: 0.1, z: 1.9367807}
+  m_Size: {x: 0.4, y: 0.1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
