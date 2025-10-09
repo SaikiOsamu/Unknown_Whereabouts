@@ -8921,12 +8921,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Tutorial
-  nextGameState: 0
+  targetSceneName: Level04
+  nextGameState: 3
   requiredDepth: 1
   requiredHoldTime: 0.5
   playerTag: Player
-  fadeDuration: 0.6
+  fadeDuration: 0.8
   waitBeforeLoad: 1
   playerControllersToDisable: []
 --- !u!114 &2117243710

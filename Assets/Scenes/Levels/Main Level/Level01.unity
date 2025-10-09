@@ -3276,6 +3276,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1667440098}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1667440102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3026299710705282055, guid: 66b41603bc46e5a479650bfa1093784e,
+    type: 3}
+  m_PrefabInstance: {fileID: 1667440098}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667440099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae869e0b1f8c29545b44351af8080da8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1710789172
 GameObject:
   m_ObjectHideFlags: 0
@@ -3328,15 +3340,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Final_Test
+  targetSceneName: Level02
   nextGameState: 2
   requiredDepth: 0.66
-  requiredHoldTime: 0.4
+  requiredHoldTime: 0.5
   playerTag: Player
-  fadeDuration: 0.6
-  waitBeforeLoad: 2
+  fadeDuration: 0.8
+  waitBeforeLoad: 1.5
   playerControllersToDisable:
-  - {fileID: 0}
+  - {fileID: 1667440102}
 --- !u!65 &1710789175
 BoxCollider:
   m_ObjectHideFlags: 0
