@@ -6433,8 +6433,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 565011307}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!65 &565011309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -11569,8 +11569,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 1030941794}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!65 &1030941796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38080,8 +38080,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 1495101663}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!65 &1495101665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -41008,8 +41008,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 1758566187}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!65 &1758566189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46072,8 +46072,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 2058216299795857865}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!33 &6019461938280064837
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -46578,8 +46578,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 2066944973104775903}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!1 &7731999551196071846
 GameObject:
   m_ObjectHideFlags: 0
@@ -46706,8 +46706,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 7871670996228155745}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!1 &7884885631984272354
 GameObject:
   m_ObjectHideFlags: 0
@@ -47166,8 +47166,8 @@ MonoBehaviour:
   visualsRoot: {fileID: 7752041410448648185}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 20
-  cooldownNoiseScale: 0
+  activeNoiseScale: 0
+  cooldownNoiseScale: 20
 --- !u!4 &8885800997411729358
 Transform:
   m_ObjectHideFlags: 0
