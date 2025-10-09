@@ -92,7 +92,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _GlowIntensity: 10
+    - _GlowIntensity: 4
     - _InnerRadius: -2
     - _LumaSoftness: 0.14
     - _LumaThreshold: 0.34
@@ -146,7 +146,7 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
+    - _GlowColor: {r: 1.9973842, g: 11.984312, b: 10.452016, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Offset: {r: -0.2, g: 0, b: 0, a: 0}
     - _PlayerPosWS: {r: 0, g: 0, b: 0, a: 0}

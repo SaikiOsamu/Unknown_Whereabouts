@@ -95,7 +95,7 @@ Material:
     - _GlowIntensity: 4
     - _InnerRadius: -2
     - _LumaSoftness: 0.1
-    - _LumaThreshold: 0.29
+    - _LumaThreshold: 0.21
     - _MaskPower: 1
     - _MaterialID: 1
     - _MaterialTypeMask: 2
@@ -148,6 +148,8 @@ Material:
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _PlayerPosWS: {r: 0, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1

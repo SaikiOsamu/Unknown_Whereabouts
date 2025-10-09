@@ -11769,6 +11769,7 @@ Transform:
   m_Children:
   - {fileID: 6118113744644551087}
   - {fileID: 3439220366694885330}
+  - {fileID: 501025160}
   - {fileID: 5384214574324221306}
   - {fileID: 289659346331171490}
   - {fileID: 744007193}
@@ -12185,12 +12186,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501025159}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0000025629995, y: -0.7071081, z: -0.0000012814997, w: 0.7071056}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.687233, y: 1, z: 1.2183932}
+  m_LocalRotation: {x: 0.5000018, y: -0.49999732, z: 0.50000095, w: -0.5}
+  m_LocalPosition: {x: 2.0296037, y: 0.005002938, z: 1.8890018}
+  m_LocalScale: {x: 0.24999993, y: 0.24999997, z: 0.24999996}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 563541572}
+  m_Father: {fileID: 360544177}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: -450}
 --- !u!114 &501025161
 MonoBehaviour:
@@ -12501,7 +12502,6 @@ Transform:
   m_Children:
   - {fileID: 617632289}
   - {fileID: 1636631642}
-  - {fileID: 501025160}
   m_Father: {fileID: 3439220366694885330}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &568209399
@@ -17914,8 +17914,8 @@ Transform:
   m_GameObject: {fileID: 617632288}
   serializedVersion: 2
   m_LocalRotation: {x: -0.50000316, y: -0.49999866, z: 0.50000125, w: -0.499997}
-  m_LocalPosition: {x: -3.0160532, y: -5.5330257, z: -9.473264}
-  m_LocalScale: {x: 5.8774533, y: 3.0908988, z: 1.8530898}
+  m_LocalPosition: {x: -3.0160532, y: -5.53, z: -24.63}
+  m_LocalScale: {x: 10.59411, y: 3.0908988, z: 1.8530898}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1927816392}
@@ -45591,7 +45591,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 18.13, y: -10, z: 357.22}
-  m_LocalScale: {x: 100, y: 100, z: 200}
+  m_LocalScale: {x: 100, y: 100, z: 80}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1709046086}
@@ -50727,7 +50727,7 @@ Light:
   serializedVersion: 11
   m_Type: 3
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.88419414
+  m_Intensity: 1.7683883
   m_Range: 6.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
