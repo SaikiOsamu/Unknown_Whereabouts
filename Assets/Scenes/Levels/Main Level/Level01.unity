@@ -1580,6 +1580,7 @@ MonoBehaviour:
   landLayerIndex: 0
   systemsToDisable:
   - {fileID: 701774152}
+  - {fileID: 1960789903}
   freezeRigidbodyDuringLock: 0
 --- !u!114 &701774150
 MonoBehaviour:

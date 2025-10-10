@@ -3979,7 +3979,6 @@ GameObject:
   - component: {fileID: 367144480}
   - component: {fileID: 367144479}
   - component: {fileID: 367144478}
-  - component: {fileID: 367144477}
   m_Layer: 0
   m_Name: Level Exit
   m_TagString: Untagged
@@ -4006,27 +4005,6 @@ Transform:
   - {fileID: 1115334173}
   m_Father: {fileID: 7037264353484154097}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
---- !u!65 &367144477
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 367144475}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.12820522, y: 0.6938653, z: 0.4641199}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &367144478
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16435,6 +16413,7 @@ MonoBehaviour:
   landLayerIndex: 0
   systemsToDisable:
   - {fileID: 1257590756}
+  - {fileID: 391121837}
   freezeRigidbodyDuringLock: 0
 --- !u!114 &1257590754
 MonoBehaviour:
@@ -17281,10 +17260,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd0144d5d701ea46816c742c032f355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerObject: {fileID: 0}
-  TriggerZone: {fileID: 0}
+  TriggerObject: {fileID: 1742800965}
+  TriggerZone: {fileID: 1876900015}
   requiredOverlapFraction: 0.1
-  PlayerKillZone: {fileID: 0}
+  PlayerKillZone: {fileID: 109766633}
   playerTag: Player
   noisePropertyName: _NoiseScale
   preTouchNoise: 20
@@ -17303,7 +17282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Level04
+  targetSceneName: Level05
   nextGameState: 3
   requiredDepth: 1
   requiredHoldTime: 0.5
@@ -17311,7 +17290,7 @@ MonoBehaviour:
   fadeDuration: 0.8
   waitBeforeLoad: 1.5
   playerControllersToDisable:
-  - {fileID: 0}
+  - {fileID: 1257590756}
 --- !u!65 &1296937046
 BoxCollider:
   m_ObjectHideFlags: 0

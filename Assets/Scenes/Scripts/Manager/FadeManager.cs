@@ -114,11 +114,18 @@ public sealed class FadeManager : Singleton<FadeManager>
     IEnumerator AutoIntroSequence()
     {
         if (blockGameplayDuringFade) SetInteractionBlocked(true);
+        
+        _currentAlpha = 1f;
+        ApplyAlpha(_currentAlpha);
+
         yield return PlaySubtitleIfAny();
+
         if (fadeOutAfterSubtitle)
             yield return FadeRoutine(_currentAlpha, 0f, defaultOutDuration, defaultUnscaledTime, outCurve, null);
+
         if (blockGameplayDuringFade) SetInteractionBlocked(false);
     }
+
 
     public Coroutine TransitionToScene(
         string sceneName,
