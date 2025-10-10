@@ -83,10 +83,13 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
-    - _B_GlowIntensity: 4
+    - _BE_GlowIntensity: 1
+    - _BE_LumaSoftness: 0.1
+    - _BE_LumaThreshold: 0.13
+    - _B_GlowIntensity: 1
     - _B_InnerRadius: 8
     - _B_NoiseMask3Strength: 0.01
-    - _B_NoiseScale: 20
+    - _B_NoiseScale: 10
     - _B_NoiseSpeed: 1
     - _B_NoiseStrength: 6
     - _B_OuterRadius: 44
@@ -160,6 +163,7 @@ Material:
     - _B_GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
     - _B_PosWS: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseEmissive: {r: 0, g: 0, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}

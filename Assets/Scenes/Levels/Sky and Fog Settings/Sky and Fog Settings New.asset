@@ -119,7 +119,7 @@ MonoBehaviour:
     m_Value: 0.5
   intensity:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.6
   scatter:
     m_OverrideState: 1
     m_Value: 0.7
@@ -514,7 +514,7 @@ MonoBehaviour:
     m_Value: 1
   depthExtent:
     m_OverrideState: 1
-    m_Value: 64
+    m_Value: 45
   denoisingMode:
     m_OverrideState: 1
     m_Value: 0
@@ -603,10 +603,10 @@ MonoBehaviour:
     m_Value: 1
   upperHemisphereLuxValue:
     m_OverrideState: 1
-    m_Value: 0.28956395
+    m_Value: 2.309275
   upperHemisphereLuxColor:
     m_OverrideState: 1
-    m_Value: {x: 0.0417826, y: 0.11840846, z: 0.5}
+    m_Value: {x: 0.5, y: 0.36330184, z: 0.02732844}
   desiredLuxValue:
     m_OverrideState: 0
     m_Value: 20000
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: PhysicallyBasedSky
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   rotation:
     m_OverrideState: 0
     m_Value: 0
@@ -902,7 +902,7 @@ MonoBehaviour:
     m_Value: 0
   type:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0
   atmosphericScattering:
     m_OverrideState: 1
     m_Value: 1

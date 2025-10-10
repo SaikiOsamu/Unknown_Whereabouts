@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 2800000, guid: 8f1ed309a298a2742b829de2033346ab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _NormalMap2:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -90,7 +94,8 @@ Material:
     - _NoiseSpeed_Building: 1
     - _NoiseSpeed_Player: 5
     - _NoiseStrength: 15
-    - _NormalScale: 1.5
+    - _NormalScale: 5
+    - _NormalScale2: 1
     - _OpaqueCullMode: 2
     - _OuterRadius: 11.4
     - _OuterRadius_Building: 3.2
@@ -137,8 +142,12 @@ Material:
     - _GlowColor_Building: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
     - _GlowColor_Player: {r: 0, g: 7.8425016, b: 6.6587267, a: 1}
     - _NoiseTiling: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - _Offset: {r: 1.5, g: 0, b: 0, a: 0}
+    - _Offset_Norm: {r: 0, g: 0, b: 0, a: 0}
     - _PlayerPosWS: {r: 0, g: 0, b: 0, a: 0}
     - _PosWS: {r: -18.14, g: 13.14, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _Tiling_Norm: {r: 1, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &6196858565074236744
