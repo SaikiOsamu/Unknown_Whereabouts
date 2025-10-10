@@ -620,7 +620,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
   m_LocalPosition: {x: 18.17949, y: -7.6885204, z: 341.73}
-  m_LocalScale: {x: 100, y: 100, z: 79.9}
+  m_LocalScale: {x: 10000, y: 100, z: 500}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 821189124}
@@ -23190,36 +23190,36 @@ MonoBehaviour:
   dedication: THANKS
   dedicationIn: 0.8
   zoomIn: 1
-  moveDuration: 6
+  moveDuration: 22
   moveCurve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  worldMoveOffset: {x: 0, y: 0, z: -2}
+  worldMoveOffset: {x: 0, y: -2, z: -2}
   startFOV: 55
   endFOV: 90
   mainCam: {fileID: 1941069959}
-  blackHold: 1.2
+  blackHold: 2
   fadeFromBlack: 1
   disableFadeManagerAutoIntro: 1
 --- !u!4 &978727546

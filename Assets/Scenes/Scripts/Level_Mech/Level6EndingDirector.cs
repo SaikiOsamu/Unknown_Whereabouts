@@ -40,7 +40,7 @@ public class Level6EndingDirector : MonoBehaviour
 
     public bool zoomIn = true;
     public float moveDuration = 6f;
-    public AnimationCurve moveCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
+    public AnimationCurve moveCurve = AnimationCurve.Linear(0f, 0f, 1f, 1f);
     public Vector3 worldMoveOffset = new Vector3(0f, 0f, -2f);
     public float startFOV = 55f;
     public float endFOV = 45f;
@@ -60,29 +60,61 @@ public class Level6EndingDirector : MonoBehaviour
     IEnumerator Start()
     {
         if (endingUI == null) yield break;
+
         if (FadeManager.Instance != null)
         {
             FadeManager.Instance.SetFadeColor(Color.black);
             FadeManager.Instance.SetAlpha(1f);
         }
+
         if (blackHold > 0) yield return new WaitForSecondsRealtime(blackHold);
-        if (FadeManager.Instance != null) yield return FadeManager.Instance.FadeOut(fadeFromBlack, true, (AnimationCurve)null, null);
-        yield return StartCoroutine(PlayCameraMove());
-        if (topSubtitles != null && topSubtitles.Count > 0) yield return endingUI.PlayTopSubtitles(topSubtitles, true);
-        if (titleDelay > 0) yield return new WaitForSecondsRealtime(titleDelay);
+
+        if (FadeManager.Instance != null)
+            yield return FadeManager.Instance.FadeOut(fadeFromBlack, true, (AnimationCurve)null, null);
+
+        yield return RunInParallel(PlayCameraMove(), PlayUISequence());
+    }
+
+    IEnumerator RunInParallel(IEnumerator a, IEnumerator b)
+    {
+        bool aDone = false, bDone = false;
+        if (a != null) StartCoroutine(Wrap(a, () => aDone = true)); else aDone = true;
+        if (b != null) StartCoroutine(Wrap(b, () => bDone = true)); else bDone = true;
+        while (!(aDone && bDone)) yield return null;
+    }
+
+    IEnumerator Wrap(IEnumerator routine, System.Action onDone)
+    {
+        yield return routine;
+        onDone?.Invoke();
+    }
+
+    IEnumerator PlayUISequence()
+    {
+        if (topSubtitles != null && topSubtitles.Count > 0)
+            yield return endingUI.PlayTopSubtitles(topSubtitles, true);
+
+        if (titleDelay > 0)
+            yield return new WaitForSecondsRealtime(titleDelay);
+
         yield return endingUI.PlayTitle(gameTitle, titleIn, titleHold, titleOut, true);
-        if (!string.IsNullOrEmpty(dedication)) yield return endingUI.ShowDedication(dedication, dedicationIn, true);
+
+        if (!string.IsNullOrEmpty(dedication))
+            yield return endingUI.ShowDedication(dedication, dedicationIn, true);
     }
 
     IEnumerator PlayCameraMove()
     {
         if (!mainCam) yield break;
+
         float dur = Mathf.Max(0.0001f, moveDuration);
         float t = 0f;
         Vector3 pos0 = mainCam.transform.position;
+
         float fov0 = startFOV > 0 ? startFOV : mainCam.fieldOfView;
         float fov1 = zoomIn ? endFOV : startFOV;
         if (startFOV > 0) mainCam.fieldOfView = startFOV;
+
         while (t < 1f)
         {
             t += Time.unscaledDeltaTime / dur;
