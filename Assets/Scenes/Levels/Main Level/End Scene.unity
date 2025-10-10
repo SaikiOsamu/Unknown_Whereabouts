@@ -23190,7 +23190,7 @@ MonoBehaviour:
   dedication: THANKS
   dedicationIn: 0.8
   zoomIn: 1
-  moveDuration: 22
+  moveDuration: 25
   moveCurve:
     serializedVersion: 2
     m_Curve:
