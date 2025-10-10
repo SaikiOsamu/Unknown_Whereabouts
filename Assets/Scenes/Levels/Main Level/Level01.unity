@@ -1715,9 +1715,6 @@ MonoBehaviour:
   targets:
   - {fileID: 701774154}
   - {fileID: 701774152}
-  - {fileID: 701774151}
-  - {fileID: 701774150}
-  - {fileID: 701774149}
 --- !u!1 &703210856
 GameObject:
   m_ObjectHideFlags: 0
@@ -25562,7 +25559,8 @@ MonoBehaviour:
   fadeDuration: 0.8
   waitBeforeLoad: 1.5
   playerControllersToDisable:
-  - {fileID: 0}
+  - {fileID: 1960789903}
+  - {fileID: 701774152}
 --- !u!65 &1710789175
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26336,11 +26334,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a180e142cecca45b9e0e754950364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 120
+  rotationSpeed: 90
   rotationCenter: {fileID: 1282855523}
   objectsToRotateWithRoom:
-  - {fileID: 0}
-  inputControllersToDisable: []
+  - {fileID: 701774155}
+  inputControllersToDisable:
+  - {fileID: 701774152}
 --- !u!114 &1960789904
 MonoBehaviour:
   m_ObjectHideFlags: 0

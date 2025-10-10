@@ -23,6 +23,8 @@ MonoBehaviour:
   - m_enabled: 1
     m_path: Assets/Scenes/Levels/Main Level/Main Menu_Blockout.unity
   - m_enabled: 1
+    m_path: Assets/Scenes/Levels/Main Level/End Scene.unity
+  - m_enabled: 1
     m_path: Assets/Scenes/Levels/Main Level/Level01.unity
   - m_enabled: 1
     m_path: Assets/Scenes/Levels/Main Level/Level02.unity
