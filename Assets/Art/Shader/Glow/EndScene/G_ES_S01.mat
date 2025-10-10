@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: GL1TBtest
+  m_Name: G_ES_S01
   m_Shader: {fileID: -6465566751694194690, guid: 8b13b9015260fd44786156c570b2745d,
     type: 3}
   m_Parent: {fileID: 0}
@@ -48,7 +48,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: e26808df8814a4948a4117f4cbc005c6, type: 3}
+        m_Texture: {fileID: 2800000, guid: 12eebda28a5c61e43b999e9d79168f5c, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: 395404d9409022c47a62d20967c40e64, type: 3}
+        m_Texture: {fileID: 2800000, guid: 07fe2f665693a0248ac762863c4445a6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8f1ed309a298a2742b829de2033346ab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -83,15 +83,18 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
-    - _B_GlowIntensity: 2
+    - _BE_GlowIntensity: 1
+    - _BE_LumaSoftness: 0.05
+    - _BE_LumaThreshold: 0.49
+    - _B_GlowIntensity: 0
     - _B_InnerRadius: 8
     - _B_NoiseMask3Strength: 0.01
-    - _B_NoiseScale: 20
+    - _B_NoiseScale: 30
     - _B_NoiseSpeed: 1
     - _B_NoiseStrength: 6
     - _B_OuterRadius: 45
-    - _B_XStretch: 0.5
-    - _B_YStretch: 0.5
+    - _B_XStretch: 1
+    - _B_YStretch: 1
     - _BlendMode: 0
     - _ConservativeDepthOffsetEnable: 0
     - _CullMode: 2
@@ -105,21 +108,21 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _GlowIntensity: 4
+    - _GlowIntensity: 0
     - _InnerRadius: -2
-    - _LumaSoftness: 0.1
-    - _LumaThreshold: 0.21
-    - _MaskPower: 1
+    - _LumaSoftness: 0.41
+    - _LumaThreshold: 0.09
+    - _MaskPower: 4
     - _MaterialID: 1
     - _MaterialTypeMask: 2
-    - _Metallic: 0.238
+    - _Metallic: 1
     - _NoiseMask3: 1
-    - _NoiseMask3Strength: 0.1
+    - _NoiseMask3Strength: 0.2
     - _NoiseScale: 29.7
     - _NoiseSpeed: 5
     - _NoiseStrength: 5.9
-    - _NormalScale: 2
-    - _NormalScale_2: 1
+    - _NormalScale: 1
+    - _NormalScale_2: 0
     - _OpaqueCullMode: 2
     - _OuterRadius: 3.2
     - _PerPixelSorting: 0
@@ -129,7 +132,7 @@ Material:
     - _RefractionModel: 0
     - _RenderQueueType: 1
     - _RequireSplitLighting: 0
-    - _Smoothness: 0.863
+    - _Smoothness: 1
     - _SrcBlend: 1
     - _StencilRef: 0
     - _StencilRefDepth: 8
@@ -157,17 +160,18 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 1
     m_Colors:
-    - _B_GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
+    - _B_GlowColor: {r: 1.9973842, g: 11.984312, b: 10.452016, a: 1}
     - _B_PosWS: {r: 0, g: 0, b: 0, a: 0}
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.754717, g: 0.754717, b: 0.754717, a: 1}
+    - _BaseEmissive: {r: 1.9973842, g: 11.984312, b: 10.452016, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
+    - _GlowColor: {r: 1.9973842, g: 11.984312, b: 10.452016, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
-    - _Offset_Norm: {r: 0, g: 0, b: 0, a: 0}
+    - _Offset_Norm: {r: 0, g: -0.71, b: 0, a: 0}
     - _PlayerPosWS: {r: 0, g: 0, b: 0, a: 0}
     - _Tiling: {r: 1, g: 1, b: 0, a: 0}
-    - _Tiling_Norm: {r: 1, g: 1, b: 0, a: 0}
+    - _Tiling_Norm: {r: 5, g: 5, b: 0, a: 0}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
