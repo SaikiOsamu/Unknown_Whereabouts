@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 59602408}
   - component: {fileID: 59602410}
   - component: {fileID: 59602409}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -745,7 +745,7 @@ GameObject:
   - component: {fileID: 73700240}
   - component: {fileID: 73700242}
   - component: {fileID: 73700241}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1060,6 +1060,204 @@ Light:
   m_LightUnit: 0
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1 &90007800
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 90007801}
+  - component: {fileID: 90007802}
+  m_Layer: 10
+  m_Name: Ocean_Rendering_H
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &90007801
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90007800}
+  serializedVersion: 2
+  m_LocalRotation: {x: 1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 0.03965, y: 35.08932, z: -0.39257}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1382783939}
+  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+--- !u!114 &90007802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 90007800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f6fd535518f5540b4bcc3099582f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  decalLayerMask: 1
+  lightLayerMask: 1
+  largeBand0FadeToggle: 1
+  largeBand1FadeToggle: 1
+  ripplesFadeToggle: 1
+  surfaceType: 0
+  geometryType: 3
+  meshRenderers: []
+  timeMultiplier: 1
+  scriptInteractions: 1
+  cpuEvaluateRipples: 0
+  customMaterial: {fileID: 0}
+  startSmoothness: 1
+  endSmoothness: 0.90000004
+  smoothnessFadeStart: 100
+  smoothnessFadeDistance: 500
+  tessellation: 1
+  maxTessellationFactor: 3
+  tessellationFactorFadeStart: 150
+  tessellationFactorFadeRange: 1850
+  refractionColor: {r: 0.009721218, g: 0.06997254, b: 0.21586053, a: 1}
+  maxRefractionDistance: 0.5
+  absorptionDistance: 1.5
+  scatteringColor: {r: 0.009721218, g: 0.07036011, b: 0.21586053, a: 1}
+  ambientScattering: 0.2
+  heightScattering: 0.2
+  displacementScattering: 0.1
+  directLightTipScattering: 0.6
+  directLightBodyScattering: 0.5
+  maximumHeightOverride: 0
+  caustics: 0
+  causticsIntensity: 0.5
+  causticsPlaneBlendDistance: 1
+  causticsResolution: 256
+  causticsBand: 2
+  virtualPlaneDistance: 4
+  causticsTilingFactor: 1
+  causticsDirectionalShadow: 0
+  causticsDirectionalShadowDimmer: 0.25
+  renderingLayerMask: 1
+  debugMode: 0
+  waterMaskDebugMode: 0
+  waterCurrentDebugMode: 0
+  currentDebugMultiplier: 1
+  waterFoamDebugMode: 0
+  underWater: 0
+  volumeBounds: {fileID: 0}
+  volumeDepth: 50
+  volumeHeight: 0
+  volumePrority: 0
+  absorptionDistanceMultiplier: 1
+  underWaterAmbientProbeContribution: 1
+  underWaterScatteringColorMode: 0
+  underWaterScatteringColor: {r: 0, g: 0.27, b: 0.23, a: 1}
+  underWaterRefraction: 0
+  decalRegionSize: {x: 200, y: 200}
+  decalRegionAnchor: {fileID: 0}
+  supportLargeCurrent: 0
+  largeCurrentRes: 512
+  largeCurrentSpeedValue: 0
+  largeCurrentMap: {fileID: 0}
+  largeCurrentRegionExtent: {x: 100, y: 100}
+  largeCurrentRegionOffset: {x: 0, y: 0}
+  largeCurrentMapInfluence: 1
+  supportRipplesCurrent: 0
+  ripplesCurrentRes: 512
+  ripplesCurrentSpeedValue: 0
+  ripplesCurrentMap: {fileID: 0}
+  ripplesCurrentRegionExtent: {x: 100, y: 100}
+  ripplesCurrentRegionOffset: {x: 0, y: 0}
+  ripplesCurrentMapInfluence: 1
+  deformation: 0
+  deformationRes: 512
+  foam: 1
+  foamResolution: 512
+  foamPersistenceMultiplier: 0.5
+  foamCurrentInfluence: 0.6
+  foamColor: {r: 1, g: 1, b: 1, a: 1}
+  foamTextureTiling: 0.15
+  foamSmoothness: 1
+  simulationFoamAmount: 0.2
+  supportSimulationFoamMask: 0
+  simulationFoamMask: {fileID: 0}
+  simulationFoamMaskExtent: {x: 100, y: 100}
+  simulationFoamMaskOffset: {x: 0, y: 0}
+  simulationFoamWindCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  repetitionSize: 5000
+  largeOrientationValue: 0
+  largeWindSpeed: 120
+  largeChaos: 1
+  largeBand0Multiplier: 1
+  largeBand0FadeMode: 1
+  largeBand0FadeStart: 1500
+  largeBand0FadeDistance: 3000
+  largeBand1Multiplier: 1
+  largeBand1FadeMode: 1
+  largeBand1FadeStart: 300
+  largeBand1FadeDistance: 800
+  ripples: 1
+  ripplesMotionMode: 0
+  ripplesOrientationValue: 0
+  ripplesWindSpeed: 8
+  ripplesChaos: 0.8
+  ripplesFadeMode: 1
+  ripplesFadeStart: 50
+  ripplesFadeDistance: 200
+  simulationMask: 0
+  maskRes: 512
+  waterMask: {fileID: 0}
+  waterMaskRemap: {x: 0.9047613, y: 1}
+  waterMaskExtent: {x: 100, y: 100}
+  waterMaskOffset: {x: 0, y: 0}
 --- !u!1 &100588000
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,7 +1471,7 @@ GameObject:
   - component: {fileID: 102092890}
   - component: {fileID: 102092892}
   - component: {fileID: 102092891}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2429,11 +2627,11 @@ Transform:
   m_GameObject: {fileID: 183139071}
   serializedVersion: 2
   m_LocalRotation: {x: -0.70710576, y: -0, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 18.13, y: -10, z: 357.22}
+  m_LocalPosition: {x: 18.16965, y: -9.91068, z: 306.82742}
   m_LocalScale: {x: 100, y: 100, z: 79.9}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!23 &183139073
 MeshRenderer:
@@ -2761,7 +2959,7 @@ GameObject:
   - component: {fileID: 254442952}
   - component: {fileID: 254442954}
   - component: {fileID: 254442953}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3254,7 +3452,7 @@ GameObject:
   - component: {fileID: 308884818}
   - component: {fileID: 308884820}
   - component: {fileID: 308884819}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3406,7 +3604,7 @@ GameObject:
   - component: {fileID: 314431544}
   - component: {fileID: 314431546}
   - component: {fileID: 314431545}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4962,7 +5160,7 @@ GameObject:
   - component: {fileID: 440828690}
   - component: {fileID: 440828692}
   - component: {fileID: 440828691}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5048,7 +5246,7 @@ GameObject:
   - component: {fileID: 442684052}
   - component: {fileID: 442684054}
   - component: {fileID: 442684053}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5139,7 +5337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &458680680
 Transform:
   m_ObjectHideFlags: 0
@@ -5149,11 +5347,11 @@ Transform:
   m_GameObject: {fileID: 458680679}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.13, y: 13.301168, z: 24.380001}
+  m_LocalPosition: {x: -19.09035, y: 13.390489, z: -26.01257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &458680681
 MonoBehaviour:
@@ -6141,7 +6339,7 @@ GameObject:
   - component: {fileID: 511603390}
   - component: {fileID: 511603392}
   - component: {fileID: 511603391}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6390,7 +6588,7 @@ GameObject:
   - component: {fileID: 528192210}
   - component: {fileID: 528192212}
   - component: {fileID: 528192211}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6607,7 +6805,7 @@ GameObject:
   - component: {fileID: 549694280}
   - component: {fileID: 549694282}
   - component: {fileID: 549694281}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6912,7 +7110,7 @@ GameObject:
   - component: {fileID: 600809045}
   - component: {fileID: 600809047}
   - component: {fileID: 600809046}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7288,7 +7486,7 @@ GameObject:
   - component: {fileID: 634077620}
   - component: {fileID: 634077622}
   - component: {fileID: 634077621}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7374,7 +7572,7 @@ GameObject:
   - component: {fileID: 635494452}
   - component: {fileID: 635494454}
   - component: {fileID: 635494453}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8072,11 +8270,11 @@ Transform:
   m_GameObject: {fileID: 695635668}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.34078, y: 10.11998, z: 28.05985}
+  m_LocalPosition: {x: -21.30113, y: 10.2093, z: -22.33272}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &695635670
 MonoBehaviour:
@@ -8165,7 +8363,7 @@ GameObject:
   - component: {fileID: 706543257}
   - component: {fileID: 706543259}
   - component: {fileID: 706543258}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10107,7 +10305,7 @@ GameObject:
   - component: {fileID: 801643824}
   - component: {fileID: 801643826}
   - component: {fileID: 801643825}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10208,11 +10406,11 @@ Transform:
   m_GameObject: {fileID: 804652400}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24.778801, y: -3.78011, z: 31.165142}
+  m_LocalPosition: {x: 24.81845, y: -3.69079, z: -19.227428}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &804652402
 MonoBehaviour:
@@ -12634,7 +12832,7 @@ GameObject:
   - component: {fileID: 924434694}
   - component: {fileID: 924434696}
   - component: {fileID: 924434695}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13050,7 +13248,7 @@ GameObject:
   - component: {fileID: 994622076}
   - component: {fileID: 994622078}
   - component: {fileID: 994622077}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13433,11 +13631,11 @@ Transform:
   m_GameObject: {fileID: 1007404680}
   serializedVersion: 2
   m_LocalRotation: {x: 0.24478269, y: -0.23099497, z: 0.06016968, w: 0.9397353}
-  m_LocalPosition: {x: -15.19909, y: -5.1679997, z: 31.734112}
+  m_LocalPosition: {x: -15.15944, y: -5.0786796, z: -18.658459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 29.2, y: -27.62, z: 0}
 --- !u!114 &1007404682
 MonoBehaviour:
@@ -14787,7 +14985,7 @@ GameObject:
   - component: {fileID: 1109743094}
   - component: {fileID: 1109743096}
   - component: {fileID: 1109743095}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14904,7 +15102,7 @@ GameObject:
   - component: {fileID: 1113308605}
   - component: {fileID: 1113308607}
   - component: {fileID: 1113308606}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15316,7 +15514,7 @@ GameObject:
   - component: {fileID: 1132667964}
   - component: {fileID: 1132667966}
   - component: {fileID: 1132667965}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17437,7 +17635,7 @@ GameObject:
   - component: {fileID: 1307880392}
   - component: {fileID: 1307880394}
   - component: {fileID: 1307880393}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17935,7 +18133,7 @@ GameObject:
   - component: {fileID: 1329185784}
   - component: {fileID: 1329185786}
   - component: {fileID: 1329185785}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18021,7 +18219,7 @@ GameObject:
   - component: {fileID: 1335290145}
   - component: {fileID: 1335290147}
   - component: {fileID: 1335290146}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18193,7 +18391,7 @@ GameObject:
   - component: {fileID: 1351243734}
   - component: {fileID: 1351243736}
   - component: {fileID: 1351243735}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18539,6 +18737,50 @@ Transform:
   m_Children:
   - {fileID: 1000552566}
   m_Father: {fileID: 1496117500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1382783938
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1382783939}
+  m_Layer: 0
+  m_Name: DAY
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1382783939
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1382783938}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.03965, y: -0.08932, z: 0.39257}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 695635669}
+  - {fileID: 2093580934}
+  - {fileID: 1724454088}
+  - {fileID: 2039169796}
+  - {fileID: 1582854846}
+  - {fileID: 458680680}
+  - {fileID: 1989328884}
+  - {fileID: 804652401}
+  - {fileID: 1007404681}
+  - {fileID: 1801505080}
+  - {fileID: 2041785029}
+  - {fileID: 90007801}
+  - {fileID: 183139072}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1413361575
 GameObject:
@@ -19051,7 +19293,7 @@ GameObject:
   - component: {fileID: 1437157596}
   - component: {fileID: 1437157598}
   - component: {fileID: 1437157597}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19426,6 +19668,7 @@ GameObject:
   - component: {fileID: 1450746566}
   - component: {fileID: 1450746565}
   - component: {fileID: 1450746564}
+  - component: {fileID: 1450746568}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -19643,19 +19886,27 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: -50}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 695635669}
-  - {fileID: 2093580934}
-  - {fileID: 1724454088}
-  - {fileID: 2039169796}
-  - {fileID: 458680680}
-  - {fileID: 1989328884}
-  - {fileID: 804652401}
-  - {fileID: 1007404681}
-  - {fileID: 1801505080}
-  - {fileID: 183139072}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450746568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450746563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6d2c780fed08de4eb2ac29b80ecfb84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxYaw: 3
+  maxPitch: 2
+  invertX: 1
+  invertY: 1
+  positionAmplitude: 0
+  smooth: 8
 --- !u!1 &1454869575
 GameObject:
   m_ObjectHideFlags: 0
@@ -40471,7 +40722,7 @@ GameObject:
   - component: {fileID: 1512476731}
   - component: {fileID: 1512476733}
   - component: {fileID: 1512476732}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40850,7 +41101,7 @@ GameObject:
   - component: {fileID: 1526741287}
   - component: {fileID: 1526741289}
   - component: {fileID: 1526741288}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41521,7 +41772,7 @@ GameObject:
   - component: {fileID: 1570271980}
   - component: {fileID: 1570271982}
   - component: {fileID: 1570271981}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41607,7 +41858,7 @@ GameObject:
   - component: {fileID: 1571260762}
   - component: {fileID: 1571260764}
   - component: {fileID: 1571260763}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41768,6 +42019,296 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1575348655}
   m_Mesh: {fileID: -5493100462613005892, guid: 738c1fe99fe504944b626d6216a90768, type: 3}
+--- !u!1 &1582854845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1582854846}
+  - component: {fileID: 1582854847}
+  m_Layer: 0
+  m_Name: 'Custom Pass 1 '
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1582854846
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582854845}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -19.09035, y: 13.390489, z: -28.01257}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1382783939}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1582854847
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582854845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26d6499a6bd256e47b859377446493a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  fadeRadius: 0
+  priority: 0
+  customPasses:
+  - rid: 6205419534431551488
+  - rid: 6205419536253452362
+  - rid: 6205419536253452364
+  - rid: 6205419531778129920
+  - rid: 4418077648903209042
+  - rid: 4418077457014063104
+  injectionPoint: 6
+  m_TargetCamera: {fileID: 0}
+  useTargetCamera: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 4418077457014063104
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: Outline Draw
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 1
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 2
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 512
+        sortingCriteria: 51
+        overrideMode: 1
+        overrideMaterial: {fileID: 2100000, guid: 5809cfdcb61d0b1438d606e256f3212f,
+          type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: ForwardOnly
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 4
+        depthWrite: 1
+        overrideStencil: 0
+        stencilReferenceValue: 64
+        stencilWriteMask: 192
+        stencilReadMask: 192
+        stencilCompareFunction: 8
+        stencilPassOperation: 0
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+        variableRateShading: 0
+    - rid: 4418077648903209042
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: StencilR
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 10
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 8
+        sortingCriteria: 59
+        overrideMode: 0
+        overrideMaterial: {fileID: 0}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: Forward
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 4
+        depthWrite: 0
+        overrideStencil: 0
+        stencilReferenceValue: 64
+        stencilWriteMask: 192
+        stencilReadMask: 192
+        stencilCompareFunction: 8
+        stencilPassOperation: 0
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+        variableRateShading: 0
+    - rid: 6205419531778129920
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: Write
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 0
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 10
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 64
+        sortingCriteria: 51
+        overrideMode: 0
+        overrideMaterial: {fileID: 0}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: Forward
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 4
+        depthWrite: 1
+        overrideStencil: 1
+        stencilReferenceValue: 64
+        stencilWriteMask: 0
+        stencilReadMask: 64
+        stencilCompareFunction: 8
+        stencilPassOperation: 2
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+        variableRateShading: 0
+    - rid: 6205419534431551488
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: StencilW
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 1
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 10
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 536870912
+        sortingCriteria: 51
+        overrideMode: 0
+        overrideMaterial: {fileID: 2100000, guid: 48b12f68ce020314188f562c09133927,
+          type: 2}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: ForwardOnly
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 4
+        depthWrite: 1
+        overrideStencil: 1
+        stencilReferenceValue: 64
+        stencilWriteMask: 192
+        stencilReadMask: 64
+        stencilCompareFunction: 8
+        stencilPassOperation: 2
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+        variableRateShading: 0
+    - rid: 6205419536253452362
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: DefaultStencil
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 1
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 10
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 1
+        sortingCriteria: 51
+        overrideMode: 0
+        overrideMaterial: {fileID: 0}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: Forward
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 5
+        depthWrite: 1
+        overrideStencil: 1
+        stencilReferenceValue: 64
+        stencilWriteMask: 0
+        stencilReadMask: 64
+        stencilCompareFunction: 3
+        stencilPassOperation: 0
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+        variableRateShading: 0
+    - rid: 6205419536253452364
+      type: {class: DrawRenderersCustomPass, ns: UnityEngine.Rendering.HighDefinition,
+        asm: Unity.RenderPipelines.HighDefinition.Runtime}
+      data:
+        m_Name: ParticleDraw
+        enabled: 1
+        targetColorBuffer: 0
+        targetDepthBuffer: 0
+        clearFlags: 0
+        passFoldout: 1
+        m_Version: 0
+        filterFoldout: 1
+        rendererFoldout: 1
+        renderQueueType: 10
+        layerMask:
+          serializedVersion: 2
+          m_Bits: 16384
+        sortingCriteria: 51
+        overrideMode: 0
+        overrideMaterial: {fileID: 0}
+        overrideMaterialPassIndex: 0
+        overrideMaterialPassName: Forward
+        overrideShader: {fileID: 0}
+        overrideShaderPassIndex: 0
+        overrideShaderPassName: Forward
+        overrideDepthState: 1
+        depthCompareFunction: 4
+        depthWrite: 1
+        overrideStencil: 0
+        stencilReferenceValue: 64
+        stencilWriteMask: 0
+        stencilReadMask: 64
+        stencilCompareFunction: 8
+        stencilPassOperation: 0
+        stencilFailOperation: 0
+        stencilDepthFailOperation: 0
+        shaderPass: 0
+        variableRateShading: 0
 --- !u!1 &1587613198
 GameObject:
   m_ObjectHideFlags: 0
@@ -43148,7 +43689,7 @@ GameObject:
   - component: {fileID: 1677093634}
   - component: {fileID: 1677093636}
   - component: {fileID: 1677093635}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43324,7 +43865,7 @@ GameObject:
   - component: {fileID: 1686495214}
   - component: {fileID: 1686495216}
   - component: {fileID: 1686495215}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43410,7 +43951,7 @@ GameObject:
   - component: {fileID: 1687889904}
   - component: {fileID: 1687889906}
   - component: {fileID: 1687889905}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43496,7 +44037,7 @@ GameObject:
   - component: {fileID: 1694118899}
   - component: {fileID: 1694118901}
   - component: {fileID: 1694118900}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43888,11 +44429,11 @@ Transform:
   m_GameObject: {fileID: 1724454087}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 1, y: -3, z: 8}
+  m_LocalPosition: {x: 1.03965, y: -2.91068, z: -42.39257}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!73398921 &1724454089
 VFXRenderer:
@@ -44138,7 +44679,7 @@ GameObject:
   - component: {fileID: 1738026579}
   - component: {fileID: 1738026581}
   - component: {fileID: 1738026580}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44404,7 +44945,7 @@ GameObject:
   - component: {fileID: 1749251023}
   - component: {fileID: 1749251025}
   - component: {fileID: 1749251024}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44909,7 +45450,7 @@ GameObject:
   - component: {fileID: 1776573315}
   - component: {fileID: 1776573317}
   - component: {fileID: 1776573316}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45097,11 +45638,11 @@ Transform:
   m_GameObject: {fileID: 1801505079}
   serializedVersion: 2
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: -15.19909, y: -5.1679997, z: 31.734112}
+  m_LocalPosition: {x: -15.15944, y: -5.0786796, z: -18.658459}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1801505081
 MonoBehaviour:
@@ -45321,7 +45862,7 @@ GameObject:
   - component: {fileID: 1811496694}
   - component: {fileID: 1811496696}
   - component: {fileID: 1811496695}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45555,7 +46096,7 @@ GameObject:
   - component: {fileID: 1832096294}
   - component: {fileID: 1832096296}
   - component: {fileID: 1832096295}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46496,7 +47037,7 @@ GameObject:
   - component: {fileID: 1935048331}
   - component: {fileID: 1935048333}
   - component: {fileID: 1935048332}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47343,7 +47884,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1989328884
 Transform:
   m_ObjectHideFlags: 0
@@ -47353,11 +47894,11 @@ Transform:
   m_GameObject: {fileID: 1989328883}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 25.01065, y: -3.1254568, z: 36.462498}
+  m_LocalPosition: {x: 25.0503, y: -3.0361369, z: -13.930072}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1989328885
 MonoBehaviour:
@@ -47665,7 +48206,7 @@ GameObject:
   - component: {fileID: 2012949292}
   - component: {fileID: 2012949294}
   - component: {fileID: 2012949293}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47751,7 +48292,7 @@ GameObject:
   - component: {fileID: 2016005174}
   - component: {fileID: 2016005176}
   - component: {fileID: 2016005175}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48210,11 +48751,11 @@ Transform:
   m_GameObject: {fileID: 2039169795}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: -0.18003798, y: -4, z: 51.849995}
+  m_LocalPosition: {x: -0.14038798, y: -3.91068, z: 1.4574246}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!73398921 &2039169797
 VFXRenderer:
@@ -48363,6 +48904,204 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!1 &2041785028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2041785029}
+  - component: {fileID: 2041785030}
+  m_Layer: 10
+  m_Name: Ocean_Rendering_V
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2041785029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041785028}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.7071079, y: -0, z: -0, w: -0.70710576}
+  m_LocalPosition: {x: 0.03965, y: 35.08932, z: 247.60744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1382783939}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: 0}
+--- !u!114 &2041785030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2041785028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8f6fd535518f5540b4bcc3099582f77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Version: 3
+  decalLayerMask: 1
+  lightLayerMask: 1
+  largeBand0FadeToggle: 1
+  largeBand1FadeToggle: 1
+  ripplesFadeToggle: 1
+  surfaceType: 0
+  geometryType: 3
+  meshRenderers: []
+  timeMultiplier: 0
+  scriptInteractions: 1
+  cpuEvaluateRipples: 0
+  customMaterial: {fileID: 0}
+  startSmoothness: 1
+  endSmoothness: 0.90000004
+  smoothnessFadeStart: 100
+  smoothnessFadeDistance: 500
+  tessellation: 1
+  maxTessellationFactor: 0
+  tessellationFactorFadeStart: 150
+  tessellationFactorFadeRange: 1850
+  refractionColor: {r: 0.009721218, g: 0.06997254, b: 0.21586053, a: 1}
+  maxRefractionDistance: 0.5
+  absorptionDistance: 1.5
+  scatteringColor: {r: 0.009721218, g: 0.07036011, b: 0.21586053, a: 1}
+  ambientScattering: 0.2
+  heightScattering: 0.2
+  displacementScattering: 0.1
+  directLightTipScattering: 0.6
+  directLightBodyScattering: 0.5
+  maximumHeightOverride: 0
+  caustics: 0
+  causticsIntensity: 0.5
+  causticsPlaneBlendDistance: 1
+  causticsResolution: 256
+  causticsBand: 2
+  virtualPlaneDistance: 4
+  causticsTilingFactor: 1
+  causticsDirectionalShadow: 0
+  causticsDirectionalShadowDimmer: 0.25
+  renderingLayerMask: 1
+  debugMode: 0
+  waterMaskDebugMode: 0
+  waterCurrentDebugMode: 0
+  currentDebugMultiplier: 1
+  waterFoamDebugMode: 0
+  underWater: 0
+  volumeBounds: {fileID: 0}
+  volumeDepth: 50
+  volumeHeight: 0
+  volumePrority: 0
+  absorptionDistanceMultiplier: 1
+  underWaterAmbientProbeContribution: 1
+  underWaterScatteringColorMode: 0
+  underWaterScatteringColor: {r: 0, g: 0.27, b: 0.23, a: 1}
+  underWaterRefraction: 0
+  decalRegionSize: {x: 200, y: 200}
+  decalRegionAnchor: {fileID: 0}
+  supportLargeCurrent: 0
+  largeCurrentRes: 512
+  largeCurrentSpeedValue: 0
+  largeCurrentMap: {fileID: 0}
+  largeCurrentRegionExtent: {x: 100, y: 100}
+  largeCurrentRegionOffset: {x: 0, y: 0}
+  largeCurrentMapInfluence: 1
+  supportRipplesCurrent: 0
+  ripplesCurrentRes: 512
+  ripplesCurrentSpeedValue: 0
+  ripplesCurrentMap: {fileID: 0}
+  ripplesCurrentRegionExtent: {x: 100, y: 100}
+  ripplesCurrentRegionOffset: {x: 0, y: 0}
+  ripplesCurrentMapInfluence: 1
+  deformation: 0
+  deformationRes: 512
+  foam: 1
+  foamResolution: 512
+  foamPersistenceMultiplier: 0.5
+  foamCurrentInfluence: 0.6
+  foamColor: {r: 1, g: 1, b: 1, a: 1}
+  foamTextureTiling: 0.15
+  foamSmoothness: 1
+  simulationFoamAmount: 0.2
+  supportSimulationFoamMask: 0
+  simulationFoamMask: {fileID: 0}
+  simulationFoamMaskExtent: {x: 100, y: 100}
+  simulationFoamMaskOffset: {x: 0, y: 0}
+  simulationFoamWindCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.2
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.3
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  repetitionSize: 250
+  largeOrientationValue: 0
+  largeWindSpeed: 0
+  largeChaos: 0
+  largeBand0Multiplier: 1
+  largeBand0FadeMode: 1
+  largeBand0FadeStart: 1500
+  largeBand0FadeDistance: 3000
+  largeBand1Multiplier: 1
+  largeBand1FadeMode: 1
+  largeBand1FadeStart: 300
+  largeBand1FadeDistance: 800
+  ripples: 0
+  ripplesMotionMode: 0
+  ripplesOrientationValue: 0
+  ripplesWindSpeed: 0
+  ripplesChaos: 0
+  ripplesFadeMode: 1
+  ripplesFadeStart: 50
+  ripplesFadeDistance: 200
+  simulationMask: 0
+  maskRes: 512
+  waterMask: {fileID: 0}
+  waterMaskRemap: {x: 0.9047613, y: 1}
+  waterMaskExtent: {x: 100, y: 100}
+  waterMaskOffset: {x: 0, y: 0}
 --- !u!1 &2052904900
 GameObject:
   m_ObjectHideFlags: 0
@@ -48374,7 +49113,7 @@ GameObject:
   - component: {fileID: 2052904901}
   - component: {fileID: 2052904903}
   - component: {fileID: 2052904902}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlane_BackCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -48832,7 +49571,7 @@ GameObject:
   - component: {fileID: 2075689696}
   - component: {fileID: 2075689698}
   - component: {fileID: 2075689697}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -49093,11 +49832,11 @@ Transform:
   m_GameObject: {fileID: 2093580932}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.41402, y: -5.46202, z: 31.09507}
+  m_LocalPosition: {x: 8.45367, y: -5.3726997, z: -19.2975}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1450746567}
+  m_Father: {fileID: 1382783939}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2102127068
 GameObject:
@@ -49282,7 +50021,7 @@ GameObject:
   - component: {fileID: 2117631161}
   - component: {fileID: 2117631163}
   - component: {fileID: 2117631162}
-  m_Layer: 6
+  m_Layer: 3
   m_Name: WritePlaneCover4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -52878,6 +53617,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1450746567}
+  - {fileID: 1382783939}
   - {fileID: 1829473989}
   - {fileID: 391121838}
   - {fileID: 1257590759}

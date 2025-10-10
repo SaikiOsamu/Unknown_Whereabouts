@@ -83,7 +83,7 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
-    - _BE_GlowIntensity: 1
+    - _BE_GlowIntensity: 0.25
     - _BE_LumaSoftness: 0.05
     - _BE_LumaThreshold: 0.49
     - _B_GlowIntensity: 0
