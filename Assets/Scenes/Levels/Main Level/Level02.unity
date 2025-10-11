@@ -5893,7 +5893,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!65 &565011309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6188,7 +6188,7 @@ Transform:
   m_GameObject: {fileID: 583248671}
   serializedVersion: 2
   m_LocalRotation: {x: 0.707109, y: -0.000002855448, z: -0.7071047, w: 0.0000008323991}
-  m_LocalPosition: {x: 0.15296732, y: 0.009006644, z: 0.0042274357}
+  m_LocalPosition: {x: 0.153, y: -0.0207, z: 0.0042}
   m_LocalScale: {x: 0.09999986, y: 0.099999845, z: 0.16666652}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6222,8 +6222,8 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 4.5
-  m_ShapeHeight: 6.5
+  m_ShapeWidth: 3.5
+  m_ShapeHeight: 5
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -6347,7 +6347,7 @@ Light:
   serializedVersion: 11
   m_Type: 3
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.9597021
+  m_Intensity: 3.6378274
   m_Range: 3.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6388,11 +6388,11 @@ Light:
   m_RenderingLayerMask: 3
   m_Lightmapping: 1
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 4.5, y: 6.5}
+  m_AreaSize: {x: 3.5, y: 5}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 7.452847}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 6.5516386}
   m_UseBoundingSphereOverride: 1
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
@@ -10779,7 +10779,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 85b64238dc9de5c4cb3027318e94b2a1, type: 2}
+  - {fileID: 2100000, guid: 6de0ecf143ff6da4cb9b6b646b076843, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12206,7 +12206,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!65 &1030941796
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34126,7 +34126,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e9f9ebccee49e543af2dafef76155bf, type: 2}
+  - {fileID: 2100000, guid: 919a906c4dd927242826ddfeabbe6c84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -39143,7 +39143,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!65 &1495101665
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40996,7 +40996,7 @@ Transform:
   m_GameObject: {fileID: 1624797192}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071063, z: -0, w: -0.70710737}
-  m_LocalPosition: {x: -81.577415, y: -1.2249999, z: 64.19262}
+  m_LocalPosition: {x: -52.6, y: -2.1, z: 57.8}
   m_LocalScale: {x: 1.2499998, y: 1.25, z: 1.2499998}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -42828,7 +42828,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!65 &1758566189
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45082,13 +45082,13 @@ MonoBehaviour:
   directLightTipScattering: 1
   directLightBodyScattering: 1
   maximumHeightOverride: 0
-  caustics: 0
+  caustics: 1
   causticsIntensity: 0.5
   causticsPlaneBlendDistance: 1
   causticsResolution: 256
   causticsBand: 2
-  virtualPlaneDistance: 10
-  causticsTilingFactor: 5
+  virtualPlaneDistance: 20
+  causticsTilingFactor: 37
   causticsDirectionalShadow: 1
   causticsDirectionalShadowDimmer: 0
   renderingLayerMask: 1
@@ -48130,7 +48130,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!33 &6019461938280064837
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -48637,7 +48637,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!1 &7731999551196071846
 GameObject:
   m_ObjectHideFlags: 0
@@ -48765,7 +48765,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!1 &7884885631984272354
 GameObject:
   m_ObjectHideFlags: 0
@@ -49225,7 +49225,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 0
-  cooldownNoiseScale: 20
+  cooldownNoiseScale: 10
 --- !u!4 &8885800997411729358
 Transform:
   m_ObjectHideFlags: 0
