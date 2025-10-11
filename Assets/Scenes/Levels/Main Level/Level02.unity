@@ -191,7 +191,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8484921
 Transform:
   m_ObjectHideFlags: 0
@@ -1455,7 +1455,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &139244407
 Transform:
   m_ObjectHideFlags: 0
@@ -1781,7 +1781,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &154528250
 Transform:
   m_ObjectHideFlags: 0
@@ -3803,7 +3803,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &351748215
 Transform:
   m_ObjectHideFlags: 0
@@ -4937,7 +4937,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &488650631
 Transform:
   m_ObjectHideFlags: 0
@@ -5892,7 +5892,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 565011307}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!65 &565011309
 BoxCollider:
@@ -12205,7 +12205,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 1030941794}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!65 &1030941796
 BoxCollider:
@@ -39142,7 +39142,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 1495101663}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!65 &1495101665
 BoxCollider:
@@ -42032,7 +42032,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1730556717
 Transform:
   m_ObjectHideFlags: 0
@@ -42827,7 +42827,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 1758566187}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!65 &1758566189
 BoxCollider:
@@ -44096,7 +44096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1893789886
 Transform:
   m_ObjectHideFlags: 0
@@ -45222,7 +45222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1983857761
 Transform:
   m_ObjectHideFlags: 0
@@ -48129,7 +48129,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 2058216299795857865}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!33 &6019461938280064837
 MeshFilter:
@@ -48636,7 +48636,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 2066944973104775903}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!1 &7731999551196071846
 GameObject:
@@ -48764,7 +48764,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 7871670996228155745}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!1 &7884885631984272354
 GameObject:
@@ -49224,7 +49224,7 @@ MonoBehaviour:
   visualsRoot: {fileID: 7752041410448648185}
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
-  activeNoiseScale: 0
+  activeNoiseScale: 3
   cooldownNoiseScale: 10
 --- !u!4 &8885800997411729358
 Transform:

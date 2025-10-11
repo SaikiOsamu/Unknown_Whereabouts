@@ -54265,7 +54265,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!65 &5549309202011558068
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -54583,7 +54583,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!33 &6638597507377149632
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -54956,7 +54956,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!33 &7574759372167919761
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -54985,7 +54985,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!65 &7574759372167919763
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55092,7 +55092,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!65 &7828694997917610440
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55192,7 +55192,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!1 &8125429530886654232
 GameObject:
   m_ObjectHideFlags: 0
@@ -55233,7 +55233,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!65 &8125429530886654234
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -55551,7 +55551,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!4 &8527915310584644954
 Transform:
   m_ObjectHideFlags: 0
@@ -55674,7 +55674,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!33 &8815280900769653925
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -55784,7 +55784,7 @@ MonoBehaviour:
   includeInactiveChildren: 1
   noiseScaleRef: _NoiseScale
   activeNoiseScale: 10
-  cooldownNoiseScale: 0
+  cooldownNoiseScale: 3
 --- !u!65 &9129594827333205941
 BoxCollider:
   m_ObjectHideFlags: 0
