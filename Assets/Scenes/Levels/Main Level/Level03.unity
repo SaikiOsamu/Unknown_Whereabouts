@@ -25090,7 +25090,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 880643195}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -30296,10 +30296,11 @@ MonoBehaviour:
   requiredDepth: 0.1
   requiredHoldTime: 0.5
   playerTag: Player
-  fadeDuration: 2
+  fadeDuration: 1
   waitBeforeLoad: 1.5
   playerControllersToDisable:
   - {fileID: 4264410}
+  - {fileID: 1198855187}
 --- !u!65 &1703129413
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -5,6 +5,17 @@ public class DisableDuringFade : MonoBehaviour
 {
     public Behaviour[] targets;
 
+    void Awake()
+    {
+        if (targets == null || targets.Length == 0)
+        {
+            var bs = GetComponents<Behaviour>();
+            var list = new List<Behaviour>();
+            foreach (var b in bs) if (b && !(b is DisableDuringFade)) list.Add(b);
+            targets = list.ToArray();
+        }
+    }
+
     void Reset()
     {
         var bs = GetComponents<Behaviour>();
@@ -23,7 +34,6 @@ public class DisableDuringFade : MonoBehaviour
     void OnDisable()
     {
         FadeManager.OnBlockChanged -= HandleBlock;
-        HandleBlock(false);
     }
 
     void HandleBlock(bool blocked)

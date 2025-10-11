@@ -114,18 +114,13 @@ public sealed class FadeManager : Singleton<FadeManager>
     IEnumerator AutoIntroSequence()
     {
         if (blockGameplayDuringFade) SetInteractionBlocked(true);
-        
         _currentAlpha = 1f;
         ApplyAlpha(_currentAlpha);
-
         yield return PlaySubtitleIfAny();
-
         if (fadeOutAfterSubtitle)
-            yield return FadeRoutine(_currentAlpha, 0f, defaultOutDuration, defaultUnscaledTime, outCurve, null);
-
+            yield return FadeRoutineInternal(_currentAlpha, 0f, defaultOutDuration, defaultUnscaledTime, outCurve, null, false);
         if (blockGameplayDuringFade) SetInteractionBlocked(false);
     }
-
 
     public Coroutine TransitionToScene(
         string sceneName,
@@ -149,11 +144,11 @@ public sealed class FadeManager : Singleton<FadeManager>
         return _transitionRoutine;
     }
 
-    public Coroutine FadeIn(float? duration = null, bool? useUnscaled = null, AnimationCurve curve = null, Action onComplete = null)
-        => PlayFade(_currentAlpha, 1f, duration ?? defaultInDuration, useUnscaled ?? defaultUnscaledTime, curve ?? inCurve, onComplete);
+    public Coroutine FadeIn(float? duration = null, bool? useUnscaled = null, AnimationCurve curve = null, Action onComplete = null, bool manageBlock = true)
+        => PlayFade(_currentAlpha, 1f, duration ?? defaultInDuration, useUnscaled ?? defaultUnscaledTime, curve ?? inCurve, onComplete, manageBlock);
 
-    public Coroutine FadeOut(float? duration = null, bool? useUnscaled = null, AnimationCurve curve = null, Action onComplete = null)
-        => PlayFade(_currentAlpha, 0f, duration ?? defaultOutDuration, useUnscaled ?? defaultUnscaledTime, curve ?? outCurve, onComplete);
+    public Coroutine FadeOut(float? duration = null, bool? useUnscaled = null, AnimationCurve curve = null, Action onComplete = null, bool manageBlock = true)
+        => PlayFade(_currentAlpha, 0f, duration ?? defaultOutDuration, useUnscaled ?? defaultUnscaledTime, curve ?? outCurve, onComplete, manageBlock);
 
     public void SetFadeColor(Color color)
     {
@@ -185,7 +180,7 @@ public sealed class FadeManager : Singleton<FadeManager>
 
         if (blockGameplayDuringFade) SetInteractionBlocked(true);
 
-        yield return FadeRoutine(_currentAlpha, 1f, inDur, unscaled, inCv, null);
+        yield return FadeRoutineInternal(_currentAlpha, 1f, inDur, unscaled, inCv, null, false);
 
         AsyncOperation op = SceneManager.LoadSceneAsync(targetScene);
         if (loadThenActivateAfterFadeIn)
@@ -201,7 +196,7 @@ public sealed class FadeManager : Singleton<FadeManager>
         yield return PlaySubtitleIfAny();
 
         if (fadeOutAfterSubtitle)
-            yield return FadeRoutine(1f, 0f, outDur, unscaled, outCv, null);
+            yield return FadeRoutineInternal(1f, 0f, outDur, unscaled, outCv, null, false);
 
         onComplete?.Invoke();
 
@@ -256,39 +251,52 @@ public sealed class FadeManager : Singleton<FadeManager>
         subtitleGroup.alpha = to;
     }
 
-    Coroutine PlayFade(float from, float to, float duration, bool unscaled, AnimationCurve curve, Action onComplete)
+    Coroutine PlayFade(float from, float to, float duration, bool unscaled, AnimationCurve curve, Action onComplete, bool manageBlock)
     {
         if (_fadeRoutine != null) StopCoroutine(_fadeRoutine);
-        _fadeRoutine = StartCoroutine(FadeRoutine(from, to, duration, unscaled, curve, onComplete));
+        _fadeRoutine = StartCoroutine(FadeRoutineInternal(from, to, duration, unscaled, curve, onComplete, manageBlock));
         return _fadeRoutine;
     }
 
-    IEnumerator FadeRoutine(float from, float to, float duration, bool unscaled, AnimationCurve curve, Action onComplete)
+    IEnumerator FadeRoutineInternal(float from, float to, float duration, bool unscaled, AnimationCurve curve, Action onComplete, bool manageBlock)
     {
-        if (duration <= 0f)
+        bool didBlock = false;
+        try
         {
+            if (manageBlock && blockGameplayDuringFade)
+            {
+                SetInteractionBlocked(true);
+                didBlock = true;
+            }
+
+            if (duration <= 0f)
+            {
+                _currentAlpha = to;
+                ApplyAlpha(_currentAlpha);
+                onComplete?.Invoke();
+                yield break;
+            }
+
+            float t = 0f;
+            float dur = Mathf.Max(0.0001f, duration);
+            while (t < 1f)
+            {
+                float dt = unscaled ? Time.unscaledDeltaTime : Time.deltaTime;
+                t += dt / dur;
+                float eased = curve.Evaluate(Mathf.Clamp01(t));
+                _currentAlpha = Mathf.LerpUnclamped(from, to, eased);
+                ApplyAlpha(_currentAlpha);
+                yield return null;
+            }
             _currentAlpha = to;
             ApplyAlpha(_currentAlpha);
             onComplete?.Invoke();
-            _fadeRoutine = null;
-            yield break;
         }
-
-        float t = 0f;
-        float dur = Mathf.Max(0.0001f, duration);
-        while (t < 1f)
+        finally
         {
-            float dt = unscaled ? Time.unscaledDeltaTime : Time.deltaTime;
-            t += dt / dur;
-            float eased = curve.Evaluate(Mathf.Clamp01(t));
-            _currentAlpha = Mathf.LerpUnclamped(from, to, eased);
-            ApplyAlpha(_currentAlpha);
-            yield return null;
+            if (didBlock) SetInteractionBlocked(false);
+            _fadeRoutine = null;
         }
-        _currentAlpha = to;
-        ApplyAlpha(_currentAlpha);
-        onComplete?.Invoke();
-        _fadeRoutine = null;
     }
 
     void ApplyAlpha(float a)
@@ -320,6 +328,11 @@ public sealed class FadeManager : Singleton<FadeManager>
     {
         if (_transitionRoutine != null) { StopCoroutine(_transitionRoutine); _transitionRoutine = null; }
         if (_fadeRoutine != null) { StopCoroutine(_fadeRoutine); _fadeRoutine = null; }
+        if (blockGameplayDuringFade && IsBlocked)
+        {
+            while (_blockRefCount > 0) _blockRefCount--;
+            OnBlockChanged?.Invoke(false);
+        }
     }
 
     public Coroutine PlayLevelIntro(bool? doFadeOutAfterSubtitle = null, Action onComplete = null)
@@ -333,7 +346,7 @@ public sealed class FadeManager : Singleton<FadeManager>
         if (blockGameplayDuringFade) SetInteractionBlocked(true);
         yield return PlaySubtitleIfAny();
         if (finalFadeOut)
-            yield return FadeRoutine(_currentAlpha, 0f, defaultOutDuration, defaultUnscaledTime, outCurve, null);
+            yield return FadeRoutineInternal(_currentAlpha, 0f, defaultOutDuration, defaultUnscaledTime, outCurve, null, false);
         onComplete?.Invoke();
         if (blockGameplayDuringFade) SetInteractionBlocked(false);
     }
