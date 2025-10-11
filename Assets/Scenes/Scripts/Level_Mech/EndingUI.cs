@@ -52,6 +52,41 @@ public class EndingUI : MonoBehaviour
         yield return Fade(dedicateGroup, 0f, 1f, inDur, unscaled, null);
     }
 
+    public void HideAllImmediate()
+    {
+        SetGroup(topGroup, 0f);
+        SetGroup(titleGroup, 0f);
+        SetGroup(dedicateGroup, 0f);
+        if (topText) topText.text = "";
+        if (titleText) titleText.text = "";
+        if (dedicateText) dedicateText.text = "";
+    }
+
+    public IEnumerator HideAll(float dur, bool unscaled)
+    {
+        float d = Mathf.Max(0.0001f, dur);
+        IEnumerator a = Fade(topGroup, topGroup ? topGroup.alpha : 0f, 0f, d, unscaled, null);
+        IEnumerator b = Fade(titleGroup, titleGroup ? titleGroup.alpha : 0f, 0f, d, unscaled, null);
+        IEnumerator c = Fade(dedicateGroup, dedicateGroup ? dedicateGroup.alpha : 0f, 0f, d, unscaled, null);
+        yield return Run3(a, b, c);
+        HideAllImmediate();
+    }
+
+    static IEnumerator Run3(IEnumerator a, IEnumerator b, IEnumerator c)
+    {
+        bool ad = a == null, bd = b == null, cd = c == null;
+        if (!ad) CoroutineHost.Instance.StartCoroutine(Wrap(a, () => ad = true));
+        if (!bd) CoroutineHost.Instance.StartCoroutine(Wrap(b, () => bd = true));
+        if (!cd) CoroutineHost.Instance.StartCoroutine(Wrap(c, () => cd = true));
+        while (!(ad && bd && cd)) yield return null;
+    }
+
+    static IEnumerator Wrap(IEnumerator r, System.Action onDone)
+    {
+        yield return r;
+        onDone?.Invoke();
+    }
+
     static void SetGroup(CanvasGroup g, float a)
     {
         if (!g) return;
@@ -83,6 +118,24 @@ public class EndingUI : MonoBehaviour
         {
             t += unscaled ? Time.unscaledDeltaTime : Time.deltaTime;
             yield return null;
+        }
+    }
+}
+
+public class CoroutineHost : MonoBehaviour
+{
+    static CoroutineHost _inst;
+    public static CoroutineHost Instance
+    {
+        get
+        {
+            if (_inst == null)
+            {
+                var go = new GameObject("__CoroutineHost");
+                DontDestroyOnLoad(go);
+                _inst = go.AddComponent<CoroutineHost>();
+            }
+            return _inst;
         }
     }
 }

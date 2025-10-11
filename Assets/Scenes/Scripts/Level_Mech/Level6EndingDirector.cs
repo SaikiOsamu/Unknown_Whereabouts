@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 [System.Serializable]
@@ -50,6 +51,15 @@ public class Level6EndingDirector : MonoBehaviour
     public float fadeFromBlack = 1.0f;
     public bool disableFadeManagerAutoIntro = true;
 
+    [Header("Return To First Level")]
+    public bool returnToFirstLevel = true;
+    public string firstLevelSceneName = "Level1";
+    public bool useBuildIndexFirstLevel = false;
+    public float fadeToBlackBeforeLoad = 0.8f;
+    public float postLoadFadeFromBlack = 0.8f;
+    public bool hardRestartLikeFreshBoot = false;
+    public float returnDelaySeconds = 2f;
+
     void Awake()
     {
         if (!mainCam) mainCam = Camera.main;
@@ -73,6 +83,12 @@ public class Level6EndingDirector : MonoBehaviour
             yield return FadeManager.Instance.FadeOut(fadeFromBlack, true, (AnimationCurve)null, null);
 
         yield return RunInParallel(PlayCameraMove(), PlayUISequence());
+
+        if (returnToFirstLevel)
+        {
+            if (returnDelaySeconds > 0f) yield return new WaitForSecondsRealtime(returnDelaySeconds);
+            yield return ReturnToFirstLevelRoutine();
+        }
     }
 
     IEnumerator RunInParallel(IEnumerator a, IEnumerator b)
@@ -123,5 +139,25 @@ public class Level6EndingDirector : MonoBehaviour
             mainCam.fieldOfView = Mathf.Lerp(fov0, fov1, e);
             yield return null;
         }
+    }
+
+    void ResetAllSingletonsIfAny()
+    {
+    }
+
+    IEnumerator ReturnToFirstLevelRoutine()
+    {
+        if (endingUI != null) endingUI.HideAllImmediate();
+
+        if (FadeManager.Instance != null)
+        {
+            yield return FadeManager.Instance.FadeIn(fadeToBlackBeforeLoad, true, (AnimationCurve)null, null);
+            FadeManager.Instance.autoIntroOnSceneLoaded = true;
+        }
+
+        if (useBuildIndexFirstLevel)
+            SceneManager.LoadScene(0, LoadSceneMode.Single);
+        else
+            SceneManager.LoadScene(firstLevelSceneName, LoadSceneMode.Single);
     }
 }

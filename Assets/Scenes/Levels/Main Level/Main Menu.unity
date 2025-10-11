@@ -1249,74 +1249,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 160065802}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &163243019
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 163243022}
-  - component: {fileID: 163243021}
-  - component: {fileID: 163243020}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &163243020
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163243019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SendPointerHoverToParent: 1
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &163243021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163243019}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &163243022
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 163243019}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.686081, y: -4.9753695, z: 9.55}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1228241420}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &164434543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1721,7 +1653,7 @@ RectTransform:
   - {fileID: 223279674}
   - {fileID: 533429137}
   - {fileID: 650390077}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1848370603}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -27167,7 +27099,8 @@ MonoBehaviour:
   rotationCenter: {fileID: 1122300668}
   objectsToRotateWithRoom:
   - {fileID: 281513114}
-  inputControllersToDisable: []
+  inputControllersToDisable:
+  - {fileID: 281513111}
 --- !u!1 &900175872
 GameObject:
   m_ObjectHideFlags: 0
@@ -29344,8 +29277,7 @@ Transform:
   m_LocalPosition: {x: -5.686081, y: 4.9753695, z: -9.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 163243022}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1230079774
@@ -31414,6 +31346,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656131bfbac4ba4418ee33a24b3e6d09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeInDuration: 2
+  fadeOutDuration: 2
+  useUnscaledTime: 1
 --- !u!65 &1492140285
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33691,7 +33626,8 @@ Transform:
   m_LocalPosition: {x: 1.8920288, y: 2.0696402, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 189487424}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1868058026
@@ -36692,7 +36628,7 @@ MonoBehaviour:
   requireFrontClick: 0
   frontDotThreshold: 0.2
   action: 0
-  sceneToLoad: Level01
+  sceneToLoad: End Scene
   disableAfterClick: 1
   useFade: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}
@@ -36949,7 +36885,6 @@ SceneRoots:
   - {fileID: 536053660}
   - {fileID: 751537647}
   - {fileID: 1122300668}
-  - {fileID: 189487424}
   - {fileID: 1774169410}
   - {fileID: 1848370603}
   - {fileID: 1228241420}

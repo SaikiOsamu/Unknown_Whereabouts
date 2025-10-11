@@ -17,7 +17,12 @@ public class UIManager : Singleton<UIManager>
     protected override void Awake()
     {
         base.Awake();
-        DontDestroyOnLoad(Menu.transform.root.gameObject);
+        if (Instance != this)
+        {
+            Destroy(transform.root.gameObject);
+            return;
+        }
+        DontDestroyOnLoad(transform.root.gameObject);
     }
 
     void Update()
@@ -99,18 +104,17 @@ public class UIManager : Singleton<UIManager>
         GameOverMenu.SetActive(false);
         TutorialMenu.SetActive(false);
     }
+
     public void QuitGame()
     {
+        AudioManager.Instance?.Play("Quit_SFX");
         Application.Quit();
-        AudioManager.Instance.Play("Quit_SFX");
     }
+
     public void ResumeGame()
     {
         SettingMenu.SetActive(false);
-
         AudioManager.Instance.Play("Resume_SFX");
-
         Time.timeScale = 1f;
-        
     }
 }
