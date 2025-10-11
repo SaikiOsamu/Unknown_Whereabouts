@@ -27094,7 +27094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 52a180e142cecca45b9e0e754950364d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 90
+  rotationSpeed: 60
   rotationCenter: {fileID: 166570859}
   objectsToRotateWithRoom:
   - {fileID: 1324686836}
@@ -30190,210 +30190,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1660201083}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1661798574
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1661798576}
-  - component: {fileID: 1661798575}
-  m_Layer: 0
-  m_Name: 'AudioManager '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1661798575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661798574}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5961639afb8237498ae4b22a815ae4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - key: Loop_BGM
-    clip: {fileID: 8300000, guid: 9d87672e903af0643aa05c284322b09d, type: 3}
-    channel: 0
-    volume: 1
-    pitch: 0.5
-    loop: 1
-    playOnAwake: 1
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Wave_BGM
-    clip: {fileID: 8300000, guid: 328394bcf25e8514c9fd56820c4f3c38, type: 3}
-    channel: 0
-    volume: 1
-    pitch: 0.5
-    loop: 1
-    playOnAwake: 1
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Laser_SFX
-    clip: {fileID: 8300000, guid: 0244b36bdc8dd2441aec12f723a28234, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 0.5
-    loop: 1
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Portal_SFX
-    clip: {fileID: 8300000, guid: 9ebb89f7baa6a0340879be5555350714, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1.5
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 0
-    mixerGroup: {fileID: 0}
-  - key: Rotate_SFX
-    clip: {fileID: 8300000, guid: 301c927c5cce79942a0a422ed1c54cd9, type: 3}
-    channel: 1
-    volume: 0.8
-    pitch: 0.5
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 1
-    mixerGroup: {fileID: 0}
-  - key: WallMove_SFX
-    clip: {fileID: 8300000, guid: 9e77694f7e3be2c41a7be9e25ce7a6c0, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 2
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 1
-    mixerGroup: {fileID: 0}
-  - key: ExitShown_SFX
-    clip: {fileID: 8300000, guid: 970f39e6c8150c74fb93fc48fad948b2, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 1
-    mixerGroup: {fileID: 0}
-  - key: TriggerZone_PartOne
-    clip: {fileID: 8300000, guid: e3407363d475b884baeddcb8248834f6, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 1
-    voices: 2
-    mixerGroup: {fileID: 0}
-  - key: TriggerZone_PartTwo
-    clip: {fileID: 8300000, guid: 5afd9c824e4f57248abda501e4c63ae1, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 1
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 0
-    voices: 2
-    mixerGroup: {fileID: 0}
-  - key: Landing_SFX
-    clip: {fileID: 8300000, guid: ac434fe78364ad74ea4648c8e2b807e0, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 1
-    voices: 2
-    mixerGroup: {fileID: 0}
-  - key: CubeDrop_SFX
-    clip: {fileID: 8300000, guid: 5afeb6bd2e9761245837d2b2cfacc1e2, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 1
-    voices: 2
-    mixerGroup: {fileID: 0}
-  - key: Resume_SFX
-    clip: {fileID: 8300000, guid: a237e1d70e51861489fa1739813c0abf, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 1
-    voices: 2
-    mixerGroup: {fileID: 0}
-  - key: Quit_SFX
-    clip: {fileID: 8300000, guid: 8178139e552cce04abdef92c74ea32df, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 1
-    voices: 2
-    mixerGroup: {fileID: 0}
-  - key: UIHovering_SFX
-    clip: {fileID: 8300000, guid: 642b808e6f3227e428a99e4ba6ec9079, type: 3}
-    channel: 1
-    volume: 1
-    pitch: 1
-    loop: 0
-    playOnAwake: 0
-    spatialBlend: 0
-    priority: 1
-    voices: 2
-    mixerGroup: {fileID: 0}
-  defaultMaster: 1
-  defaultBGM: 0.75
-  defaultSFX: 0.75
-  defaultUI: 0.75
-  defaultAmb: 0.75
---- !u!4 &1661798576
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1661798574}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1703129408
 GameObject:
   m_ObjectHideFlags: 0
@@ -30500,7 +30296,7 @@ MonoBehaviour:
   requiredDepth: 0.1
   requiredHoldTime: 0.5
   playerTag: Player
-  fadeDuration: 1.5
+  fadeDuration: 2
   waitBeforeLoad: 1.5
   playerControllersToDisable:
   - {fileID: 4264410}
@@ -32778,6 +32574,75 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008983136}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2016543713
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2016543716}
+  - component: {fileID: 2016543715}
+  - component: {fileID: 2016543714}
+  m_Layer: 0
+  m_Name: Reset_Level
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2016543714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016543713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 656131bfbac4ba4418ee33a24b3e6d09, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fadeInDuration: 2
+  fadeOutDuration: 2
+  useUnscaledTime: 1
+--- !u!65 &2016543715
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016543713}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 75, y: 5, z: 75}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2016543716
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2016543713}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -30, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2023061409
 GameObject:
   m_ObjectHideFlags: 0
@@ -36023,4 +35888,4 @@ SceneRoots:
   - {fileID: 1324686836}
   - {fileID: 4264413}
   - {fileID: 880643198}
-  - {fileID: 1661798576}
+  - {fileID: 2016543716}

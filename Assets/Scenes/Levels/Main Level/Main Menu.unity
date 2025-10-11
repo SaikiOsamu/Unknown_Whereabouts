@@ -27191,8 +27191,8 @@ MonoBehaviour:
   - key: Laser_SFX
     clip: {fileID: 8300000, guid: 0244b36bdc8dd2441aec12f723a28234, type: 3}
     channel: 1
-    volume: 1
-    pitch: 0.5
+    volume: 0.5
+    pitch: 1
     loop: 1
     playOnAwake: 0
     spatialBlend: 0
