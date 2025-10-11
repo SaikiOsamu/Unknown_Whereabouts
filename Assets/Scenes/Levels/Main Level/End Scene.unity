@@ -25000,7 +25000,7 @@ MonoBehaviour:
   customMaterial: {fileID: 0}
   startSmoothness: 1
   endSmoothness: 0.69240665
-  smoothnessFadeStart: 0
+  smoothnessFadeStart: 0.5
   smoothnessFadeDistance: 45
   tessellation: 1
   maxTessellationFactor: 3

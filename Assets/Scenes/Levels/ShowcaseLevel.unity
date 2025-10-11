@@ -3542,8 +3542,7 @@ Transform:
   m_LocalPosition: {x: 4, y: -3, z: 15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1537914995}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &357470925
@@ -9997,6 +9996,7 @@ Transform:
   m_Children:
   - {fileID: 244506461}
   - {fileID: 1169292087}
+  - {fileID: 1537914995}
   - {fileID: 2078027339}
   - {fileID: 734794889}
   - {fileID: 1340747261}
@@ -33590,11 +33590,11 @@ Transform:
   m_GameObject: {fileID: 1537914994}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.70710576, z: -0, w: 0.70710784}
-  m_LocalPosition: {x: 0, y: 0, z: 6.34}
+  m_LocalPosition: {x: 4.3301, y: -2.2564, z: 18.07174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 346431167}
+  m_Father: {fileID: 1071938634}
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!73398921 &1537914996
 VFXRenderer:
