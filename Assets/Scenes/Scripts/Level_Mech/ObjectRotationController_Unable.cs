@@ -3,14 +3,14 @@ using System.Collections;
 
 public class ObjectRotationController_Unable : MonoBehaviour
 {
-    public float rotationSpeed = 100f;  // 控制旋转速度
-    public float dampingFactor = 0.1f;  // 控制阻尼因子，使得旋转回弹过程更加平滑
-    public Transform rotationCenter;  // 旋转中心物体
-    public float rotationAngle = 30f;  // 固定旋转角度
+    public float rotationSpeed = 100f;  // Controls rotation speed
+    public float dampingFactor = 0.1f;  // Controls damping factor for smoother rotation and return motion
+    public Transform rotationCenter;  // The center object around which this object rotates
+    public float rotationAngle = 30f;  // Fixed rotation angle per input
 
-    private bool canRotateX = true;  // 判断是否可以进行X轴旋转
-    private bool canRotateY = true;  // 判断是否可以进行Y轴旋转
-    private bool isRotating = false;  // 判断是否正在旋转
+    private bool canRotateX = true;  // Whether X-axis rotation is allowed
+    private bool canRotateY = true;  // Whether Y-axis rotation is allowed
+    private bool isRotating = false;  // Whether the object is currently rotating
 
     void Start()
     {
@@ -23,37 +23,38 @@ public class ObjectRotationController_Unable : MonoBehaviour
 
     void Update()
     {
-        if (rotationCenter == null || isRotating) return;  // 如果没有旋转中心或正在旋转则跳出
+        // Skip if rotation center is missing or the object is already rotating
+        if (rotationCenter == null || isRotating) return;
 
-        // 获取输入的方向键（使用 GetAxisRaw 来确保按键按下后即触发）
-        float horizontal = Input.GetAxisRaw("Horizontal_Object_X");  // 左右箭头键
-        float vertical = Input.GetAxisRaw("Vertical_Object_Y");  // 上下箭头键
+        // Get directional input (using GetAxisRaw for immediate response)
+        float horizontal = Input.GetAxisRaw("Horizontal_Object_X");  // Left and right arrow keys
+        float vertical = Input.GetAxisRaw("Vertical_Object_Y");  // Up and down arrow keys
 
-        // 处理上下方向的旋转（X轴旋转）
-        if (vertical > 0 && canRotateX)  // 按上键
+        // Handle up/down input for X-axis rotation
+        if (vertical > 0 && canRotateX)  // Up key
         {
-            StartCoroutine(RotateAndReturn(Vector3.right, rotationAngle));  // 旋转 30度 顺时针
-            canRotateX = false;  // 禁止继续旋转直到输入变化
+            StartCoroutine(RotateAndReturn(Vector3.right, rotationAngle));  // Rotate +30 degrees around X
+            canRotateX = false;  // Disable further X rotation until input is released
         }
-        else if (vertical < 0 && canRotateX)  // 按下键
+        else if (vertical < 0 && canRotateX)  // Down key
         {
-            StartCoroutine(RotateAndReturn(Vector3.left, rotationAngle));  // 旋转 30度 逆时针
-            canRotateX = false;  // 禁止继续旋转直到输入变化
-        }
-
-        // 处理左右方向的旋转（Y轴旋转）
-        if (horizontal > 0 && canRotateY)  // 按右键
-        {
-            StartCoroutine(RotateAndReturn(Vector3.up, rotationAngle));  // 旋转 30度 顺时针
-            canRotateY = false;  // 禁止继续旋转直到输入变化
-        }
-        else if (horizontal < 0 && canRotateY)  // 按左键
-        {
-            StartCoroutine(RotateAndReturn(Vector3.down, rotationAngle));  // 旋转 30度 逆时针
-            canRotateY = false;  // 禁止继续旋转直到输入变化
+            StartCoroutine(RotateAndReturn(Vector3.left, rotationAngle));  // Rotate -30 degrees around X
+            canRotateX = false;  // Disable further X rotation until input is released
         }
 
-        // 重置旋转状态，以便下次按键时可以旋转
+        // Handle left/right input for Y-axis rotation
+        if (horizontal > 0 && canRotateY)  // Right key
+        {
+            StartCoroutine(RotateAndReturn(Vector3.up, rotationAngle));  // Rotate +30 degrees around Y
+            canRotateY = false;  // Disable further Y rotation until input is released
+        }
+        else if (horizontal < 0 && canRotateY)  // Left key
+        {
+            StartCoroutine(RotateAndReturn(Vector3.down, rotationAngle));  // Rotate -30 degrees around X
+            canRotateY = false;  // Disable further Y rotation until input is released
+        }
+
+        // Reset rotation permissions when input is released
         if (vertical == 0)
         {
             canRotateX = true;
