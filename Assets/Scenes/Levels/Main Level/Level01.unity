@@ -2818,7 +2818,7 @@ Light:
   serializedVersion: 11
   m_Type: 3
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 21.22066
+  m_Intensity: 63.661976
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3880,7 +3880,7 @@ Light:
   serializedVersion: 11
   m_Type: 3
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 21.22066
+  m_Intensity: 63.661976
   m_Range: 8
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -26291,7 +26291,7 @@ VisualEffect:
   m_PropertySheet:
     m_Float:
       m_Array:
-      - m_Value: 1.25
+      - m_Value: 5
         m_Name: Amount_1
         m_Overridden: 1
       - m_Value: 0.75
@@ -26300,7 +26300,7 @@ VisualEffect:
       - m_Value: 0.1
         m_Name: Size_Black
         m_Overridden: 1
-      - m_Value: 0.25
+      - m_Value: 0.15
         m_Name: Size
         m_Overridden: 1
       - m_Value: 1
