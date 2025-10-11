@@ -2964,7 +2964,7 @@ Transform:
   m_GameObject: {fileID: 437208866}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5000001, y: -0.5, z: 0.49999994, w: 0.49999994}
-  m_LocalPosition: {x: 0.46, y: 0.174, z: -0.028}
+  m_LocalPosition: {x: 0.367, y: 0.174, z: -0.028}
   m_LocalScale: {x: 0.1704559, y: 0.14628528, z: 0.38601404}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27202,8 +27202,8 @@ MonoBehaviour:
   - key: Portal_SFX
     clip: {fileID: 8300000, guid: 9ebb89f7baa6a0340879be5555350714, type: 3}
     channel: 1
-    volume: 1
-    pitch: 1.5
+    volume: 0.6
+    pitch: 1.2
     loop: 0
     playOnAwake: 0
     spatialBlend: 0
@@ -27721,7 +27721,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -350}
-  m_SizeDelta: {x: 800, y: 200}
+  m_SizeDelta: {x: 1200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057730545
 MonoBehaviour:
@@ -27743,7 +27743,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: a1ef60d073dc151438402c325036d518, type: 2}
   m_sharedMaterial: {fileID: 1640834233968033936, guid: a1ef60d073dc151438402c325036d518,
@@ -33715,7 +33715,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 800, y: 200}
+  m_SizeDelta: {x: 1000, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1846042832
 GameObject:
@@ -34672,7 +34672,7 @@ Transform:
   m_GameObject: {fileID: 1984676550}
   serializedVersion: 2
   m_LocalRotation: {x: -0.5000001, y: -0.5, z: 0.49999994, w: 0.49999994}
-  m_LocalPosition: {x: 0.46, y: 0.174, z: -0.027999401}
+  m_LocalPosition: {x: 0.367, y: 0.174, z: -0.027999401}
   m_LocalScale: {x: 0.1704559, y: 0.14628528, z: 0.38601404}
   m_ConstrainProportionsScale: 0
   m_Children: []

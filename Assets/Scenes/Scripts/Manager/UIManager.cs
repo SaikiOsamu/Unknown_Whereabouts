@@ -111,13 +111,13 @@ public class UIManager : Singleton<UIManager>
 
     public void QuitGame()
     {
-        AudioManager.Instance?.Play("Quit_SFX");
+        //AudioManager.Instance?.Play("Quit_SFX");
         Application.Quit();
     }
 
     public void ResumeGame()
     {
-        AudioManager.Instance.Play("Resume_SFX");
+        //AudioManager.Instance.Play("Resume_SFX");
         SettingMenu.SetActive(false);
         Time.timeScale = 1f;
     }
