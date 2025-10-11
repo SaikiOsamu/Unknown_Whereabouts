@@ -22,6 +22,8 @@ public class HoverGlow : MonoBehaviour
     private float _target;  // Target glow intensity
     private bool _hovered;  // Whether currently hovered
 
+    private bool _lastHovered = false;
+
     void Awake()
     {
         _renderer = GetComponent<Renderer>();
@@ -61,5 +63,10 @@ public class HoverGlow : MonoBehaviour
     {
         _hovered = hovered;
         _target = _hovered ? maxIntensity : minIntensity;
+        if (hovered && !_lastHovered)
+        {
+            AudioManager.Instance.Play("UIHovering_SFX");
+        }
+        _lastHovered = hovered;
     }
 }

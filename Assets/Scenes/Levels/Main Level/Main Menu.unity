@@ -27375,6 +27375,17 @@ MonoBehaviour:
     priority: 1
     voices: 2
     mixerGroup: {fileID: 0}
+  - key: UIHovering_SFX
+    clip: {fileID: 8300000, guid: 642b808e6f3227e428a99e4ba6ec9079, type: 3}
+    channel: 1
+    volume: 1
+    pitch: 1
+    loop: 0
+    playOnAwake: 0
+    spatialBlend: 0
+    priority: 1
+    voices: 2
+    mixerGroup: {fileID: 0}
   defaultMaster: 1
   defaultBGM: 0.75
   defaultSFX: 0.75
