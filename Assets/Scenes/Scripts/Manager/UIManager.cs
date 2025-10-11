@@ -102,7 +102,6 @@ public class UIManager : Singleton<UIManager>
     public void QuitGame()
     {
         Application.Quit();
-        UnityEditor.EditorApplication.isPlaying = false;
         AudioManager.Instance.Play("Quit_SFX");
     }
     public void ResumeGame()
