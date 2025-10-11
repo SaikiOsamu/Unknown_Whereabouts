@@ -112,7 +112,7 @@ Material:
     - _StencilWriteMaskMV: 43
     - _SupportDecals: 1
     - _SurfaceType: 1
-    - _Thickness: 3.305
+    - _Thickness: 3.4
     - _TransmissionEnable: 1
     - _TransparentBackfaceEnable: 0
     - _TransparentCullMode: 1

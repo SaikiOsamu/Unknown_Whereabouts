@@ -170,7 +170,7 @@ Material:
     - _DisplacementLockObjectScale: 1
     - _DisplacementLockTilingScale: 1
     - _DisplacementMode: 0
-    - _DistortionStrength: -0.002
+    - _DistortionStrength: 0.002
     - _Distortion_Blur: 0
     - _Divide_Strength: 0.06
     - _DoubleSidedEnable: 0
@@ -197,9 +197,9 @@ Material:
     - _HeightPoMAmplitude: 2
     - _HeightTessAmplitude: 2
     - _HeightTessCenter: 0.5
-    - _IOR_Scale: 1.03
-    - _IOR_Scale_X: 1.005
-    - _IOR_Scale_Y: 1
+    - _IOR_Scale: 1.025
+    - _IOR_Scale_X: 0.995
+    - _IOR_Scale_Y: 0.995
     - _IOR_Strength: 0.5
     - _InvTilingScale: 1
     - _Ior: 1.5
@@ -279,7 +279,7 @@ Material:
     - _Distortion: {r: 0, g: 0, b: 0, a: 0}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Emissive: {r: 0.048463274, g: 0.03512514, b: 0.3018868, a: 1}
+    - _Emissive: {r: 0.051011216, g: 0.0365689, b: 0.27044016, a: 1}
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 0.7490196, g: 0.40663823, b: 0.37254906, a: 0}

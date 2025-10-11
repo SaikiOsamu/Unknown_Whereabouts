@@ -927,7 +927,7 @@ MeshRenderer:
   m_RenderingLayerMask: 3
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6de0ecf143ff6da4cb9b6b646b076843, type: 2}
+  - {fileID: 2100000, guid: 66d921c87d269b9499217a40479d013a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2676,7 +2676,7 @@ Transform:
   m_GameObject: {fileID: 761398512}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071063, z: -0, w: -0.70710737}
-  m_LocalPosition: {x: -43.6, y: -1.2, z: 64.2}
+  m_LocalPosition: {x: -37.9, y: -1.2, z: 64.2}
   m_LocalScale: {x: 1.2499998, y: 1.25, z: 1.2499998}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -5918,7 +5918,7 @@ MonoBehaviour:
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
   m_ShapeWidth: 4.5
-  m_ShapeHeight: 6.5
+  m_ShapeHeight: 6.25
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
@@ -6042,7 +6042,7 @@ Light:
   serializedVersion: 11
   m_Type: 3
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.088239
+  m_Intensity: 2.2635367
   m_Range: 3.5
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -6083,11 +6083,11 @@ Light:
   m_RenderingLayerMask: 3
   m_Lightmapping: 1
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 4.5, y: 6.5}
+  m_AreaSize: {x: 4.5, y: 6.25}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 7.452847}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 7.3507304}
   m_UseBoundingSphereOverride: 1
   m_UseViewFrustumForShadowCasterCull: 1
   m_ForceVisible: 0
