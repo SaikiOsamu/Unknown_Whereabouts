@@ -28975,7 +28975,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fadeImage: {fileID: 1091185751}
   fadeRenderer: {fileID: 0}
-  defaultInDuration: 0.8
+  defaultInDuration: 1
   defaultOutDuration: 2
   defaultUnscaledTime: 1
   inCurve:

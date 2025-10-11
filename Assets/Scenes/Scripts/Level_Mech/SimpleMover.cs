@@ -17,8 +17,14 @@ public class SimpleMover : MonoBehaviour
     public AnimationCurve curve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
     [Header("Player Lock (Optional)")]
-    [Tooltip("将需要在移动期间禁用的玩家脚本拖到这里，比如 PlayerInput/CharacterMotor/FirstPersonController 等。")]
+    [Tooltip("Drag scripts to disable while moving, e.g., PlayerInput/CharacterMotor/etc.")]
     public Behaviour[] playerScriptsToDisable;
+
+    [Header("Camera Shake (Optional)")]
+    public bool enableCameraShake = false;
+    public Transform cameraToShake;          // if null, falls back to Camera.main
+    public float shakeAmplitude = 0.1f;      // units in local space
+    public float shakeFrequency = 12f;       // noise speed
 
     private Coroutine _moveCo;
     private bool _isMoving = false;
@@ -26,9 +32,19 @@ public class SimpleMover : MonoBehaviour
     private Vector3 _extraOffset = Vector3.zero;
     private bool _controlsLockedByThis = false;
 
+    // shake internals
+    private Transform _cam;
+    private Vector3 _camBaseLocalPos;
+    private Coroutine _shakeCo;
+
     private void Awake()
     {
         if (!target) target = transform;
+
+        // camera cache for shake
+        _cam = cameraToShake ? cameraToShake : (Camera.main ? Camera.main.transform : null);
+        if (_cam) _camBaseLocalPos = _cam.localPosition;
+
         if (placeAtStartOnAwake && startPoint)
         {
             if (useLocalSpace)
@@ -77,6 +93,7 @@ public class SimpleMover : MonoBehaviour
             StopCoroutine(_moveCo);
             _moveCo = null;
             UnlockPlayerControls();
+            StopShake();
         }
         _moveCo = StartCoroutine(MoveCo(toEnd));
     }
@@ -88,6 +105,7 @@ public class SimpleMover : MonoBehaviour
         if (AudioManager.Instance) AudioManager.Instance.Play("WallMove_SFX");
 
         LockPlayerControls();
+        StartShake();
 
         Vector3 p0 = useLocalSpace ? target.localPosition : target.position;
         Transform anchor = toEnd ? endPoint : startPoint;
@@ -106,10 +124,9 @@ public class SimpleMover : MonoBehaviour
             Vector3 goal;
             if (followMovingAnchor)
             {
-                if (useLocalSpace)
-                    goal = WorldToLocal(anchor.position, target.parent) + _extraOffset;
-                else
-                    goal = anchor.position + _extraOffset;
+                goal = useLocalSpace
+                    ? WorldToLocal(anchor.position, target.parent) + _extraOffset
+                    : anchor.position + _extraOffset;
             }
             else
             {
@@ -131,6 +148,7 @@ public class SimpleMover : MonoBehaviour
         _isMoving = false;
         _moveCo = null;
 
+        StopShake();
         UnlockPlayerControls();
     }
 
@@ -163,10 +181,7 @@ public class SimpleMover : MonoBehaviour
         foreach (var b in playerScriptsToDisable)
         {
             if (!b) continue;
-            if (b.enabled)
-            {
-                b.enabled = false;
-            }
+            if (b.enabled) b.enabled = false;
         }
         _controlsLockedByThis = true;
     }
@@ -183,6 +198,42 @@ public class SimpleMover : MonoBehaviour
             }
         }
         _controlsLockedByThis = false;
+    }
+
+    // ---------------- Camera Shake ----------------
+    private void StartShake()
+    {
+        if (!enableCameraShake) return;
+        if (_cam == null)
+        {
+            _cam = cameraToShake ? cameraToShake : (Camera.main ? Camera.main.transform : null);
+            if (_cam) _camBaseLocalPos = _cam.localPosition;
+        }
+        if (_cam == null) return;
+
+        if (_shakeCo != null) StopCoroutine(_shakeCo);
+        _shakeCo = StartCoroutine(ShakeCo());
+    }
+
+    private void StopShake()
+    {
+        if (_shakeCo != null) StopCoroutine(_shakeCo);
+        _shakeCo = null;
+
+        if (_cam != null) _cam.localPosition = _camBaseLocalPos;
+    }
+
+    private IEnumerator ShakeCo()
+    {
+        float t = 0f;
+        while (_isMoving && enableCameraShake)
+        {
+            t += Time.deltaTime * shakeFrequency;
+            float ox = (Mathf.PerlinNoise(t, 0.0f) - 0.5f) * 2f * shakeAmplitude;
+            float oy = (Mathf.PerlinNoise(0.0f, t + 13.37f) - 0.5f) * 2f * shakeAmplitude;
+            if (_cam) _cam.localPosition = _camBaseLocalPos + new Vector3(ox, oy, 0f);
+            yield return null;
+        }
     }
 
 #if UNITY_EDITOR
@@ -214,6 +265,7 @@ public class SimpleMover : MonoBehaviour
 
     private void OnDisable()
     {
+        StopShake();
         UnlockPlayerControls();
         if (_moveCo != null) { StopCoroutine(_moveCo); _moveCo = null; }
         _isMoving = false;
@@ -221,6 +273,7 @@ public class SimpleMover : MonoBehaviour
 
     private void OnDestroy()
     {
+        StopShake();
         UnlockPlayerControls();
     }
 }

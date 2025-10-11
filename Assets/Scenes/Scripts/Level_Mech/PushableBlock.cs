@@ -4,15 +4,29 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class PushableBlock : MonoBehaviour
 {
+    [Header("Rail")]
     public Transform pointA;
     public Transform pointB;
+
+    [Header("Push Tuning")]
     public float pushSpeedScale = 2.5f;
     public float maxSpeed = 6f;
     public float damping = 5f;
-    public string playerTag = "Player";
     public float followGain = 14f;
     public float assistBoost = 0.6f;
+
+    [Tooltip("Minimum axis speed (m/s) a player must generate to count as pushing (filters rotation-only jitter).")]
+    public float minLinearSpeed = 0.05f;
+
+    [Tooltip("Extra allowance (m) where we consider the player 'in contact' even if slightly ahead/behind the block on the rail.")]
+    public float contactSlack = 0.3f;
+
+    [Tooltip("If player's axis motion is smaller than this, we treat it as not moving toward/away.")]
     public float towardEpsilon = 0.02f;
+
+    [Header("Detection")]
+    [Tooltip("Only colliders on these layers can push (set your Player to this layer).")]
+    public LayerMask playerLayer = 0;
 
     private Vector3 railOrigin;
     private Vector3 railDir;
@@ -22,6 +36,8 @@ public class PushableBlock : MonoBehaviour
     private bool gotPush;
 
     private BoxCollider triggerCol;
+
+    // We keep last positions to compute velocity if the player has no Rigidbody/CharacterController
     private readonly Dictionary<Transform, Vector3> lastPlayerPos = new Dictionary<Transform, Vector3>(4);
 
     void Awake()
@@ -72,13 +88,18 @@ public class PushableBlock : MonoBehaviour
     {
         if (!pointA || !pointB) return;
 
+        // If your rail endpoints can move, we keep it fresh.
         RecomputeRail();
         t = WorldToT(transform.position);
 
         float dt = Mathf.Max(Time.deltaTime, 1e-6f);
         PollTriggerAndApplyPushes(dt);
 
-        if (!gotPush) axisVel = Mathf.Lerp(axisVel, 0f, 1f - Mathf.Exp(-damping * dt));
+        if (!gotPush)
+        {
+            // Exponential decay to rest when no one is pushing
+            axisVel = Mathf.Lerp(axisVel, 0f, 1f - Mathf.Exp(-damping * dt));
+        }
         gotPush = false;
 
         axisVel = Mathf.Clamp(axisVel, -maxSpeed, maxSpeed);
@@ -97,7 +118,9 @@ public class PushableBlock : MonoBehaviour
         Vector3 halfExtents = Vector3.Scale(triggerCol.size * 0.5f, tr.lossyScale);
         Quaternion orientation = tr.rotation;
 
-        Collider[] hits = Physics.OverlapBox(center, halfExtents, orientation, ~0, QueryTriggerInteraction.Ignore);
+        // Only players on the specified layer(s)
+        int layerMask = playerLayer.value == 0 ? ~0 : playerLayer.value;
+        Collider[] hits = Physics.OverlapBox(center, halfExtents, orientation, layerMask, QueryTriggerInteraction.Ignore);
 
         var seenThisFrame = HashSetPool<Transform>.Get();
 
@@ -110,36 +133,38 @@ public class PushableBlock : MonoBehaviour
         {
             if (col == null) continue;
             if (col.transform == transform) continue;
-            if (!col.CompareTag(playerTag)) continue;
+
+            // Layer check (already enforced by OverlapBox mask), but keep in case mask is wide:
+            if ((playerLayer.value & (1 << col.gameObject.layer)) == 0 && playerLayer.value != 0) continue;
 
             Transform pTr = col.transform;
             seenThisFrame.Add(pTr);
 
-            Vector3 currPos = pTr.position;
-            if (!lastPlayerPos.TryGetValue(pTr, out var lastPos))
-            {
-                lastPlayerPos[pTr] = currPos;
-                continue;
-            }
+            // Best-effort player velocity along the rail:
+            Vector3 v = GetWorldVelocity(pTr, dt);
+            float axisSpeed = Vector3.Dot(v, railDir);
 
-            Vector3 delta = currPos - lastPos;
-            lastPlayerPos[pTr] = currPos;
+            // Ignore rotation-only or micro jitter (root motion shuffles etc.)
+            if (Mathf.Abs(axisSpeed) < minLinearSpeed) continue;
 
-            float playerAxisDelta = Vector3.Dot(delta, railDir);
-            float sPlayer = Vector3.Dot(currPos, railDir);
+            float sPlayer = Vector3.Dot(pTr.position, railDir);
             float gap = sBlock - sPlayer;
 
+            // If the player is close enough along the rail, allow small positive axisSpeed to count as "toward"
+            bool isClose = Mathf.Abs(gap) <= contactSlack;
+
             bool movingToward =
-                (gap > 0f && playerAxisDelta > towardEpsilon) ||
-                (gap < 0f && playerAxisDelta < -towardEpsilon);
+                (gap > 0f && axisSpeed > towardEpsilon) ||
+                (gap < 0f && axisSpeed < -towardEpsilon) ||
+                (isClose && Mathf.Abs(axisSpeed) > towardEpsilon * 0.5f);
 
             if (!movingToward) continue;
 
-            float axisSpeed = playerAxisDelta / dt;
             combinedAxisSpeed += axisSpeed;
             contributors++;
         }
 
+        // Clean up last positions for transforms that left the trigger
         if (lastPlayerPos.Count > 0)
         {
             var toRemove = ListPool<Transform>.Get();
@@ -155,20 +180,54 @@ public class PushableBlock : MonoBehaviour
 
         if (contributors > 0)
         {
-            float playerAxisSpeed = combinedAxisSpeed;
-            ApplyPush(playerAxisSpeed);
+            ApplyPush(combinedAxisSpeed);
         }
+    }
+
+    private Vector3 GetWorldVelocity(Transform pTr, float dt)
+    {
+        // Priority 1: Rigidbody velocity if present
+        if (pTr.TryGetComponent<Rigidbody>(out var rb))
+        {
+            return rb.linearVelocity;
+        }
+
+        // Priority 2: CharacterController velocity if present
+        if (pTr.TryGetComponent<CharacterController>(out var cc))
+        {
+            return cc.velocity;
+        }
+
+        // Fallback: finite-difference based on last frame position
+        Vector3 curr = pTr.position;
+        if (!lastPlayerPos.TryGetValue(pTr, out var last))
+        {
+            lastPlayerPos[pTr] = curr;
+            return Vector3.zero; // first frame inside trigger, no velocity yet
+        }
+
+        Vector3 v = (curr - last) / Mathf.Max(dt, 1e-6f);
+        lastPlayerPos[pTr] = curr;
+        return v;
     }
 
     public void ApplyPush(float playerAxisSpeed)
     {
         if ((t <= 0f && playerAxisSpeed < 0f) || (t >= 1f && playerAxisSpeed > 0f)) return;
 
-        float target = playerAxisSpeed * pushSpeedScale;
         float dt = Mathf.Max(Time.deltaTime, 1e-6f);
+
+        // Follow the player's axis speed, smoothly
+        float target = playerAxisSpeed * pushSpeedScale;
+
         float k = 1f - Mathf.Exp(-followGain * dt);
         axisVel = Mathf.Lerp(axisVel, target, k);
-        axisVel += Mathf.Sign(target) * assistBoost;
+
+        // Only add assist if player is clearly pushing (prevents phantom nudges)
+        if (Mathf.Abs(target) > minLinearSpeed)
+        {
+            axisVel += Mathf.Sign(target) * assistBoost;
+        }
 
         gotPush = true;
     }

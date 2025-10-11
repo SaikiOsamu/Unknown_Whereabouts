@@ -21515,10 +21515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fd0144d5d701ea46816c742c032f355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TriggerObject: {fileID: 0}
-  TriggerZone: {fileID: 0}
-  requiredOverlapFraction: 0.1
-  PlayerKillZone: {fileID: 0}
+  TriggerObject: {fileID: 1742800965}
+  TriggerZone: {fileID: 1876900015}
+  requiredOverlapFraction: 0.05
+  PlayerKillZone: {fileID: 109766633}
   playerTag: Player
   noisePropertyName: _NoiseScale
   preTouchNoise: 20
@@ -21537,15 +21537,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12387bd670cfcad4eac260440c8d34fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetSceneName: Level04
+  targetSceneName: Level05
   nextGameState: 3
   requiredDepth: 0.1
   requiredHoldTime: 0.5
   playerTag: Player
-  fadeDuration: 0.8
+  fadeDuration: 1.5
   waitBeforeLoad: 1.5
   playerControllersToDisable:
-  - {fileID: 0}
+  - {fileID: 1257590756}
 --- !u!65 &1387210622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22694,7 +22694,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 55
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -50044,7 +50044,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 6, y: 6, z: 6}
+  m_Size: {x: 5, y: 5, z: 5}
   m_Center: {x: 0, y: 1.5, z: 6.2}
 --- !u!1 &1891323750
 GameObject:
