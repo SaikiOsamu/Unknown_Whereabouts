@@ -36628,7 +36628,7 @@ MonoBehaviour:
   requireFrontClick: 0
   frontDotThreshold: 0.2
   action: 0
-  sceneToLoad: End Scene
+  sceneToLoad: Level01
   disableAfterClick: 1
   useFade: 1
   fadeColor: {r: 0, g: 0, b: 0, a: 1}

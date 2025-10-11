@@ -113,8 +113,8 @@ public class UIManager : Singleton<UIManager>
 
     public void ResumeGame()
     {
-        SettingMenu.SetActive(false);
         AudioManager.Instance.Play("Resume_SFX");
+        SettingMenu.SetActive(false);
         Time.timeScale = 1f;
     }
 }
