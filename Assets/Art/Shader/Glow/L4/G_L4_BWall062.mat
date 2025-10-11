@@ -23,7 +23,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: G_L4_BWall06
+  m_Name: G_L4_BWall062
   m_Shader: {fileID: -6465566751694194690, guid: 8b13b9015260fd44786156c570b2745d,
     type: 3}
   m_Parent: {fileID: 0}
@@ -108,7 +108,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _GlowIntensity: 4
+    - _GlowIntensity: 2
     - _InnerRadius: -2
     - _LumaSoftness: 0.5
     - _LumaThreshold: 0
@@ -118,7 +118,7 @@ Material:
     - _Metallic: 0
     - _NoiseMask3: 1
     - _NoiseMask3Strength: 0.1
-    - _NoiseScale: 30
+    - _NoiseScale: 79.5
     - _NoiseSpeed: 5
     - _NoiseStrength: 6
     - _NormalScale: 3
