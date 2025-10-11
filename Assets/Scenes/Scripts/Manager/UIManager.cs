@@ -9,6 +9,10 @@ public class UIManager : Singleton<UIManager>
     [SerializeField] private GameObject SettingMenu;
     [SerializeField] private GameObject Menu;
 
+    [SerializeField] private float resetFadeInDuration = 0.6f;
+    [SerializeField] private float resetFadeOutDuration = 0.8f;
+    [SerializeField] private bool resetUseUnscaledTime = true;
+
     private bool isSettingOpen = false;
 
     [SerializeField] private Slider bgmSlider;
@@ -117,4 +121,30 @@ public class UIManager : Singleton<UIManager>
         SettingMenu.SetActive(false);
         Time.timeScale = 1f;
     }
+    public void ResetLevel()
+    {
+        Time.timeScale = 1f;
+        HideAll();
+
+        var scene = SceneManager.GetActiveScene();
+
+        if (FadeManager.Instance != null)
+        {
+           
+            FadeManager.Instance.TransitionToScene(
+                scene.name,
+                resetFadeInDuration,
+                resetFadeOutDuration,
+                resetUseUnscaledTime,
+                null,
+                null,
+                onComplete: null
+            );
+        }
+        else
+        {
+            SceneManager.LoadScene(scene.buildIndex);
+        }
+    }
+
 }
