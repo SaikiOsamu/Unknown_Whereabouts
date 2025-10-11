@@ -9,6 +9,7 @@ public class PlaneBreak : MonoBehaviour
     [Header("References")]
     public GameObject TriggerObject;
     public GameObject TriggerZone;
+    public GameObject Particle_Object;
 
     [Header("Trigger Condition (same as before)")]
     [Range(0f, 1f)] public float requiredOverlapFraction = 2f / 3f;
@@ -109,6 +110,7 @@ public class PlaneBreak : MonoBehaviour
         }
 
         AudioManager.Instance.PlaySequenceScheduled(0.10, "ExitShown_SFX", "TriggerZone_PartOne", "TriggerZone_PartTwo");
+        Particle_Object.SetActive(true);
     }
 
     void ApplyNoise(float value)
