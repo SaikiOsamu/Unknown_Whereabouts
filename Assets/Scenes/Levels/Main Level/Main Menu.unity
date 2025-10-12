@@ -23855,7 +23855,6 @@ GameObject:
   - component: {fileID: 536053659}
   - component: {fileID: 536053658}
   - component: {fileID: 536053657}
-  - component: {fileID: 536053661}
   - component: {fileID: 536053662}
   m_Layer: 0
   m_Name: Camera
@@ -24077,23 +24076,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &536053661
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 536053656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b17f1f5f8f32d8b41b456a38a371c436, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 536053659}
-  maxDistance: 1000
-  hitLayers:
-    serializedVersion: 2
-    m_Bits: 268435456
 --- !u!114 &536053662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36586,6 +36568,7 @@ GameObject:
   - component: {fileID: 9155222329360036848}
   - component: {fileID: 9155222329360036850}
   - component: {fileID: 9155222329360036851}
+  - component: {fileID: 9155222329360036852}
   - component: {fileID: 9155222329360036849}
   m_Layer: 28
   m_Name: QUIT
@@ -36788,6 +36771,7 @@ GameObject:
   - component: {fileID: 7469543822785523952}
   - component: {fileID: 8657079797917834029}
   - component: {fileID: 8657079797917834030}
+  - component: {fileID: 8657079797917834031}
   - component: {fileID: 8657079797917834028}
   m_Layer: 28
   m_Name: QUIT.001
@@ -37014,8 +36998,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 268435456
   rayMaxDistance: 1000
-  requireFrontClick: 0
+  requireFrontClick: 1
   frontDotThreshold: 0.2
+  faceDotThreshold: 0.95
+  frontAxis: {fileID: 5074978701954182843}
+  localFront: {x: 0, y: 1, z: 0}
   action: 0
   sceneToLoad: Level01
   disableAfterClick: 1
@@ -37061,6 +37048,28 @@ MonoBehaviour:
   maxIntensity: 2
   riseDuration: 0.5
   fallDuration: 0.5
+--- !u!114 &8657079797917834031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754483604795697782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17f1f5f8f32d8b41b456a38a371c436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 536053659}
+  maxDistance: 1000
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 268435456
+  requireFrontHover: 1
+  frontDotThreshold: 0.2
+  faceDotThreshold: 0.95
+  frontAxis: {fileID: 5074978701954182843}
+  localFront: {x: 0, y: 1, z: 0}
 --- !u!33 &8678946765886615879
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37202,8 +37211,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 268435456
   rayMaxDistance: 1000
-  requireFrontClick: 0
+  requireFrontClick: 1
   frontDotThreshold: 0.2
+  faceDotThreshold: 0.95
+  frontAxis: {fileID: 984421662395324863}
+  localFront: {x: 0, y: 1, z: 0}
   action: 1
   sceneToLoad: Game
   disableAfterClick: 1
@@ -37249,6 +37261,28 @@ MonoBehaviour:
   maxIntensity: 2
   riseDuration: 0.5
   fallDuration: 0.5
+--- !u!114 &9155222329360036852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3969118216439130814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17f1f5f8f32d8b41b456a38a371c436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cam: {fileID: 536053659}
+  maxDistance: 1000
+  hitLayers:
+    serializedVersion: 2
+    m_Bits: 268435456
+  requireFrontHover: 1
+  frontDotThreshold: 0.2
+  faceDotThreshold: 0.95
+  frontAxis: {fileID: 5074978701954182843}
+  localFront: {x: 0, y: 1, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

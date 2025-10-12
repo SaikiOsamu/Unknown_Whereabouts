@@ -11,7 +11,13 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
     public float rayMaxDistance = 1000f;
 
     public bool requireFrontClick = true;
+
+    [Header("Front-Face Filters")]
     [Range(0f, 1f)] public float frontDotThreshold = 0.2f;
+    [Range(0.5f, 1f)] public float faceDotThreshold = 0.95f;
+
+    public Transform frontAxis;
+    public Vector3 localFront = Vector3.forward;
 
     public ActionType action = ActionType.StartGame;
     public string sceneToLoad = "Game";
@@ -26,7 +32,7 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
     {
         if (!cam) cam = Camera.main;
         if (!TryGetComponent<Collider>(out _))
-            Debug.LogWarning($"{name} 需要 Collider 才能被点击。");
+            Debug.LogWarning($"{name} needs a Collider to be clickable.");
     }
 
     void Update()
@@ -55,8 +61,14 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
 
     bool IsFrontHit(Ray ray, RaycastHit hit)
     {
-        float dot = Vector3.Dot(hit.normal, -ray.direction.normalized);
-        return dot >= frontDotThreshold;
+        Vector3 rayDir = ray.direction.normalized;
+        float facingDot = Vector3.Dot(hit.normal, -rayDir);
+        if (facingDot < frontDotThreshold) return false;
+
+        Transform basis = frontAxis ? frontAxis : transform;
+        Vector3 worldFront = basis.TransformDirection(localFront).normalized;
+        float faceDot = Vector3.Dot(hit.normal, worldFront);
+        return faceDot >= faceDotThreshold;
     }
 
     void RunAction()
@@ -67,7 +79,7 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
                 if (!string.IsNullOrEmpty(sceneToLoad))
                     StartCoroutine(StartGameRoutine());
                 else
-                    Debug.LogWarning("未设置 sceneToLoad，无法开始游戏。");
+                    Debug.LogWarning("sceneToLoad is not set, cannot start game.");
                 break;
 
             case ActionType.QuitGame:
@@ -113,6 +125,12 @@ public class ClickStartOrQuit_FromFront : MonoBehaviour
 #if UNITY_EDITOR
     void OnDrawGizmosSelected()
     {
+        Transform basis = frontAxis ? frontAxis : transform;
+        Vector3 worldFront = basis.TransformDirection(localFront).normalized;
+
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(basis.position, basis.position + worldFront * 0.8f);
+
         if (TryGetComponent<Collider>(out var col))
         {
             Gizmos.color = Color.cyan;
