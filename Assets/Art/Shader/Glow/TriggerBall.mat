@@ -48,7 +48,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: bc10e720070ac314fad58caad5d51b9f, type: 3}
+        m_Texture: {fileID: 2800000, guid: 2cf606c52ac86f041b8f7c885cee2f92, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -56,11 +56,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 9a9b49a72861ab4449e6fd9b0b90b3b3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap_2:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 8f1ed309a298a2742b829de2033346ab, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -83,12 +83,15 @@ Material:
     - _AlphaCutoffEnable: 0
     - _AlphaDstBlend: 0
     - _AlphaSrcBlend: 1
-    - _B_GlowIntensity: 0.25
+    - _BE_GlowIntensity: 1
+    - _BE_LumaSoftness: 0.1
+    - _BE_LumaThreshold: 0.13
+    - _B_GlowIntensity: 0.05
     - _B_InnerRadius: 8
     - _B_NoiseMask3Strength: 0.01
     - _B_NoiseScale: 20
     - _B_NoiseSpeed: 1
-    - _B_NoiseStrength: 6
+    - _B_NoiseStrength: 12
     - _B_OuterRadius: 45
     - _B_XStretch: 1
     - _B_YStretch: 1
@@ -105,6 +108,8 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
+    - _GlobalEmissionIntensity: 2.82
+    - _Global_Color_Intensity: 2
     - _GlowIntensity: 4
     - _InnerRadius: -2
     - _LumaSoftness: 0.1
@@ -119,7 +124,7 @@ Material:
     - _NoiseSpeed: 5
     - _NoiseStrength: 5.9
     - _NormalScale: 2
-    - _NormalScale_2: 1
+    - _NormalScale_2: 6
     - _OpaqueCullMode: 2
     - _OuterRadius: 3
     - _PerPixelSorting: 0
@@ -158,10 +163,13 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _B_GlowColor: {r: 1.9973842, g: 11.984312, b: 10.452016, a: 1}
+    - _B_NoiseUV: {r: 1, g: 1, b: 0, a: 0}
     - _B_PosWS: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseEmissive: {r: 0, g: 0, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _GlobalEmission: {r: 0, g: 0, b: 0, a: 1}
     - _GlowColor: {r: 0.9790306, g: 5.874187, b: 5.123122, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
