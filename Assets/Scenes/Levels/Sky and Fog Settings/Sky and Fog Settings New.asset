@@ -116,13 +116,13 @@ MonoBehaviour:
     m_Value: 2
   threshold:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 0.7
   intensity:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 0.7
   scatter:
     m_OverrideState: 1
-    m_Value: 0.7
+    m_Value: 0.5
   tint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -190,10 +190,10 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.15
+    m_Value: 0.116
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 1
   roundness:
     m_OverrideState: 1
     m_Value: 1
@@ -749,7 +749,7 @@ MonoBehaviour:
     m_Value: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.5
   response:
     m_OverrideState: 1
     m_Value: 0.65
@@ -869,7 +869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d877ec3e844f2ca46830012e8e79319b, type: 3}
   m_Name: PhysicallyBasedSky
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   rotation:
     m_OverrideState: 0
     m_Value: 0
