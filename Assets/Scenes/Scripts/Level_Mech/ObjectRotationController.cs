@@ -10,6 +10,9 @@ public class ObjectRotationController : MonoBehaviour
     public List<Transform> objectsToRotateWithRoom;
     public List<MonoBehaviour> inputControllersToDisable;
 
+    public bool useRotationCurve = false;
+    public AnimationCurve rotationCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
+
     private bool canRotateX = true;
     private bool canRotateY = true;
     private bool isRotating = false;
@@ -84,31 +87,37 @@ public class ObjectRotationController : MonoBehaviour
 
         FreezeRigidbodies();
 
-        float elapsedTime = 0f;
-        float duration = angle / rotationSpeed;
+        float duration = angle / Mathf.Max(0.0001f, rotationSpeed);
+        float elapsed = 0f;
+        float prevT = 0f;
 
-        while (elapsedTime < duration)
+        while (elapsed < duration)
         {
-            float deltaAngle = rotationSpeed * Time.deltaTime;
+            elapsed += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsed / duration);
 
-            transform.RotateAround(rotationCenter.position, axis, deltaAngle);
+            float prevEval = useRotationCurve && rotationCurve != null ? rotationCurve.Evaluate(prevT) : prevT;
+            float nowEval = useRotationCurve && rotationCurve != null ? rotationCurve.Evaluate(t) : t;
+            float step = (nowEval - prevEval) * angle;
 
+            transform.RotateAround(rotationCenter.position, axis, step);
             foreach (Transform obj in objectsToRotateWithRoom)
             {
-                if (obj != null)
-                    obj.RotateAround(rotationCenter.position, axis, deltaAngle);
+                if (obj != null) obj.RotateAround(rotationCenter.position, axis, step);
             }
 
-            elapsedTime += Time.deltaTime;
+            prevT = t;
             yield return null;
         }
 
-        float remainingAngle = angle - rotationSpeed * elapsedTime;
-        transform.RotateAround(rotationCenter.position, axis, remainingAngle);
-        foreach (Transform obj in objectsToRotateWithRoom)
+        if (prevT < 1f)
         {
-            if (obj != null)
-                obj.RotateAround(rotationCenter.position, axis, remainingAngle);
+            float remaining = (1f - (useRotationCurve && rotationCurve != null ? rotationCurve.Evaluate(prevT) : prevT)) * angle;
+            transform.RotateAround(rotationCenter.position, axis, remaining);
+            foreach (Transform obj in objectsToRotateWithRoom)
+            {
+                if (obj != null) obj.RotateAround(rotationCenter.position, axis, remaining);
+            }
         }
 
         RestoreRigidbodies();
