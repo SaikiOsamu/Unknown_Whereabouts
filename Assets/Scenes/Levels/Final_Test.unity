@@ -26665,7 +26665,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2e9f9ebccee49e543af2dafef76155bf, type: 2}
+  - {fileID: 2100000, guid: 843e4b954da286c4a97e4318c6aeb095, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -28046,6 +28046,13 @@ MonoBehaviour:
   blackHold: 1.2
   fadeFromBlack: 1
   disableFadeManagerAutoIntro: 1
+  returnToFirstLevel: 1
+  firstLevelSceneName: Level1
+  useBuildIndexFirstLevel: 0
+  fadeToBlackBeforeLoad: 0.8
+  postLoadFadeFromBlack: 0.8
+  hardRestartLikeFreshBoot: 0
+  returnDelaySeconds: 2
 --- !u!4 &2075816025
 Transform:
   m_ObjectHideFlags: 0

@@ -23736,7 +23736,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 919a906c4dd927242826ddfeabbe6c84, type: 2}
+  - {fileID: 2100000, guid: 843e4b954da286c4a97e4318c6aeb095, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37061,8 +37061,6 @@ MonoBehaviour:
   maxIntensity: 2
   riseDuration: 0.5
   fallDuration: 0.5
-  localFrontAxis: {x: 0, y: 1, z: 0}
-  minFacingDot: 0.9
 --- !u!33 &8678946765886615879
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -37251,8 +37249,6 @@ MonoBehaviour:
   maxIntensity: 2
   riseDuration: 0.5
   fallDuration: 0.5
-  localFrontAxis: {x: 0, y: 1, z: 0}
-  minFacingDot: 0.9
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

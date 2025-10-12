@@ -108,8 +108,9 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
-    - _GlowIntensity: 4
-    - _InnerRadius: -2
+    - _Global_Color_Intensity: 1
+    - _GlowIntensity: 15
+    - _InnerRadius: 3
     - _LumaSoftness: 0.41
     - _LumaThreshold: 0.73
     - _MaskPower: 4
@@ -117,14 +118,14 @@ Material:
     - _MaterialTypeMask: 2
     - _Metallic: 0
     - _NoiseMask3: 1
-    - _NoiseMask3Strength: 0.1
-    - _NoiseScale: 12.2
-    - _NoiseSpeed: 5
-    - _NoiseStrength: 5.9
+    - _NoiseMask3Strength: 0.05
+    - _NoiseScale: 9.8
+    - _NoiseSpeed: 10
+    - _NoiseStrength: 5.5
     - _NormalScale: 0.5
     - _NormalScale_2: 0
     - _OpaqueCullMode: 2
-    - _OuterRadius: 2.3
+    - _OuterRadius: 5
     - _PerPixelSorting: 0
     - _RayTracing: 0
     - _ReceivesSSR: 1
@@ -167,7 +168,7 @@ Material:
     - _BaseEmissive: {r: 0, g: 0, b: 0, a: 1}
     - _DoubleSidedConstants: {r: 1, g: 1, b: -1, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _GlowColor: {r: 1.9973842, g: 11.984312, b: 10.452016, a: 1}
+    - _GlowColor: {r: 0.95597154, g: 2.2036743, b: 15.999997, a: 1}
     - _NoiseTiling: {r: 1, g: 1, b: 0, a: 0}
     - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _Offset_Norm: {r: 0, g: -0.71, b: 0, a: 0}
