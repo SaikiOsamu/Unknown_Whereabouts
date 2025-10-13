@@ -28970,6 +28970,8 @@ GameObject:
   - component: {fileID: 1324686836}
   - component: {fileID: 1324686835}
   - component: {fileID: 1324686834}
+  - component: {fileID: 1324686838}
+  - component: {fileID: 1324686837}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Player
@@ -29053,6 +29055,39 @@ Transform:
   - {fileID: 1928943203}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1324686837
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324686833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c436ef479ea801147968f1ad9816cc06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxGroundAngle: 50
+--- !u!114 &1324686838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1324686833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e07748efdbc63b459e35cd881b15745, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ground: {fileID: 1324686837}
+  rb: {fileID: 1324686834}
+  minFallDistance: 0.2
+  heightWeight: 3
+  cooldown: 0.1
+  onLanded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1342591476
 GameObject:
   m_ObjectHideFlags: 0
@@ -33292,7 +33327,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.3, y: 2.3, z: 2.3}
+  m_Size: {x: 2.4, y: 2.4, z: 2.4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1951558059
 GameObject:
