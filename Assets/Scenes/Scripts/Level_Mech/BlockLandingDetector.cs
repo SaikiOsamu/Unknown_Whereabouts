@@ -10,7 +10,7 @@ public class BlockLandingDetector : MonoBehaviour
 
     [Header("Tune")]
     [Tooltip("Minimum vertical fall distance to consider this a 'landing'.")]
-    public float minFallDistance = 0.2f;
+    public float minFallDistance = 2f;
     [Tooltip("Weight applied to fall height when computing impact.")]
     public float heightWeight = 3.0f;
     [Tooltip("Cooldown between landing triggers.")]

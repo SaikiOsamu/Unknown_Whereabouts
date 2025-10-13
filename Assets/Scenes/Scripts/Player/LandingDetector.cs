@@ -20,16 +20,20 @@ public class LandingDetector : MonoBehaviour
     public string impactParam = "Impact";
 
     [Header("Land State Watching")]
-    [Tooltip("Animator里落地动画的状态名（短名，非完整路径）。")]
     public string landStateName = "Land";
-    [Tooltip("Land 所在层索引，通常是 Base Layer=0")]
     public int landLayerIndex = 0;
 
     [Header("Lock During Landing")]
-    [Tooltip("上锁期间要禁用的组件（移动/输入/攻击等）")]
     public MonoBehaviour[] systemsToDisable;
-    [Tooltip("落地动画期间是否临时冻结刚体")]
     public bool freezeRigidbodyDuringLock = false;
+
+    [Header("Airborne Gates")]
+    public float minAirTime = 0.06f;
+    public float minDownVelToStart = 2f;
+    public float minDownVelToLand = 3.5f;
+
+    [Header("Animation Toggle")]
+    public bool enableAnimation = true;
 
     bool wasGrounded = true;
     float fallStartHeight;
@@ -38,6 +42,10 @@ public class LandingDetector : MonoBehaviour
     int landStateHash;
     Coroutine landLockCo;
     bool isLocked;
+
+    float airborneTime = 0f;
+    bool inFall = false;
+    float maxDownVel = 0f;
 
     void Awake()
     {
@@ -62,20 +70,40 @@ public class LandingDetector : MonoBehaviour
         float currentHeight = Vector3.Dot(transform.position, up);
         bool grounded = ground.GetOnGround();
 
-        if (wasGrounded && !grounded)
-            fallStartHeight = currentHeight;
+        float vDown = 0f;
+        if (rb != null) vDown = Mathf.Max(0f, -Vector3.Dot(rb.linearVelocity, up));
 
-        if (!wasGrounded && grounded)
+        if (!grounded)
         {
-            float fallDistance = Mathf.Max(0f, fallStartHeight - currentHeight);
-            float speedAlongGravity = 0f;
-            if (rb != null) speedAlongGravity = Mathf.Max(0f, -Vector3.Dot(rb.linearVelocity, up));
-            float impact = (fallDistance * heightWeight) + speedAlongGravity;
+            airborneTime += Time.fixedDeltaTime;
+            maxDownVel = Mathf.Max(maxDownVel, vDown);
 
-            if (fallDistance >= minFallDistance && (Time.time - lastTriggerTime) >= cooldown)
+            if (!inFall)
             {
-                TriggerLand(impact);
+                if (airborneTime >= Time.fixedDeltaTime && vDown >= minDownVelToStart)
+                {
+                    inFall = true;
+                    fallStartHeight = currentHeight;
+                }
             }
+        }
+        else
+        {
+            if (inFall)
+            {
+                float fallDistance = Mathf.Max(0f, fallStartHeight - currentHeight);
+                float impact = (fallDistance * heightWeight) + maxDownVel;
+                bool gateOK = (airborneTime >= minAirTime) || (maxDownVel >= minDownVelToLand);
+
+                if (gateOK && fallDistance >= minFallDistance && (Time.time - lastTriggerTime) >= cooldown)
+                {
+                    TriggerLand(impact);
+                }
+            }
+
+            airborneTime = 0f;
+            inFall = false;
+            maxDownVel = 0f;
         }
 
         wasGrounded = grounded;
@@ -89,7 +117,7 @@ public class LandingDetector : MonoBehaviour
 
     void TriggerLand(float impact)
     {
-        if (animator != null && impact >= minImpactForAnim)
+        if (enableAnimation && animator != null && impact >= minImpactForAnim)
         {
             LockSystems(true);
             animator.SetFloat(impactParam, impact);

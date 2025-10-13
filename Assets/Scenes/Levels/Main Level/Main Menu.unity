@@ -1875,8 +1875,8 @@ MonoBehaviour:
   ground: {fileID: 281513110}
   rb: {fileID: 281513112}
   animator: {fileID: 281513113}
-  minFallDistance: 1
-  heightWeight: 2
+  minFallDistance: 3
+  heightWeight: 3
   cooldown: 0.1
   minImpactForAnim: 1
   speedParam: Speed
@@ -1888,6 +1888,10 @@ MonoBehaviour:
   - {fileID: 281513111}
   - {fileID: 896349140}
   freezeRigidbodyDuringLock: 0
+  minAirTime: 0.06
+  minDownVelToStart: 2
+  minDownVelToLand: 3.5
+  enableAnimation: 0
 --- !u!114 &281513109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1916,6 +1920,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxGroundAngle: 50
+  castRadius: 0.25
+  castDistance: 0.2
+  castOffset: 0.05
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  feet: {fileID: 391987646}
+  debugDraw: 0
 --- !u!114 &281513111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2005,6 +2017,7 @@ Transform:
   - {fileID: 563862619}
   - {fileID: 1230079775}
   - {fileID: 529901611}
+  - {fileID: 391987646}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!65 &281513115
@@ -2358,6 +2371,59 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2528187, y: 3.8548043, z: 1.1066175}
   m_Center: {x: -0.012325001, y: 0.36648947, z: 0.053310722}
+--- !u!1 &391987645
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 391987646}
+  - component: {fileID: 391987647}
+  m_Layer: 9
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &391987646
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391987645}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 281513114}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &391987647
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391987645}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.05
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &400896896
 GameObject:
   m_ObjectHideFlags: 0
@@ -27139,7 +27205,7 @@ MonoBehaviour:
     voices: 2
     mixerGroup: {fileID: 0}
   defaultMaster: 1
-  defaultBGM: 0.75
+  defaultBGM: 0.5
   defaultSFX: 0.75
   defaultUI: 0.75
   defaultAmb: 0.75

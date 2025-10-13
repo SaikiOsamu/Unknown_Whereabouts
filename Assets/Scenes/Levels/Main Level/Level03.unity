@@ -179,8 +179,8 @@ MonoBehaviour:
   ground: {fileID: 4264409}
   rb: {fileID: 4264411}
   animator: {fileID: 4264412}
-  minFallDistance: 1
-  heightWeight: 2
+  minFallDistance: 3
+  heightWeight: 3
   cooldown: 0.1
   minImpactForAnim: 1
   speedParam: Speed
@@ -192,6 +192,10 @@ MonoBehaviour:
   - {fileID: 4264410}
   - {fileID: 1198855187}
   freezeRigidbodyDuringLock: 0
+  minAirTime: 0.06
+  minDownVelToStart: 2
+  minDownVelToLand: 3.5
+  enableAnimation: 0
 --- !u!114 &4264408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,6 +224,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxGroundAngle: 50
+  castRadius: 0.25
+  castDistance: 0.2
+  castOffset: 0.05
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  feet: {fileID: 746770065}
+  debugDraw: 0
 --- !u!114 &4264410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,6 +321,7 @@ Transform:
   - {fileID: 926117638}
   - {fileID: 1206823107}
   - {fileID: 513724888}
+  - {fileID: 746770065}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &4264414
@@ -24817,6 +24830,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744308213}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &746770064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 746770065}
+  - component: {fileID: 746770066}
+  m_Layer: 9
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &746770065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746770064}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.0000032037492, z: -0, w: 1}
+  m_LocalPosition: {x: -1.2520001, y: 0.702, z: -2.898}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4264413}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &746770066
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746770064}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.05
+  m_Center: {x: 0, y: -0.25, z: 0}
 --- !u!1 &764119491
 GameObject:
   m_ObjectHideFlags: 0
@@ -29036,7 +29102,7 @@ Transform:
   m_GameObject: {fileID: 1324686833}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.24, y: -0.504, z: 9.92}
+  m_LocalPosition: {x: 13.24, y: -1.8, z: 9.92}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -29068,6 +29134,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxGroundAngle: 50
+  castRadius: 0.25
+  castDistance: 0.2
+  castOffset: 0.05
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
+  feet: {fileID: 0}
+  debugDraw: 0
 --- !u!114 &1324686838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29082,7 +29156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ground: {fileID: 1324686837}
   rb: {fileID: 1324686834}
-  minFallDistance: 0.2
+  minFallDistance: 2
   heightWeight: 3
   cooldown: 0.1
   onLanded:
