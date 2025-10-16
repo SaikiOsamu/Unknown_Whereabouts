@@ -108,6 +108,7 @@ Material:
     - _EnableBlendModePreserveSpecularLighting: 1
     - _EnableFogOnTransparent: 1
     - _ExcludeFromTUAndAA: 0
+    - _Global_Color_Intensity: 1
     - _GlowIntensity: 4
     - _InnerRadius: -2
     - _LumaSoftness: 0.46
